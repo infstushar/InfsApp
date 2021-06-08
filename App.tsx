@@ -18,6 +18,7 @@
    useColorScheme,
    View,
  } from 'react-native';
+ import ColorsApp from './constants/colors';
 
 
 
@@ -61,7 +62,7 @@
    const isDarkMode = useColorScheme() === 'dark';
 
    const backgroundStyle = {
-     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+     backgroundColor: isDarkMode ? Colors.darker : ColorsApp.primaryColor,
    };
 
    return (
