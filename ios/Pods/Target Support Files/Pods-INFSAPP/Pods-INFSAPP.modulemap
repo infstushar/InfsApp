@@ -1,0 +1,6 @@
+module Pods_INFSAPP {
+  umbrella header "Pods-INFSAPP-umbrella.h"
+
+  export *
+  module * { export * }
+}

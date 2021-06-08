@@ -1,0 +1,6 @@
+module Pods_INFSAPP_INFSAPPTests {
+  umbrella header "Pods-INFSAPP-INFSAPPTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
