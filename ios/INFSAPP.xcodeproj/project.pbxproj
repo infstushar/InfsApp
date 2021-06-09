@@ -14,6 +14,7 @@
 		25AED0E09D71E66639281858 /* libPods-INFSAPP-INFSAPPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 889640D3371B135EDF957AB5 /* libPods-INFSAPP-INFSAPPTests.a */; };
 		76D90A0E2670A1720049F755 /* Splash.svg in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A0D2670A1720049F755 /* Splash.svg */; };
 		76D90A102670A4E70049F755 /* INFS launch screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A0F2670A4E70049F755 /* INFS launch screen.png */; };
+		76D90A122670D1A20049F755 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A112670D1A20049F755 /* fonts */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FAF40EF4E8245DC80D83F129 /* libPods-INFSAPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA09F2C649DA894D084979 /* libPods-INFSAPP.a */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = INFSAPP/main.m; sourceTree = "<group>"; };
 		76D90A0D2670A1720049F755 /* Splash.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Splash.svg; path = ../../../../../Downloads/Splash.svg; sourceTree = "<group>"; };
 		76D90A0F2670A4E70049F755 /* INFS launch screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "INFS launch screen.png"; path = "../../../../../Downloads/INFS launch screen.png"; sourceTree = "<group>"; };
+		76D90A112670D1A20049F755 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = INFSAPP/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889640D3371B135EDF957AB5 /* libPods-INFSAPP-INFSAPPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-INFSAPP-INFSAPPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6835C9DE88D4F1D79E7F303 /* Pods-INFSAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INFSAPP.debug.xcconfig"; path = "Target Support Files/Pods-INFSAPP/Pods-INFSAPP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				76D90A112670D1A20049F755 /* fonts */,
 				13B07FAE1A68108700A75B9A /* INFSAPP */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* INFSAPPTests */,
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D90A102670A4E70049F755 /* INFS launch screen.png in Resources */,
+				76D90A122670D1A20049F755 /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				76D90A0E2670A1720049F755 /* Splash.svg in Resources */,

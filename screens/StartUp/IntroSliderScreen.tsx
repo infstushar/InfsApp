@@ -90,8 +90,8 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 marginBottom: '50%',
                 marginVertical: 20,
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
-                Lorem ipsum
+              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
+                Lorem ipsum-1
               </Text>
 
               <View>
@@ -102,6 +102,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
+                    fontFamily: 'Poppins-Regular'
                   }}>
                   Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                   used in laying out print, graphic or web designs.
@@ -123,8 +124,8 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 marginBottom: '50%',
                 marginVertical: 20,
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
-                Lorem ipsum
+              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
+                Lorem ipsum-2
               </Text>
 
               <View>
@@ -135,6 +136,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
+                    fontFamily: 'Poppins-Regular'
                   }}>
                   Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                   used in laying out print, graphic or web designs.
@@ -156,8 +158,8 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 marginBottom: '50%',
                 marginVertical: 20,
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
-                Lorem ipsum
+              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
+                Lorem ipsum-3
               </Text>
 
               <View>
@@ -168,6 +170,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
+                    fontFamily: 'Poppins-Regular'
                   }}>
                   Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                   used in laying out print, graphic or web designs.
@@ -204,7 +207,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <Text style={{color: 'white', fontSize: 18}} onPress={skipHandler}>
+            <Text style={{color: 'white', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
               SKIP
             </Text>
             <View
@@ -212,15 +215,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 flexDirection: 'row',
                 justifyContent: 'space-between',
               }}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  marginHorizontal: 10,
-                  marginTop: 5,
-                  color: 'white',
-                }}>
-                NEXT
-              </Text>
+             
               <Icon
                 name="arrow-forward"
                 color="white"
