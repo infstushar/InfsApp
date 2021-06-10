@@ -39,10 +39,12 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string></string>
 		<string>Ionicons.ttf</string>
 		<string>fonts/Poppins-Bold.ttf</string>
 		<string>fonts/Poppins-Regular.ttf</string>
 		<string>MaterialIcons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

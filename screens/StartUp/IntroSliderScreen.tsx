@@ -44,7 +44,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
     }
   };
   const launchHomeScreen = () => {
-    props.navigation.navigate('Dummy');
+    props.navigation.navigate('Login');
     //Alert.alert('Next Screen Wii be Loaded');
   };
 

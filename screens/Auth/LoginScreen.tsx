@@ -3,16 +3,14 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   ScrollView,
-  Button,
-  ActivityIndicator,
+  Alert,
 } from 'react-native';
 import Colors from '../../constants/colors';
 import Card from '../../components/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {FAB} from 'react-native-paper';
+import {FAB,Button,TextInput} from 'react-native-paper';
 
 const LoginScreen = props => {
   const [isSignUpClicked, setIsSignUpClicked] = useState(true);
@@ -21,56 +19,39 @@ const LoginScreen = props => {
   const Login = () => {
     const [radioData, setRadioData] = useState(['Remember Me!']);
     const [radioChecked, setRadioChecked] = useState(0);
+    const[username,setUserName]=useState('');
+    const[password,setPassword]=useState('');
     useEffect(() => {
       setRadioChecked(-1);
     }, []);
     return (
-      <View style={{marginBottom: 60}}>
-        <Card
-          style={{
-            marginHorizontal: 20,
-            height: 50,
-            justifyContent: 'center',
-            borderRadius: 20,
-            elevation: 5,
-          }}>
-          <View style={{flexDirection: 'row', marginLeft: 10}}>
-            <View style={{justifyContent: 'center'}}>
-              <Icon name="md-mail" size={23} color="black" />
-            </View>
-            <TextInput
-              placeholder="Email"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              style={{marginHorizontal: 10, height: '100%'}}
-            />
-          </View>
-        </Card>
-        <Card
-          style={{
-            marginHorizontal: 20,
-            height: 50,
-            marginVertical: 10,
-            justifyContent: 'center',
-            borderRadius: 20,
-            elevation: 5,
-          }}>
-          <View style={{flexDirection: 'row', padding: 10}}>
-            <Icon name="lock-closed" size={23} color="black" />
-            <TextInput
-              placeholder="Password"
-              keyboardType="default"
-              autoCapitalize="none"
-              secureTextEntry
-              style={{marginHorizontal: 10}}
-            />
-          </View>
-        </Card>
+      <View >
+        <View style={{marginHorizontal:20}}>
+          <TextInput
+          style={{fontFamily:'Poppins-Regular'}}
+            label="UserName"
+            mode="outlined"
+            value={username}
+            keyboardType='email-address'
+            onChangeText={(name)=>setUserName(name)}
+            left={<TextInput.Icon name="account" size={23} color="black" />}/>
+    </View>
+        <View style={{marginTop:10,marginHorizontal:20}}>
+        <TextInput
+         style={{fontFamily:'Poppins-Regular'}}
+           label="Password"
+           mode="outlined"
+           value={password}
+           keyboardType='default'
+           onChangeText={(pass)=>setPassword(pass)}
+           secureTextEntry
+           left={<TextInput.Icon name="lock" size={23} color="black" />}/>
+    </View>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginVertical: 10,
+            marginVertical: 20,
           }}>
           {radioData.map((data, key) => {
             return (
@@ -81,8 +62,8 @@ const LoginScreen = props => {
                     onPress={() => {
                       setRadioChecked(-1);
                     }}>
-                    <Icon name="md-checkmark-circle" size={23}></Icon>
-                    <Text>{data}</Text>
+                    <Icon color='#20BEC9' name="md-checkmark-circle" size={23}></Icon>
+                    <Text style={{fontFamily:'Poppins-Regular'}}>{data}</Text>
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
@@ -91,8 +72,8 @@ const LoginScreen = props => {
                       console.log('Key', key);
                     }}
                     style={styles.btn}>
-                    <Icon name="radio-button-off" size={23}></Icon>
-                    <Text>{data}</Text>
+                    <Icon color='#20BEC9' name="radio-button-off" size={23}></Icon>
+                    <Text style={{fontFamily:'Poppins-Regular'}}>{data}</Text>
                   </TouchableOpacity>
                 )}
               </View>
@@ -102,81 +83,61 @@ const LoginScreen = props => {
             onPress={() => {
               props.navigation.navigate('ForgotPassword');
             }}
-            style={{marginRight: 20, textDecorationLine: 'underline'}}>
+            style={{marginRight: 20, textDecorationLine: 'underline',fontFamily:'Poppins-Regular'}}>
             Forgot Password?
           </Text>
+          
         </View>
+        <View style={{marginHorizontal:20,marginBottom:30,marginTop:20}}>
+        <Button  mode="contained" color={Colors.textColor} onPress={() => {Alert.alert('Next Page will be loaded')}}><Text style={{color:'white'}}>Submit</Text>
+  </Button>
+  </View>
       </View>
     );
   };
 
   const SignUp = () => {
+    const[username,setUserName]=useState('');
+    const[email,setEmail]=useState('');
+    const[password,setPassword]=useState('');
     return (
-      <View style={{marginBottom: 20}}>
-        <Card
-          style={{
-            marginHorizontal: 20,
-            height: 50,
-            justifyContent: 'center',
-            borderRadius: 20,
-            elevation: 5,
-          }}>
-          <View style={{flexDirection: 'row', padding: 10}}>
-            <Icon name="person" size={23} color="black" />
-            <TextInput
-              placeholder="UserName"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              style={{marginHorizontal: 10}}
-            />
-          </View>
-        </Card>
-        <Card
-          style={{
-            marginHorizontal: 20,
-            height: 50,
-            marginTop: 10,
-            justifyContent: 'center',
-            borderRadius: 20,
-            elevation: 5,
-          }}>
-          <View style={{flexDirection: 'row', padding: 10}}>
-            <Icon name="md-mail" size={23} color="black" />
-            <TextInput
-              placeholder="Email Address"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              style={{marginHorizontal: 10}}
-            />
-          </View>
-        </Card>
-        <Card
-          style={{
-            marginHorizontal: 20,
-            height: 50,
-            marginVertical: 10,
-            justifyContent: 'center',
-            borderRadius: 20,
-            elevation: 5,
-          }}>
-          <View style={{flexDirection: 'row', padding: 10}}>
-            <Icon name="lock-closed" size={23} color="black" />
-            <TextInput
-              placeholder="Password"
-              keyboardType="default"
-              autoCapitalize="none"
-              secureTextEntry
-              style={{marginHorizontal: 10}}
-            />
-          </View>
-        </Card>
+      <View >
+           <View style={{marginHorizontal:20}}>
+          <TextInput
+            style={{fontFamily:'Poppins-Regular'}}
+            label="UserName"
+            mode="outlined"
+            value={username}
+            onChangeText={(name)=>setUserName(name)}
+            left={<TextInput.Icon name="account" size={23} color="black" />}/>
+    </View>
+    <View style={{marginHorizontal:20,marginTop:10}}>
+          <TextInput
+           style={{fontFamily:'Poppins-Regular'}}
+            label="Email Address"
+            mode="outlined"
+            value={email}
+            onChangeText={(name)=>setEmail(name)}
+            left={<TextInput.Icon name="email" size={23} color="black" />}/>
+    </View>
+    <View style={{marginHorizontal:20,marginBottom:20,marginTop:10}}>
+          <TextInput
+           style={{fontFamily:'Poppins-Regular'}}
+            label="Password"
+            mode="outlined"
+            value={password}
+            secureTextEntry
+            onChangeText={(name)=>setPassword(name)}
+            left={<TextInput.Icon name="lock" size={23} color="black" />}/>
+    </View>
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <Text
             style={{
               color: 'grey',
-              fontSize: 16,
-              fontWeight: 'bold',
+              fontSize: 14,
+              
               alignContent: 'center',
+              fontFamily:'Poppins-Bold'
             }}>
             By pressing submit you are aggree to our
           </Text>
@@ -185,14 +146,19 @@ const LoginScreen = props => {
               color: 'grey',
               fontSize: 16,
               marginVertical: 10,
-              marginBottom: 40,
-              fontWeight: 'bold',
               alignContent: 'center',
               textDecorationLine: 'underline',
+              fontFamily:'Poppins-Regular'
             }}>
             Terms & condition
           </Text>
         </View>
+        <View style={{marginHorizontal:20,marginBottom:30,marginTop:20}}>
+        <Button  mode="contained" color={Colors.textColor}  onPress={() => {
+           Alert.alert('Go to Login Page');   
+        }}><Text style={{color:'white'}}>Submit</Text>
+  </Button>
+  </View>
       </View>
     );
   };
@@ -202,12 +168,12 @@ const LoginScreen = props => {
       contentContainerStyle={{
         flexGrow: 1,
         justifyContent: 'space-between',
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
       }}>
       <View>
         <View
           style={{
-            backgroundColor: Colors.background,
+            backgroundColor: Colors.primaryColor,
             marginBottom: 20,
           }}>
           <View>
@@ -218,16 +184,18 @@ const LoginScreen = props => {
                   marginTop: '30%',
                   color: 'white',
                   marginHorizontal: 20,
+                  fontFamily:'Poppins-Bold'
                 }}>
-                Welcome
+                Welcome!
               </Text>
             ) : (
               <Text
                 style={{
                   fontSize: 30,
-                  marginTop: 110,
+                  marginTop: '30%',
                   color: 'white',
                   marginHorizontal: 20,
+                  fontFamily:'Poppins-Bold'
                 }}>
                 Hello!
               </Text>
@@ -240,6 +208,7 @@ const LoginScreen = props => {
                   fontSize: 16,
                   marginVertical: 10,
                   marginBottom: 120,
+                  fontFamily:'Poppins-Regular'
                 }}>
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                 used in laying out print, graphic or web designs.
@@ -252,6 +221,7 @@ const LoginScreen = props => {
                   fontSize: 16,
                   marginVertical: 10,
                   marginBottom: 120,
+                  fontFamily:'Poppins-Regular'
                 }}>
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text.
               </Text>
@@ -269,7 +239,7 @@ const LoginScreen = props => {
               }}>
               <View>
                 <Text
-                  style={{fontSize: 16, fontWeight: 'bold'}}
+                  style={{fontSize: 16, color:Colors.textColor, fontFamily:'Poppins-Regular'}}
                   onPress={() => {
                     setIsLoginlicked(true);
                     setIsSignUpClicked(false);
@@ -282,14 +252,14 @@ const LoginScreen = props => {
                       width: 50,
                       height: 2,
                       marginTop: 5,
-                      backgroundColor: '#222',
+                      backgroundColor: Colors.textColor,
                     }}></View>
                 ) : null}
               </View>
 
               <View style={{marginHorizontal: 20}}>
                 <Text
-                  style={{fontSize: 16, fontWeight: 'bold'}}
+                  style={{fontSize: 16, color:Colors.textColor, fontFamily:'Poppins-Regular'}}
                   onPress={() => {
                     setIsLoginlicked(false);
                     setIsSignUpClicked(true);
@@ -302,30 +272,13 @@ const LoginScreen = props => {
                       width: 60,
                       height: 2,
                       marginTop: 5,
-                      backgroundColor: '#222',
+                      backgroundColor: Colors.textColor,
                     }}></View>
                 ) : null}
               </View>
             </View>
-            <View>{isLoginClicked ? <Login /> : <SignUp />}</View>
+            <View style={{alignSelf:'baseline',width:'100%'}}>{isLoginClicked ? <Login /> : <SignUp />}</View>
           </Card>
-
-          <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <FAB
-              style={styles.fab}
-              large
-              icon="arrow-right"
-              onPress={() => console.log('Pressed')}></FAB>
-            <FAB
-              style={styles.fabS}
-              small
-              icon="arrow-right"
-              onPress={() => {
-                loginLog.info('Login Buuton Clicked');
-                props.navigation.navigate('Tabs');
-              }}
-            />
-          </View>
         </View>
       </View>
       <View

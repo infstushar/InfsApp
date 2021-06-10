@@ -12,8 +12,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		25AED0E09D71E66639281858 /* libPods-INFSAPP-INFSAPPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 889640D3371B135EDF957AB5 /* libPods-INFSAPP-INFSAPPTests.a */; };
-		76D90A0E2670A1720049F755 /* Splash.svg in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A0D2670A1720049F755 /* Splash.svg */; };
-		76D90A102670A4E70049F755 /* INFS launch screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A0F2670A4E70049F755 /* INFS launch screen.png */; };
 		76D90A122670D1A20049F755 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 76D90A112670D1A20049F755 /* fonts */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FAF40EF4E8245DC80D83F129 /* libPods-INFSAPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BA09F2C649DA894D084979 /* libPods-INFSAPP.a */; };
@@ -41,8 +39,6 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = INFSAPP/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = INFSAPP/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = INFSAPP/main.m; sourceTree = "<group>"; };
-		76D90A0D2670A1720049F755 /* Splash.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Splash.svg; path = ../../../../../Downloads/Splash.svg; sourceTree = "<group>"; };
-		76D90A0F2670A4E70049F755 /* INFS launch screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "INFS launch screen.png"; path = "../../../../../Downloads/INFS launch screen.png"; sourceTree = "<group>"; };
 		76D90A112670D1A20049F755 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = INFSAPP/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889640D3371B135EDF957AB5 /* libPods-INFSAPP-INFSAPPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-INFSAPP-INFSAPPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,8 +91,6 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				76D90A0F2670A4E70049F755 /* INFS launch screen.png */,
-				76D90A0D2670A1720049F755 /* Splash.svg */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -251,11 +245,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D90A102670A4E70049F755 /* INFS launch screen.png in Resources */,
 				76D90A122670D1A20049F755 /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				76D90A0E2670A1720049F755 /* Splash.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

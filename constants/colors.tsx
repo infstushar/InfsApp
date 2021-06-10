@@ -1,3 +1,6 @@
 export default{
-    primaryColor:'#20BEC9'
+    primaryColor:'#7ECCE6',
+    textColor:'#20BEC9',
+    forgotbg:'#34B44D',
+    forgotbgsent:'#FBAD1D'
 }
