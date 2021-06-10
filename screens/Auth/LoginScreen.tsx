@@ -11,11 +11,17 @@ import Colors from '../../constants/colors';
 import Card from '../../components/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FAB,Button,TextInput} from 'react-native-paper';
+import {WithLocalSvg}  from 'react-native-svg';
+
 
 const LoginScreen = props => {
   const [isSignUpClicked, setIsSignUpClicked] = useState(true);
   const [isLoginClicked, setIsLoginlicked] = useState(false);
 
+  /**
+   * 
+   * @returns Login Code
+   */
   const Login = () => {
     const [radioData, setRadioData] = useState(['Remember Me!']);
     const [radioChecked, setRadioChecked] = useState(0);
@@ -83,19 +89,36 @@ const LoginScreen = props => {
             onPress={() => {
               props.navigation.navigate('ForgotPassword');
             }}
-            style={{marginRight: 20, textDecorationLine: 'underline',fontFamily:'Poppins-Regular'}}>
+            style={{marginRight: 20, textDecorationLine: 'underline',fontFamily:'Poppins-Regular',color:Colors.textColor}}>
             Forgot Password?
           </Text>
           
         </View>
-        <View style={{marginHorizontal:20,marginBottom:30,marginTop:20}}>
-        <Button  mode="contained" color={Colors.textColor} onPress={() => {Alert.alert('Next Page will be loaded')}}><Text style={{color:'white'}}>Submit</Text>
-  </Button>
-  </View>
+        <TouchableOpacity 
+        onPress={()=>{
+            props.navigation.navigate('Dummy')
+        }}
+        style={{flexDirection:'row', height:50,
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginHorizontal:20,marginBottom:30,marginTop:20,
+        borderRadius:40,backgroundColor:Colors.textColor,}}>
+            <Text  style={{flex:1,textAlign:'center',
+            paddingLeft:40,color:'white',fontSize:18,
+            fontFamily:'Poppins-Regular'}}>Login</Text>
+            <View style={{alignItems:'flex-end',
+            justifyContent:'flex-end',paddingRight:10}}>
+            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
+            </View>
+       </TouchableOpacity>
       </View>
     );
   };
 
+  /**
+   * 
+   * @returns Sign Up Code
+   */
   const SignUp = () => {
     const[username,setUserName]=useState('');
     const[email,setEmail]=useState('');
@@ -153,16 +176,30 @@ const LoginScreen = props => {
             Terms & condition
           </Text>
         </View>
-        <View style={{marginHorizontal:20,marginBottom:30,marginTop:20}}>
-        <Button  mode="contained" color={Colors.textColor}  onPress={() => {
-           Alert.alert('Go to Login Page');   
-        }}><Text style={{color:'white'}}>Submit</Text>
-  </Button>
-  </View>
+        <TouchableOpacity 
+        onPress={()=>{
+            props.navigation.navigate('Dummy')
+        }}
+        style={{flexDirection:'row', height:50,
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginHorizontal:20,marginBottom:30,marginTop:20,
+        borderRadius:40,backgroundColor:Colors.textColor,}}>
+            <Text  style={{flex:1,textAlign:'center',
+            paddingLeft:40,color:'white',fontSize:18,
+            fontFamily:'Poppins-Regular'}}>Sign Up</Text>
+            <View style={{alignItems:'flex-end',
+            justifyContent:'flex-end',paddingRight:10}}>
+            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
+            </View>
+       </TouchableOpacity>
       </View>
     );
   };
 
+  /**
+   * Main Screen Component Render.
+   */
   return (
     <ScrollView
       contentContainerStyle={{
@@ -283,11 +320,40 @@ const LoginScreen = props => {
       </View>
       <View
         style={{
-          marginBottom: 40,
-          justifyContent: 'center',
+         
+          justifyContent:'center',
           alignItems: 'center',
           flexDirection: 'row',
         }}>
+
+     <View 
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+          marginRight:20,
+        }}>
+
+         <TouchableOpacity style={{flex:0.7,marginTop:20}}> 
+          <WithLocalSvg
+             asset={require('../../assets/facebook.svg')} />
+             </TouchableOpacity>
+             
+             <TouchableOpacity> 
+             <WithLocalSvg
+             asset={require('../../assets/google.svg')}/>
+             </TouchableOpacity>
+             </View>
+          {/*<WithLocalSvg
+              width="50"
+              height="80"
+              asset={require('../../assets/facebook.svg')}
+             />
+             <WithLocalSvg
+              width="50"
+              height="50"
+              asset={require('../../assets/google.svg')}
+          />
         <FAB
           style={styles.socialButton}
           small
@@ -301,7 +367,7 @@ const LoginScreen = props => {
           icon="google"
           color="#222"
           onPress={() => console.log('Pressed')}
-        />
+          />*/}
       </View>
     </ScrollView>
   );

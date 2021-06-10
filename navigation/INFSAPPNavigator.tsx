@@ -6,17 +6,20 @@ import dummy from '../components/dummy';
 import IntroSliderScreen from '../screens/StartUp/IntroSliderScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
+import { Provider as PaperProvider } from 'react-native-paper';
 const INFSAPPNavigator=()=>{
     const Stack = createStackNavigator();
     return (
+      <PaperProvider>
         <NavigationContainer>
           <Stack.Navigator>
           <Stack.Screen name="Intro" component={IntroSliderScreen} options={{headerShown:false}} />
           <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false,headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
-          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{headerShown:true, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
           <Stack.Screen name="Dummy" component={dummy} />
           </Stack.Navigator>
         </NavigationContainer>
+        </PaperProvider>
       );
 }
 

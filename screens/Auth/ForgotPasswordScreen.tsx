@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView,SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView,SafeAreaView, Alert} from 'react-native';
 import Colors from '../../constants/colors';
 import Card from '../../components/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FAB,TextInput,Button} from 'react-native-paper';
 //import {SafeAreaView} from 'react-navigation';
 import {WithLocalSvg}  from 'react-native-svg';
+import { TouchableOpacity } from 'react-native';
 
 const ForgotPasswordScreen = props => {
   const [isEmailSent, setIsEmailSent] = useState(false);
@@ -28,13 +29,13 @@ const ForgotPasswordScreen = props => {
                   size={24}
                   color="white"
                   name="arrow-back"
-                  style={{marginTop: 20, marginHorizontal: 10}}
+                  style={{ marginHorizontal: 10}}
                 />
                 </SafeAreaView>
               <Text
                 style={{
                   fontSize: 30,
-                  marginTop: 40,
+                  marginTop: '10%',
                   color: 'white',
                   marginHorizontal: 20,
                  fontFamily:'Poppins-Bold'
@@ -79,7 +80,10 @@ const ForgotPasswordScreen = props => {
                    
                   }}>
                   <Text style={{ fontFamily:'Poppins-Regular'}}>Didn't receive the link?</Text>
-                  <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9', fontFamily:'Poppins-Regular'}}>Resend</Text>
+                  <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9', fontFamily:'Poppins-Regular'}} onPress={()=>{
+                     // Alert.alert('Email Resend Functionality Will Be Called Here!')
+                      setIsEmailSent(false);
+                  }}>Resend</Text>
                 </View>
               </View>
             </Card>
@@ -116,10 +120,10 @@ const ForgotPasswordScreen = props => {
           <View
             style={{
               backgroundColor: Colors.forgotbg,
-              marginBottom: 20,
+        
             }}>
             <View>
-              {/*<SafeAreaView>
+              <SafeAreaView>
                 <Icon
                   onPress={() => {
                     props.navigation.navigate('Login');
@@ -127,13 +131,13 @@ const ForgotPasswordScreen = props => {
                   size={24}
                   color="white"
                   name="arrow-back"
-                  style={{marginTop: 40, marginHorizontal: 20}}
+                  style={{marginHorizontal: 20}}
                 />
-                </SafeAreaView>*/}
+                </SafeAreaView>
               <Text
                 style={{
                   fontSize: 30,
-                  marginTop: 40,
+                  marginTop:'10%',
                   color: 'white',
                   marginHorizontal: 20,
                   fontFamily:'Poppins-Bold'
@@ -194,6 +198,7 @@ const ForgotPasswordScreen = props => {
           style={{fontFamily:'Poppins-Regular'}}
             label="Registered Email"
             mode="outlined"
+            keyboardType='email-address'
             value={username}
             onChangeText={(name)=>setUserName(name)}
             left={<TextInput.Icon name="account" size={23} color="black" />}/>
@@ -206,32 +211,33 @@ const ForgotPasswordScreen = props => {
                   
                 }}>
                 <Text style={{fontFamily:'Poppins-Regular'}}>Remember Password?</Text>
-                <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9',fontFamily:'Poppins-Regular'}}>Login</Text>
+                <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9',fontFamily:'Poppins-Regular'}} onPress={()=>{props.navigation.navigate('Login');}}>Login</Text>
               </View>
-              <View style={{marginHorizontal:20,marginBottom:10}}>
+             {/* <View style={{marginHorizontal:20}}>
         <Button  mode="contained" color={Colors.primaryColor} onPress={() => {
                   setIsEmailSent(true);
                 }}><Text style={{color:'white',fontFamily:'Poppins-Regular'}}>Submit</Text>
-  </Button>
-  </View>
-              
-            </Card>
-
-           {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <FAB
-                style={styles.fab}
-                large
-                icon="arrow-right"
-                onPress={() => console.log('Pressed')}></FAB>
-              <FAB
-                style={styles.fabS}
-                small
-                icon="arrow-right"
-                onPress={() => {
-                  setIsEmailSent(true);
-                }}
-              />
+            </Button>
             </View>*/}
+            <TouchableOpacity 
+        onPress={()=>{
+            setIsEmailSent(true);
+        }}
+        style={{flexDirection:'row', height:40,
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginHorizontal:20,
+        borderRadius:40,backgroundColor:Colors.textColor,}}>
+            <Text  style={{flex:1,textAlign:'center',
+            paddingLeft:40,color:'white',fontSize:18,
+            fontFamily:'Poppins-Regular'}}>Submit</Text>
+            <View style={{alignItems:'flex-end',
+            justifyContent:'flex-end',paddingRight:10}}>
+            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
+            </View>
+       </TouchableOpacity>
+              
+    </Card>
           </View>
         </View>
       ) : (
