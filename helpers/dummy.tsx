@@ -1,3 +1,4 @@
+import { HeaderTitle } from '@react-navigation/stack';
 import React from 'react';
 import {  View,Text ,StyleSheet} from 'react-native';
 
@@ -6,6 +7,7 @@ const dummy =()=>{
         <Text>Dummy Screen</Text>
     </View>
 }
+
 
 const styles=StyleSheet.create({
     screen:{

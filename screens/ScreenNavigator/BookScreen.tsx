@@ -1,13 +1,11 @@
 import React from 'react';
 import {  View,Text ,StyleSheet} from 'react-native';
 import { Button } from 'react-native-paper';
+import Colors from '../../constants/colors';
 
-const dummy =(props)=>{
+const BookScreen =(props)=>{
     return <View style={styles.screen}>
-        <Text>Dummy Screen</Text>
-        <Button onPress={()=>{
-            props.navigation.navigate('Details')
-        }}>GO TO Details </Button>
+        <Text style={{fontFamily:'Poppins-Bold',color:Colors.forgotbg}}>NOT IMPLEMENTED YET!!!</Text>
     </View>
 }
 
@@ -19,4 +17,4 @@ const styles=StyleSheet.create({
     }
 });
 
-export default dummy;
+export default BookScreen;
