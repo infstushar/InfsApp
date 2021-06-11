@@ -8,7 +8,7 @@ import {FAB,TextInput,Button} from 'react-native-paper';
 import {WithLocalSvg}  from 'react-native-svg';
 import { TouchableOpacity } from 'react-native';
 
-const ResetPasswordScreen = props => {
+const ResetPasswordScreen = (props: { navigation: { goBack: () => void; }; }) => {
   const[password,setPassword]=useState('');
   const[cpassword,setCPassword]=useState('');
   return (

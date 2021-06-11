@@ -14,7 +14,7 @@ import {FAB,Button,TextInput} from 'react-native-paper';
 import {WithLocalSvg}  from 'react-native-svg';
 
 
-const LoginScreen = props => {
+const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
   const [isSignUpClicked, setIsSignUpClicked] = useState(true);
   const [isLoginClicked, setIsLoginlicked] = useState(false);
 

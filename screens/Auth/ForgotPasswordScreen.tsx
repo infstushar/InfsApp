@@ -1,16 +1,23 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView,SafeAreaView, Alert} from 'react-native';
-import Colors from '../../constants/colors';
-import Card from '../../components/Card';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {FAB,TextInput,Button} from 'react-native-paper';
-//import {SafeAreaView} from 'react-navigation';
-import {WithLocalSvg}  from 'react-native-svg';
-import { TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  Alert,
+} from "react-native";
+import Colors from "../../constants/colors";
+import Card from "../../components/Card";
+import Icon from "react-native-vector-icons/Ionicons";
+import { TextInput, Button } from "react-native-paper";
+import { WithLocalSvg } from "react-native-svg";
+import { TouchableOpacity } from "react-native";
 
-const ForgotPasswordScreen = props => {
+
+const ForgotPasswordScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
   const [isEmailSent, setIsEmailSent] = useState(false);
-  const[username,setUserName]=useState('');
+  const [username, setUserName] = useState("");
   const SentEmail = () => {
     return (
       <View>
@@ -19,7 +26,8 @@ const ForgotPasswordScreen = props => {
             style={{
               backgroundColor: Colors.forgotbgsent,
               marginBottom: 20,
-            }}>
+            }}
+          >
             <View>
               <SafeAreaView>
                 <Icon
@@ -29,28 +37,30 @@ const ForgotPasswordScreen = props => {
                   size={24}
                   color="white"
                   name="arrow-back"
-                  style={{ marginHorizontal: 10}}
+                  style={{ marginHorizontal: 10 }}
                 />
-                </SafeAreaView>
+              </SafeAreaView>
               <Text
                 style={{
                   fontSize: 30,
-                  marginTop: '10%',
-                  color: 'white',
+                  marginTop: "10%",
+                  color: "white",
                   marginHorizontal: 20,
-                 fontFamily:'Poppins-Bold'
-                }}>
+                  fontFamily: "Poppins-Bold",
+                }}
+              >
                 Email has been sent!
               </Text>
               <Text
                 style={{
                   marginHorizontal: 20,
-                  color: 'white',
+                  color: "white",
                   fontSize: 16,
                   marginVertical: 10,
                   marginBottom: 120,
-                  fontFamily:'Poppins-Regular'
-                }}>
+                  fontFamily: "Poppins-Regular",
+                }}
+              >
                 Please check your inbox and click on received link to reset a
                 password
               </Text>
@@ -61,34 +71,46 @@ const ForgotPasswordScreen = props => {
             <Card style={styles.card}>
               <View
                 style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  
-                }}>
-                    <View style={{marginTop:40}}></View>
-               {/* <Icon name="md-mail" size={80} color="black" />*/}
-               <WithLocalSvg
-              width="100%"
-              height="50%"
-              asset={require('../../assets/fpsent.svg')}
-             />
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <View style={{ marginTop: 40 }}></View>
+                {/* <Icon name="md-mail" size={80} color="black" />*/}
+                <WithLocalSvg
+                  width="100%"
+                  height="50%"
+                  asset={require("../../assets/fpsent.svg")}
+                />
                 <View
                   style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop:30,
-                   
-                  }}>
-                  <Text style={{ fontFamily:'Poppins-Regular'}}>Didn't receive the link?</Text>
-                  <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9', fontFamily:'Poppins-Regular'}} onPress={()=>{
-                     // Alert.alert('Email Resend Functionality Will Be Called Here!')
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: 30,
+                  }}
+                >
+                  <Text style={{ fontFamily: "Poppins-Regular" }}>
+                    Didn't receive the link?
+                  </Text>
+                  <Text
+                    style={{
+                      textDecorationLine: "underline",
+                      marginTop: 10,
+                      color: "#20BEC9",
+                      fontFamily: "Poppins-Regular",
+                    }}
+                    onPress={() => {
+                      // Alert.alert('Email Resend Functionality Will Be Called Here!')
                       setIsEmailSent(false);
-                  }}>Resend</Text>
+                    }}
+                  >
+                    Resend
+                  </Text>
                 </View>
               </View>
             </Card>
 
-           {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <FAB
                 style={styles.fab}
                 large
@@ -103,7 +125,7 @@ const ForgotPasswordScreen = props => {
                 }}
               />
             </View>*/}
-            </View>
+          </View>
         </View>
       </View>
     );
@@ -112,47 +134,50 @@ const ForgotPasswordScreen = props => {
     <ScrollView
       contentContainerStyle={{
         flexGrow: 1,
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-      }}>
+        justifyContent: "space-between",
+        backgroundColor: "white",
+      }}
+    >
       {!isEmailSent ? (
         <View>
           <View
             style={{
               backgroundColor: Colors.forgotbg,
-        
-            }}>
+            }}
+          >
             <View>
               <SafeAreaView>
                 <Icon
                   onPress={() => {
-                    props.navigation.navigate('Login');
+                    props.navigation.navigate("Login");
                   }}
                   size={24}
                   color="white"
                   name="arrow-back"
-                  style={{marginHorizontal: 20}}
+                  style={{ marginHorizontal: 20 }}
                 />
-                </SafeAreaView>
+              </SafeAreaView>
               <Text
                 style={{
                   fontSize: 30,
-                  marginTop:'10%',
-                  color: 'white',
+                  marginTop: "10%",
+                  color: "white",
                   marginHorizontal: 20,
-                  fontFamily:'Poppins-Bold'
-                }}>
+                  fontFamily: "Poppins-Bold",
+                }}
+              >
                 Forgot Password
               </Text>
               <Text
                 style={{
                   marginHorizontal: 20,
-                  color: 'white',
+                  color: "white",
                   fontSize: 16,
                   marginVertical: 10,
                   marginBottom: 120,
-                  fontFamily:'Poppins-Regular'
-                }}>
+                  fontFamily: "Poppins-Regular",
+                }}
+              >
                 Enter your registered email below to receive password reset
                 instruction
               </Text>
@@ -161,83 +186,96 @@ const ForgotPasswordScreen = props => {
 
           <View>
             <Card style={styles.card}>
-            <View style={{marginTop:20}}></View>
-            <WithLocalSvg
-              width="100%"
-              height="35%"
-              asset={require('../../assets/fp.svg')}
-             />
-             {/* <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Icon name="md-mail" size={80} color="black" />
-              </View>
-              <Card
-                style={{
-                  marginHorizontal: 20,
-                  height: 50,
-                  marginVertical: 30,
-                  justifyContent: 'center',
-                  borderRadius: 20,
-                  elevation: 5,
-                }}>
-                <View style={{flexDirection: 'row', padding: 10}}>
-                  <Icon name="md-mail" size={23} color="black" />
-                  <TextInput
-                    placeholder="Email Address"
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    style={{marginHorizontal: 10}}
-                  />
-                </View>
-            </Card>*/}
-             <View style={{marginHorizontal:20,marginBottom:30,marginTop:20}}>
-          <TextInput
-          style={{fontFamily:'Poppins-Regular'}}
-            label="Registered Email"
-            mode="outlined"
-            keyboardType='email-address'
-            value={username}
-            onChangeText={(name)=>setUserName(name)}
-            left={<TextInput.Icon name="account" size={23} color="black" />}/>
-    </View>
+              <View style={{ marginTop: 20 }}></View>
+              <WithLocalSvg
+                width="100%"
+                height="35%"
+                asset={require("../../assets/fp.svg")}
+              />
               <View
                 style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
+                  marginHorizontal: 20,
                   marginBottom: 30,
-                  
-                }}>
-                <Text style={{fontFamily:'Poppins-Regular'}}>Remember Password?</Text>
-                <Text style={{textDecorationLine: 'underline',marginTop:10,color:'#20BEC9',fontFamily:'Poppins-Regular'}} onPress={()=>{props.navigation.navigate('Login');}}>Login</Text>
+                  marginTop: 20,
+                }}
+              >
+                <TextInput
+                  style={{ fontFamily: "Poppins-Regular" }}
+                  label="Registered Email"
+                  mode="outlined"
+                  keyboardType="email-address"
+                  value={username}
+                  onChangeText={(name) => setUserName(name)}
+                  left={
+                    <TextInput.Icon name="account" size={23} color="black" />
+                  }
+                />
               </View>
-             {/* <View style={{marginHorizontal:20}}>
-        <Button  mode="contained" color={Colors.primaryColor} onPress={() => {
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: 30,
+                }}
+              >
+                <Text style={{ fontFamily: "Poppins-Regular" }}>
+                  Remember Password?
+                </Text>
+                <Text
+                  style={{
+                    textDecorationLine: "underline",
+                    marginTop: 10,
+                    color: "#20BEC9",
+                    fontFamily: "Poppins-Regular",
+                  }}
+                  onPress={() => {
+                    props.navigation.navigate("Login");
+                  }}
+                >
+                  Login
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => {
                   setIsEmailSent(true);
-                }}><Text style={{color:'white',fontFamily:'Poppins-Regular'}}>Submit</Text>
-            </Button>
-            </View>*/}
-            <TouchableOpacity 
-        onPress={()=>{
-            setIsEmailSent(true);
-        }}
-        style={{flexDirection:'row', height:40,
-        justifyContent:'space-between',
-        alignItems:'center',
-        marginHorizontal:20,
-        borderRadius:40,backgroundColor:Colors.textColor,}}>
-            <Text  style={{flex:1,textAlign:'center',
-            paddingLeft:40,color:'white',fontSize:18,
-            fontFamily:'Poppins-Regular'}}>Submit</Text>
-            <View style={{alignItems:'flex-end',
-            justifyContent:'flex-end',paddingRight:10}}>
-            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
-            </View>
-       </TouchableOpacity>
-              
-    </Card>
+                }}
+                style={{
+                  flexDirection: "row",
+                  height: 40,
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginHorizontal: 20,
+                  borderRadius: 40,
+                  backgroundColor: Colors.textColor,
+                }}
+              >
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: "center",
+                    paddingLeft: 40,
+                    color: "white",
+                    fontSize: 18,
+                    fontFamily: "Poppins-Regular",
+                  }}
+                >
+                  Submit
+                </Text>
+                <View
+                  style={{
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
+                    paddingRight: 10,
+                  }}
+                >
+                  <Icon
+                    name="md-arrow-forward-circle"
+                    color="white"
+                    size={33}
+                  ></Icon>
+                </View>
+              </TouchableOpacity>
+            </Card>
           </View>
         </View>
       ) : (
@@ -253,15 +291,15 @@ const styles = StyleSheet.create({
     marginTop: -100,
   },
   btn: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginHorizontal: 20,
   },
   fab: {
     right: 0,
     bottom: 0,
     marginTop: -30,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     elevation: 10,
   },
   fabS: {
@@ -269,14 +307,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     marginTop: -48,
     elevation: 10,
-    backgroundColor: '#4e4e4e',
+    backgroundColor: "#4e4e4e",
   },
   submitButton: {
     bottom: 0,
     left: 0,
   },
   socialButton: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginHorizontal: 5,
   },
 });

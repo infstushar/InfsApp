@@ -13,8 +13,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {WithLocalSvg}  from 'react-native-svg';
-import Colors from '../../constants/colors';
-//import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
   const [sliderState, setSliderState] = useState({currentPage: 0});
@@ -93,11 +91,11 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               width,
             }}>
 
-          <TouchableOpacity style={{marginTop:20}}> 
+          <View> 
           <WithLocalSvg
              height={400}
              asset={require('../../assets/vector1.svg')} />
-             </TouchableOpacity>
+             </View>
 
               
             <View
@@ -132,12 +130,12 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               height,
               width,
             }}>
-               <TouchableOpacity style={{marginTop:20,alignItems:'center'}}> 
+               <View > 
           <WithLocalSvg
           width={'100%'}
           height={400}
              asset={require('../../assets/vector2.svg')} />
-             </TouchableOpacity>
+             </View>
             <View
               style={{
                 alignItems: 'center',
@@ -170,12 +168,12 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               height,
               width,
             }}>
-              <TouchableOpacity style={{alignItems:'center',marginLeft:40}}>
+              <View style={{alignItems:'center',marginLeft:40}}>
                <WithLocalSvg
                 width={'100%'}
-                height={400}
+                height={375}
              asset={require('../../assets/vector3.svg')} />
-             </TouchableOpacity>
+             </View>
             <View
               style={{
                 alignItems: 'center',

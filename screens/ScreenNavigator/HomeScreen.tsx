@@ -6,6 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createStackNavigator } from '@react-navigation/stack';
 import BookScreen from '../../screens/ScreenNavigator/BookScreen';
 import ResetPasswordScreen from '../..//screens/Auth/ResetPasswordScreen';
+
 const Tab = createMaterialBottomTabNavigator();
 function DetailsScreen() {
     return (
@@ -21,7 +22,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Profile" component={dummy} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen name="Details" component={BookScreen} />
     </HomeStack.Navigator>
   );
 }

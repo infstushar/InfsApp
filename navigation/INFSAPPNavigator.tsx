@@ -9,6 +9,7 @@ import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
 import { Provider as PaperProvider } from 'react-native-paper';
 import HomeScreen from '../screens/ScreenNavigator/HomeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import PreferenceScreen from '../screens/StartUp/PreferenceScreen';
 import ResetPasswordScreen from '../screens/Auth/ResetPasswordScreen';
 const INFSAPPNavigator=()=>{
     const Stack = createStackNavigator();
@@ -20,8 +21,10 @@ const INFSAPPNavigator=()=>{
           <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false,headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
           <Stack.Screen name="Dummy" component={dummy} options={{title:'Path'}}/>
+          <Stack.Screen name="Preference" component={PreferenceScreen} />
           <Stack.Screen name="ResetPassword"  component={ResetPasswordScreen} options={{headerShown:false}}/>
           <Stack.Screen name="Home" component={HomeScreen} 
+          
           options={{
             headerShown:false,
         /*  headerRight: () => (
