@@ -178,7 +178,10 @@ const LoginScreen = props => {
         </View>
         <TouchableOpacity 
         onPress={()=>{
-            props.navigation.navigate('Dummy')
+            props.navigation.navigate('Login')
+            setIsLoginlicked(true);
+            setIsSignUpClicked(false);
+            
         }}
         style={{flexDirection:'row', height:50,
         justifyContent:'space-between',

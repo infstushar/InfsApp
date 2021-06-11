@@ -10,7 +10,10 @@ import {
   Animated,
   Button,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
+import {WithLocalSvg}  from 'react-native-svg';
+import Colors from '../../constants/colors';
 //import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
@@ -55,7 +58,12 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{flex: 1, backgroundColor: '#4e4e4e'}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{alignItems:'flex-end',marginRight:10}}>
+      <Text style={{color: '#3D433E', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
+              SKIP
+          </Text>
+          </View>
         <ScrollView
           horizontal={true}
           scrollEventThrottle={16}
@@ -76,36 +84,43 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
             }
           }}
           ref={scrollViewRef}>
+            
           <View
             style={{
               flex: 1,
-              justifyContent: 'flex-end',
               alignItems: 'center',
               height,
               width,
             }}>
+
+          <TouchableOpacity style={{marginTop:20}}> 
+          <WithLocalSvg
+             height={400}
+             asset={require('../../assets/vector1.svg')} />
+             </TouchableOpacity>
+
+              
             <View
               style={{
                 alignItems: 'center',
-                marginBottom: '50%',
-                marginVertical: 20,
+                
+               
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
-                Lorem ipsum-1
+              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              The Knowledge you need 
               </Text>
 
               <View>
                 <Text
                   style={{
-                    color: 'white',
+                    color: '#838383',
                     fontSize: 18,
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
                     fontFamily: 'Poppins-Regular'
                   }}>
-                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                  used in laying out print, graphic or web designs.
+                  Looking for authentic evidence backed health and nutrition knowledge? You’re at the right place!
                 </Text>
               </View>
             </View>
@@ -113,33 +128,37 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
           <View
             style={{
               flex: 1,
-              justifyContent: 'flex-end',
-              alignItems: 'center',
+             
               height,
               width,
             }}>
+               <TouchableOpacity style={{marginTop:20,alignItems:'center'}}> 
+          <WithLocalSvg
+          width={'100%'}
+          height={400}
+             asset={require('../../assets/vector2.svg')} />
+             </TouchableOpacity>
             <View
               style={{
                 alignItems: 'center',
-                marginBottom: '50%',
-                marginVertical: 20,
+               
+               
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
-                Lorem ipsum-2
+              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              Education that Empowers
               </Text>
 
               <View>
                 <Text
                   style={{
-                    color: 'white',
+                    color: '#838383',
                     fontSize: 18,
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
                     fontFamily: 'Poppins-Regular'
                   }}>
-                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                  used in laying out print, graphic or web designs.
+                 Our courses are designed for everyone by a highly experienced group of researchers and faculty members
                 </Text>
               </View>
             </View>
@@ -147,41 +166,95 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
           <View
             style={{
               flex: 1,
-              justifyContent: 'flex-end',
-              alignItems: 'center',
+             
               height,
               width,
             }}>
+              <TouchableOpacity style={{alignItems:'center',marginLeft:40}}>
+               <WithLocalSvg
+                width={'100%'}
+                height={400}
+             asset={require('../../assets/vector3.svg')} />
+             </TouchableOpacity>
             <View
               style={{
                 alignItems: 'center',
-                marginBottom: '50%',
-                marginVertical: 20,
+               marginTop:20
               }}>
-              <Text style={{fontSize: 20, color: 'white', fontFamily: 'Poppins-Bold'}}>
-                Lorem ipsum-3
+              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              Interactive Platform
               </Text>
 
               <View>
                 <Text
                   style={{
-                    color: 'white',
+                    color: '#838383',
                     fontSize: 18,
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
                     fontFamily: 'Poppins-Regular'
                   }}>
-                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                  used in laying out print, graphic or web designs.
+                  You will have access to live lectures, Discussion forums, cutting edge content and a spectacular community of fitness professional
                 </Text>
+
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 18,
+                    textAlign: 'center',
+                    marginHorizontal: 10,
+                    fontFamily: 'Poppins-Regular'
+                  }}>
+                  Already have an account?
+                </Text>
+                <View style={{justifyContent:'center',alignItems:'center'}}>
+                <Text
+            onPress={() => {
+              props.navigation.navigate('Login');
+            }}
+            style={{textDecorationLine: 'underline',fontFamily:'Poppins-Regular',color:'#7A5F36'}}>
+            Login here
+          </Text>
+          </View>
               </View>
             </View>
           </View>
         </ScrollView>
-        <View
+       {/* <View
           style={{
-            marginBottom: '20%',
+            marginBottom: '10%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+          {console.log('pageIndex', pageIndex)}
+          {Array.from(Array(3).keys()).map((key, index) => (
+            <View
+              style={[
+                styles.paginationDots,
+                {width: pageIndex === index ? 30 : 10},
+                {opacity: pageIndex === index ? 1 : 0.6},
+              ]}
+              key={index}
+            />
+          ))}
+            </View>*/}
+
+        {!isSkipAndNext ? (
+          <View
+            style={{
+              flexDirection: 'row',
+              marginHorizontal: 20,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            {/*<Text style={{color: 'white', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
+              SKIP
+          </Text>*/}
+          
+          <View
+          style={{
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'row',
@@ -198,18 +271,6 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
             />
           ))}
         </View>
-
-        {!isSkipAndNext ? (
-          <View
-            style={{
-              flexDirection: 'row',
-              marginHorizontal: 20,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={{color: 'white', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
-              SKIP
-            </Text>
             <View
               style={{
                 flexDirection: 'row',
@@ -218,7 +279,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
              
               <Icon
                 name="arrow-forward"
-                color="white"
+                color="#19B6C1"
                 size={33}
                 onPress={() => {
                   const index = pageIndex + 1;
@@ -228,7 +289,29 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
             </View>
           </View>
         ) : (
+          
+          <View style={{justifyContent:'space-between',marginRight:10,flexDirection:'row'}}>
+            <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginLeft:10
+          }}>
+          {console.log('pageIndex', pageIndex)}
+          {Array.from(Array(3).keys()).map((key, index) => (
+            <View
+              style={[
+                styles.paginationDots,
+                {width: pageIndex === index ? 30 : 10},
+                {opacity: pageIndex === index ? 1 : 0.6},
+              ]}
+              key={index}
+            />
+          ))}
+        </View>
           <Button title="GET STARTED" onPress={launchHomeScreen} />
+          </View>
         )}
       </SafeAreaView>
     </>
@@ -244,7 +327,7 @@ const styles = StyleSheet.create({
     width: 10,
     marginHorizontal: 5,
     borderRadius: 10 / 2,
-    backgroundColor: 'white',
+    backgroundColor: '#19B6C1',
   },
   roundedButton: {
     borderRadius: 20,

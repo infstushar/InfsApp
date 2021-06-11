@@ -5,6 +5,7 @@ import Colors from '../../constants/colors';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import BookScreen from '../../screens/ScreenNavigator/BookScreen';
+import ResetPasswordScreen from '../..//screens/Auth/ResetPasswordScreen';
 const Tab = createMaterialBottomTabNavigator();
 function DetailsScreen() {
     return (
@@ -19,7 +20,7 @@ function DetailsScreen() {
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Path" component={dummy} />
+      <HomeStack.Screen name="Profile" component={dummy} />
       <HomeStack.Screen name="Details" component={DetailsScreen} />
     </HomeStack.Navigator>
   );
@@ -28,14 +29,21 @@ function HomeStackScreen() {
 const BottomTabs = () => {
     return (
       <Tab.Navigator
-        initialRouteName="Path"
+        initialRouteName="Profile"
         shifting={false}
         barStyle={{backgroundColor:'white'}}
         activeColor={Colors.textColor}
         sceneAnimationEnabled={false}>
+           <Tab.Screen
+          name="Profile"
+          component={HomeStackScreen}
+          options={{
+            tabBarIcon: 'account',
+          }}
+        />
         <Tab.Screen
           name="Path"
-          component={HomeStackScreen}
+          component={BookScreen}
           
           options={{
               title:'Path',
@@ -65,13 +73,7 @@ const BottomTabs = () => {
           }}
         />
  
-       <Tab.Screen
-          name="Profile"
-          component={BookScreen}
-          options={{
-            tabBarIcon: 'account',
-          }}
-        />
+      
       </Tab.Navigator>
     )};
 const HomeScreen =()=>{
