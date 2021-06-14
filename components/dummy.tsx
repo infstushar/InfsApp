@@ -6,7 +6,7 @@ const dummy =(props)=>{
     return <View style={{flexDirection:'column',alignItems:'flex-end', justifyContent:'flex-end',flex:1}} >
         
         <Button onPress={()=>{
-            props.navigation.navigate('Preference')
+            props.navigation.navigate('Details')
         }}>GO TO Details </Button>
 <Button onPress={()=>{
             props.navigation.navigate('ResetPassword')
