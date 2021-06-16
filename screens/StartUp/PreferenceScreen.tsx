@@ -347,7 +347,7 @@ const handlePress = () => {
           
           const uniqueData = [...new Set(preference)];
           Alert.alert(uniqueData.toString());
-          props.navigation.navigate('Home');
+          props.navigation.navigate('Login');
         }}
         style={{flexDirection:'row', height:45,
         justifyContent:'space-between',
