@@ -109,22 +109,6 @@ const ForgotPasswordScreen = (props: { navigation: { navigate: (arg0: string) =>
                 </View>
               </View>
             </Card>
-
-            {/* <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <FAB
-                style={styles.fab}
-                large
-                icon="arrow-right"
-                onPress={() => console.log('Pressed')}></FAB>
-              <FAB
-                style={styles.fabS}
-                small
-                icon="arrow-right"
-                onPress={() => {
-                  setIsEmailSent(true);
-                }}
-              />
-            </View>*/}
           </View>
         </View>
       </View>
@@ -207,7 +191,7 @@ const ForgotPasswordScreen = (props: { navigation: { navigate: (arg0: string) =>
                   value={username}
                   onChangeText={(name) => setUserName(name)}
                   left={
-                    <TextInput.Icon name="account" size={23} color="black" />
+                    <TextInput.Icon name="account" size={23} color="#838383" />
                   }
                 />
               </View>

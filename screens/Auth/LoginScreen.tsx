@@ -12,6 +12,7 @@ import Card from '../../components/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FAB,Button,TextInput} from 'react-native-paper';
 import {WithLocalSvg}  from 'react-native-svg';
+import RoundedButton from '../../components/RoundedButton';
 
 
 const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
@@ -40,7 +41,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             value={username}
             keyboardType='email-address'
             onChangeText={(name)=>setUserName(name)}
-            left={<TextInput.Icon name="account" size={23} color="black" />}/>
+            left={<TextInput.Icon name="account" size={23} color="#838383" />}/>
     </View>
         <View style={{marginTop:10,marginHorizontal:20}}>
         <TextInput
@@ -51,7 +52,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
            keyboardType='default'
            onChangeText={(pass)=>setPassword(pass)}
            secureTextEntry
-           left={<TextInput.Icon name="lock" size={23} color="black" />}/>
+           left={<TextInput.Icon name="lock" size={23} color="#838383" />}/>
     </View>
         <View
           style={{
@@ -94,7 +95,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
           </Text>
           
         </View>
-        <TouchableOpacity 
+       {/* <TouchableOpacity 
         onPress={()=>{
             props.navigation.navigate('Home')
         }}
@@ -110,7 +111,10 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             justifyContent:'flex-end',paddingRight:10}}>
             <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
             </View>
-       </TouchableOpacity>
+      </TouchableOpacity>*/}
+      <RoundedButton  onPress={()=>{
+            props.navigation.navigate('Home')
+        }} title='Login' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
       </View>
     );
   };
@@ -132,7 +136,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             mode="outlined"
             value={username}
             onChangeText={(name)=>setUserName(name)}
-            left={<TextInput.Icon name="account" size={23} color="black" />}/>
+            left={<TextInput.Icon name="account" size={23} color="#838383" />}/>
     </View>
     <View style={{marginHorizontal:20,marginTop:10}}>
           <TextInput
@@ -141,7 +145,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             mode="outlined"
             value={email}
             onChangeText={(name)=>setEmail(name)}
-            left={<TextInput.Icon name="email" size={23} color="black" />}/>
+            left={<TextInput.Icon name="email" size={23} color="#838383" />}/>
     </View>
     <View style={{marginHorizontal:20,marginBottom:20,marginTop:10}}>
           <TextInput
@@ -151,7 +155,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             value={password}
             secureTextEntry
             onChangeText={(name)=>setPassword(name)}
-            left={<TextInput.Icon name="lock" size={23} color="black" />}/>
+            left={<TextInput.Icon name="lock" size={23} color="#838383" />}/>
     </View>
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <Text
@@ -162,9 +166,12 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
               alignContent: 'center',
               fontFamily:'Poppins-Bold'
             }}>
-            By pressing submit you are aggree to our
+            By pressing "submit" you are aggree to our
           </Text>
           <Text
+          onPress={()=>{
+            Alert.alert('INFS Privacy Policy URL Opened Here!!')
+          }}
             style={{
               color: 'grey',
               fontSize: 16,
@@ -176,7 +183,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             Terms & condition
           </Text>
         </View>
-        <TouchableOpacity 
+       {/* <TouchableOpacity 
         onPress={()=>{
             props.navigation.navigate('Login')
             setIsLoginlicked(true);
@@ -195,7 +202,13 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             justifyContent:'flex-end',paddingRight:10}}>
             <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
             </View>
-       </TouchableOpacity>
+      </TouchableOpacity>*/}
+      <RoundedButton onPress={()=>{
+            props.navigation.navigate('Login')
+            setIsLoginlicked(true);
+            setIsSignUpClicked(false);
+            
+        }} title='Sign Up' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
       </View>
     );
   };

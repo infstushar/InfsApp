@@ -6,6 +6,7 @@ import Swiper from 'react-native-swiper';
 import Colors from '../../constants/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Chip ,ToggleButton} from 'react-native-paper';
+import RoundedButton from '../../components/RoundedButton';
 
 const firstIndicatorStyles = {
     stepIndicatorSize: 30,
@@ -171,12 +172,12 @@ const handlePress = () => {
          console.log(preference.toString());
          
         
-        setPreference([...preference,{title}] )}}><Text style={{color:'white'}}>{title}</Text></Chip>
+        setPreference([...preference,{title}] )}}><Text style={{color:'white',fontFamily:'Poppins-Bold'}}>{title}</Text></Chip>
         :  <Chip 
         style={{backgroundColor:'#E6E7E9'}} onPress={() => {
         onCheck(id);
         console.log(list);
-       setPreference([...preference,title] )}}><Text style={{color:'black'}}>{title}</Text></Chip>
+       setPreference([...preference,title] )}}><Text style={{color:'black',fontFamily:'Poppins-Bold'}}>{title}</Text></Chip>
 }
         </View>
       );
@@ -240,7 +241,7 @@ const handlePress = () => {
         <StepIndicator
           customStyles={firstIndicatorStyles}
           currentPosition={currentPage}
-         // onPress={onStepPress}
+          onPress={onStepPress}
           stepCount={3}
         />
         </View>
@@ -279,7 +280,7 @@ const handlePress = () => {
         alignItems:'center',
         position:'absolute',
         bottom:0,
-        marginBottom:'15%',marginTop:20,
+        marginBottom:'10%',marginTop:20,
         borderRadius:40,backgroundColor:Colors.textColor,}}>
             <Text  style={{flex:1,textAlign:'center',
             paddingLeft:40,color:'white',fontSize:18,
@@ -314,7 +315,7 @@ const handlePress = () => {
         alignItems:'center',
         position:'absolute',
         bottom:0,
-        marginBottom:'15%',marginTop:20,
+        marginBottom:'10%',marginTop:20,
         borderRadius:40,backgroundColor:Colors.textColor,}}>
             <Text  style={{flex:1,textAlign:'center',
             paddingLeft:40,color:'white',fontSize:18,
@@ -346,7 +347,7 @@ const handlePress = () => {
         onPress={()=>{ onStepPress(2)
           
           const uniqueData = [...new Set(preference)];
-          Alert.alert(uniqueData.toString());
+          Alert.alert("Selected Options: "+uniqueData.toString() + " Will send Over API Call To Store User Preference.");
           props.navigation.navigate('Login');
         }}
         style={{flexDirection:'row', height:45,
@@ -355,7 +356,7 @@ const handlePress = () => {
         alignItems:'center',
         position:'absolute',
         bottom:0,
-        marginBottom:'15%',marginTop:20,
+        marginBottom:'10%',marginTop:20,
         borderRadius:40,backgroundColor:Colors.textColor,}}>
             <Text  style={{flex:1,textAlign:'center',
             paddingLeft:40,color:'white',fontSize:18,

@@ -12,8 +12,10 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
+import Colors from '../../constants/colors';
 import {WithLocalSvg}  from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Ionicons';
+import RoundedButton from '../../components/RoundedButton';
 const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
   const [sliderState, setSliderState] = useState({currentPage: 0});
   const {width, height} = Dimensions.get('window');
@@ -58,9 +60,10 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{alignItems:'flex-end',marginRight:10}}>
-      <Text style={{color: '#3D433E', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
-              SKIP
-          </Text>
+          {!isSkipAndNext ?
+      <Text style={{color: '#3D433E', fontSize: 18,marginTop:20,marginRight:10,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
+              Skip
+          </Text> : null}
           </View>
         <ScrollView
           horizontal={true}
@@ -91,20 +94,20 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               width,
             }}>
 
+              
+
           <View> 
+           
           <WithLocalSvg
+             width={width}
              height={400}
              asset={require('../../assets/vector1.svg')} />
              </View>
-
-              
             <View
               style={{
                 alignItems: 'center',
-                
-               
               }}>
-              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              <Text style={{fontSize: 20, color: '#21BDC8', fontFamily: 'Poppins-Bold'}}>
               The Knowledge you need 
               </Text>
 
@@ -139,10 +142,8 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
             <View
               style={{
                 alignItems: 'center',
-               
-               
               }}>
-              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              <Text style={{fontSize: 20, color: '#21BDC8', fontFamily: 'Poppins-Bold'}}>
               Education that Empowers
               </Text>
 
@@ -168,18 +169,18 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
               height,
               width,
             }}>
-              <View style={{alignItems:'center',marginLeft:40}}>
+              <View style={{alignItems:'center'}}>
                <WithLocalSvg
                 width={'100%'}
-                height={375}
+                height={400}
              asset={require('../../assets/vector3.svg')} />
              </View>
             <View
               style={{
                 alignItems: 'center',
-               marginTop:20
+               
               }}>
-              <Text style={{fontSize: 20, color: 'black', fontFamily: 'Poppins-Bold'}}>
+              <Text style={{fontSize: 20, color: '#21BDC8', fontFamily: 'Poppins-Bold'}}>
               Interactive Platform
               </Text>
 
@@ -275,7 +276,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 justifyContent: 'space-between',
               }}>
              
-              <Icon
+             {/* <Icon
                 name="arrow-forward"
                 color="#19B6C1"
                 size={33}
@@ -283,7 +284,27 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                   const index = pageIndex + 1;
                   nextArrowHandler(index);
                 }}
-              />
+              />*/}
+
+{/*<TouchableOpacity 
+        onPress={()=>{
+          const index = pageIndex + 1;
+          nextArrowHandler(index);
+        }}
+        style={{flexDirection:'row', height:40,
+        justifyContent:'center',alignItems:'center',
+        paddingStart:25,paddingEnd:25,
+        borderRadius:40,backgroundColor:Colors.textColor,}}>
+            <View style={{alignItems:'center'}}>
+               <WithLocalSvg
+             asset={require('../../assets/Iconforward.svg')} />
+             </View>
+      </TouchableOpacity>*/}
+
+<RoundedButton  onPress={()=>{
+           const index = pageIndex + 1;
+           nextArrowHandler(index);
+        }} textVisible={false} visible={true} OnlyIcon={true} />
             </View>
           </View>
         ) : (
@@ -308,7 +329,24 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
             />
           ))}
         </View>
-          <Button title="GET STARTED" onPress={launchHomeScreen} />
+        {/*  <Button title="GET STARTED" onPress={launchHomeScreen} />*/}
+        {/*<TouchableOpacity 
+        onPress={()=>{
+            launchHomeScreen()
+        }}
+        style={{flexDirection:'row', height:40,
+        justifyContent:'center',alignItems:'center',
+        paddingStart:30,paddingEnd:30,
+        borderRadius:40,backgroundColor:Colors.textColor,}}>
+            <Text  style={{textAlign:'center',
+            alignItems:'center',
+            color:'white',fontSize:18,
+            fontFamily:'Poppins-Regular'}}>Get Started</Text> 
+      </TouchableOpacity>*/}
+
+<RoundedButton  onPress={()=>{
+           launchHomeScreen()
+        }} title="Get Started" textVisible={true} visible={false}/>
           </View>
         )}
       </SafeAreaView>
