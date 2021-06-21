@@ -10,14 +10,26 @@ import {
 import Colors from '../../constants/colors';
 import Card from '../../components/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {FAB,Button,TextInput} from 'react-native-paper';
+import {FAB,Button,TextInput, ActivityIndicator} from 'react-native-paper';
 import {WithLocalSvg}  from 'react-native-svg';
 import RoundedButton from '../../components/RoundedButton';
 
 
-const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
+const LoginScreen = (props: {route:any,navigation: { navigate: (arg0: string) => void; }; }) => {
+   const { login } = props.route.params;
   const [isSignUpClicked, setIsSignUpClicked] = useState(true);
   const [isLoginClicked, setIsLoginlicked] = useState(false);
+  const [isDone,setIsDone]=useState(false);
+
+  useEffect(()=>{
+
+    if(login!=null){
+    if(login){
+      setIsLoginlicked(true);
+      setIsSignUpClicked(false);
+    }
+  }
+  },[]);
 
   /**
    * 
@@ -34,17 +46,53 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
     return (
       <View >
         <View style={{marginHorizontal:20}}>
-          <TextInput
+
+          <View style={{
+            height:60,
+          borderRadius:15,borderWidth:1,
+          flexDirection:'row',
+          borderColor:'#D1D1D1',
+          justifyContent:'center',
+          alignItems:'center',
+          paddingHorizontal:10,
+          overflow:'hidden'}}>
+            <Icon name="person" size={23} color="#838383" />
+         <TextInput 
+          value={username}
+            keyboardType='email-address'
+
+            onChangeText={(name)=>setUserName(name)}
+          placeholder="UserName" style={{width:'90%',backgroundColor:'transparent'}}/>
+       </View>
+         {/* <TextInput
           style={{fontFamily:'Poppins-Regular'}}
             label="UserName"
             mode="outlined"
             value={username}
             keyboardType='email-address'
             onChangeText={(name)=>setUserName(name)}
-            left={<TextInput.Icon name="account" size={23} color="#838383" />}/>
+         left={<TextInput.Icon name="account" size={23} color="#838383" />}/>*/}
     </View>
         <View style={{marginTop:10,marginHorizontal:20}}>
-        <TextInput
+
+           <View style={{
+            height:60,
+          borderRadius:15,borderWidth:1,
+          flexDirection:'row',
+          justifyContent:'center',
+          alignItems:'center',
+          paddingHorizontal:10,
+          borderColor:'#D1D1D1',
+          overflow:'hidden'}}>
+            <Icon name="lock-closed" size={23} color="#838383" />
+         <TextInput 
+          value={password}
+          secureTextEntry
+            keyboardType='email-address'
+            onChangeText={(name)=>setPassword(name)}
+          placeholder="Password" style={{width:'90%',backgroundColor:'transparent'}}/>
+       </View>
+       {/*<TextInput
          style={{fontFamily:'Poppins-Regular'}}
            label="Password"
            mode="outlined"
@@ -52,7 +100,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
            keyboardType='default'
            onChangeText={(pass)=>setPassword(pass)}
            secureTextEntry
-           left={<TextInput.Icon name="lock" size={23} color="#838383" />}/>
+        left={<TextInput.Icon name="lock" size={23} color="#838383" />}/>*/}
     </View>
         <View
           style={{
@@ -70,7 +118,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
                       setRadioChecked(-1);
                     }}>
                     <Icon color='#20BEC9' name="md-checkmark-circle" size={23}></Icon>
-                    <Text style={{fontFamily:'Poppins-Regular'}}>{data}</Text>
+                    <Text style={{fontFamily:'Poppins-Regular',marginLeft:5}}>{data}</Text>
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
@@ -80,7 +128,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
                     }}
                     style={styles.btn}>
                     <Icon color='#20BEC9' name="radio-button-off" size={23}></Icon>
-                    <Text style={{fontFamily:'Poppins-Regular'}}>{data}</Text>
+                    <Text style={{fontFamily:'Poppins-Regular',marginLeft:5}}>{data}</Text>
                   </TouchableOpacity>
                 )}
               </View>
@@ -92,29 +140,18 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             }}
             style={{marginRight: 20, textDecorationLine: 'underline',fontFamily:'Poppins-Regular',color:Colors.textColor}}>
             Forgot Password?
-          </Text>
-          
+          </Text>    
         </View>
-       {/* <TouchableOpacity 
-        onPress={()=>{
-            props.navigation.navigate('Home')
-        }}
-        style={{flexDirection:'row', height:50,
-        justifyContent:'space-between',
-        alignItems:'center',
-        marginHorizontal:20,marginBottom:30,marginTop:20,
-        borderRadius:40,backgroundColor:Colors.textColor,}}>
-            <Text  style={{flex:1,textAlign:'center',
-            paddingLeft:40,color:'white',fontSize:18,
-            fontFamily:'Poppins-Regular'}}>Login</Text>
-            <View style={{alignItems:'flex-end',
-            justifyContent:'flex-end',paddingRight:10}}>
-            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
-            </View>
-      </TouchableOpacity>*/}
       <RoundedButton  onPress={()=>{
-            props.navigation.navigate('Home')
+        setIsDone(true);
+        setTimeout(() => {
+          props.navigation.navigate('Home')
+         setIsDone(false);
+           }, 5000);      
         }} title='Login' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
+
+        { isDone ?
+        <ActivityIndicator style={{marginBottom:20}}/> : null}
       </View>
     );
   };

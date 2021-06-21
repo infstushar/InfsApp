@@ -28,7 +28,7 @@ const firstIndicatorStyles = {
     currentStepLabelColor: '#4aae4f',
   };
   
-const PreferenceScreen = (props: { navigation: { navigate: (arg0: string) => void; }; })=>{
+const PreferenceScreen = (props: { navigation: { navigate: (arg0: string,arg1:Object) => void; }; })=>{
     const[currentPosition,setCurrentPosition]=useState(0);
     const [currentPage, setCurrentPage] = React.useState<number>(0);
     const[preference,setPreference]=useState([]);
@@ -348,7 +348,7 @@ const handlePress = () => {
           
           const uniqueData = [...new Set(preference)];
           Alert.alert("Selected Options: "+uniqueData.toString() + " Will send Over API Call To Store User Preference.");
-          props.navigation.navigate('Login');
+          props.navigation.navigate('Login',{'login':false});
         }}
         style={{flexDirection:'row', height:45,
         justifyContent:'space-between',

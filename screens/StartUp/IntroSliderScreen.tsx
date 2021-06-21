@@ -16,7 +16,7 @@ import Colors from '../../constants/colors';
 import {WithLocalSvg}  from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Ionicons';
 import RoundedButton from '../../components/RoundedButton';
-const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
+const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string,arg1:Object) => void; }; }) => {
   const [sliderState, setSliderState] = useState({currentPage: 0});
   const {width, height} = Dimensions.get('window');
   const scrollViewRef = useRef<ScrollView>(null);
@@ -47,7 +47,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
     }
   };
   const launchHomeScreen = () => {
-    props.navigation.navigate('Preference');
+    props.navigation.navigate('Preference',{'login':false});
     //Alert.alert('Next Screen Wii be Loaded');
   };
 
@@ -210,7 +210,7 @@ const IntroSliderScreen = (props: { navigation: { navigate: (arg0: string) => vo
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                 <Text
             onPress={() => {
-              props.navigation.navigate('Login');
+              props.navigation.navigate('Login',{'login':true});
             }}
             style={{textDecorationLine: 'underline',fontFamily:'Poppins-Regular',color:'#7A5F36'}}>
             Login here

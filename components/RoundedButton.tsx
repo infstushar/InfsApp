@@ -34,6 +34,7 @@ const RoundedButton = props => {
 const styles = StyleSheet.create({
   button: {
     flexDirection:'row', height:50,
+    
     justifyContent:'space-between',
     alignItems:'center',
     marginHorizontal:20,
