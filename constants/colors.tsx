@@ -3,5 +3,5 @@ export default{
     textColor:'#20BEC9',
     forgotbg:'#34B44D',
     forgotbgsent:'#FBAD1D',
-    resetpassbg:'#ED4666'
+    resetpassbg:'#ED4666',
 }

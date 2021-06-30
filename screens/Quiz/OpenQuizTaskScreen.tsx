@@ -6,43 +6,35 @@ import {WithLocalSvg}  from 'react-native-svg';
 import RoundedButton from '../../components/RoundedButton';
 
 const OpenQuizTaskScreen =()=>{
-    return <ScrollView contentContainerStyle={{backgroundColor:'white',flex:1, justifyContent:'center',alignItems:'center'}}>
-        <View>
-        <View style={{alignItems:'center' ,marginTop:'25%'}}>
+    return <ScrollView contentContainerStyle={{backgroundColor:'white',flexGrow:1 } }>
+        <View style={{flex:1}}>
+        <View style={{alignItems:'center', marginTop:'30%'}}>
                <WithLocalSvg
                 width={'100%'}
                 height={400}
-             asset={require('../../assets/quiz.svg')} />
+             asset={require('../../assets/studentasset.svg')} />
              </View>
-             <View
-              style={{
-                alignItems: 'center',
-                justifyContent:'center',
-                
-              }}>
-              <Text style={{fontSize: 20,alignContent:'center', color: '#21BDC8', fontFamily: 'Poppins-Bold'}}>
-             Introduction to health and 
-              </Text>
-               <Text style={{fontSize: 20,alignContent:'center', color: '#21BDC8', fontFamily: 'Poppins-Bold'}}>
-              nutrition?
-              </Text>
-
               <View>
                 <Text
                   style={{
-                    color: '#838383',
+                    color: '#20BEC9',
                     fontSize: 18,
                     textAlign: 'center',
                     marginHorizontal: 10,
                     marginVertical: 30,
                     fontFamily: 'Poppins-Regular'
                   }}>
-                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                 Start from beginning or Test to check knowledge level “Help us find your level"
                 </Text>
-              </View>
             </View>
-            <RoundedButton  onPress={()=>{
-        }} title='Start Quiz' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
+            <View style={{flex:1,alignItems:'center', justifyContent:'flex-end'}}>
+            <RoundedButton  style={styles.buttonStyles} onPress={()=>{
+        }} title='Start from Beginning' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
+            <View style={{backgroundColor:'#838383'}}>
+            <RoundedButton  style={styles.testButton} onPress={()=>{
+        }} title='Take test to jump ahead' textVisible={true} visible={false} name='md-arrow-forward-circle'/>
+            </View>
+            </View>
             </View>
     </ScrollView>
 }
@@ -53,7 +45,14 @@ const styles=StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center'
+    },
+    buttonStyles:{
+      width:'80%',
+    },
+    testButton:{
+      backgroundColor:'#838383',
     }
+    
 });
 
 export default OpenQuizTaskScreen;

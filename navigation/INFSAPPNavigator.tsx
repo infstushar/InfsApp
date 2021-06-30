@@ -25,7 +25,7 @@ const INFSAPPNavigator=()=>{
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
           <Stack.Screen name="Dummy" component={dummy} options={{title:'Path'}}/>
           <Stack.Screen name="Preference" component={PreferenceScreen} />
-          <Stack.Screen name="StudentDecision" component={StartingQuizScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}}/>
+          <Stack.Screen name="StudentDecision" component={OpenQuizTaskScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}}/>
           <Stack.Screen name="ResetPassword"  component={ResetPasswordScreen} options={{headerShown:false}}/>
           <Stack.Screen name="Home" component={HomeScreen} 
           
