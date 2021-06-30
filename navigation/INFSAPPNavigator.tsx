@@ -11,6 +11,9 @@ import HomeScreen from '../screens/ScreenNavigator/HomeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PreferenceScreen from '../screens/StartUp/PreferenceScreen';
 import ResetPasswordScreen from '../screens/Auth/ResetPasswordScreen';
+import OpenQuizTaskScreen from '../screens/Quiz/OpenQuizTaskScreen';
+import StartingQuizScreen from '../screens/Quiz/StartingQuizScreen';
+
 const INFSAPPNavigator=()=>{
     const Stack = createStackNavigator();
     return (
@@ -22,6 +25,7 @@ const INFSAPPNavigator=()=>{
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}} />
           <Stack.Screen name="Dummy" component={dummy} options={{title:'Path'}}/>
           <Stack.Screen name="Preference" component={PreferenceScreen} />
+          <Stack.Screen name="StudentDecision" component={StartingQuizScreen} options={{headerShown:false, headerTitleStyle:{ fontFamily:'Poppins-Regular'},headerBackTitleStyle:{fontFamily:'Poppins-Regular'}}}/>
           <Stack.Screen name="ResetPassword"  component={ResetPasswordScreen} options={{headerShown:false}}/>
           <Stack.Screen name="Home" component={HomeScreen} 
           

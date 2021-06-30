@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A020DAB6F3F0BA0A6D9946E84B38B7F"
-               BuildableName = "React-Core-AccessibilityResources.bundle"
-               BlueprintName = "React-Core-AccessibilityResources"
+               BlueprintIdentifier = "B9E8F4CA2A4A8599389FEB665A9B96FF"
+               BuildableName = "libRNGestureHandler.a"
+               BlueprintName = "RNGestureHandler"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

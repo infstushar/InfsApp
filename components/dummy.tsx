@@ -1,5 +1,5 @@
 import React from 'react';
-import {  View,Text ,StyleSheet} from 'react-native';
+import {  View, Text ,StyleSheet} from 'react-native';
 import { Button } from 'react-native-paper';
 
 const dummy =(props)=>{
@@ -11,6 +11,9 @@ const dummy =(props)=>{
 <Button onPress={()=>{
             props.navigation.navigate('ResetPassword')
         }}>Reset Password</Button>
+         <Button onPress={()=>{
+            props.navigation.navigate('StudentDecision')
+        }}>GO TO STUDENT DECESION SCREEN </Button>
     </View>
 }
 

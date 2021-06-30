@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A020DAB6F3F0BA0A6D9946E84B38B7F"
-               BuildableName = "React-Core-AccessibilityResources.bundle"
-               BlueprintName = "React-Core-AccessibilityResources"
+               BlueprintIdentifier = "DE32677FA772BFFD0172EB7EE9E4E7E9"
+               BuildableName = "libRNSVG.a"
+               BlueprintName = "RNSVG"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
