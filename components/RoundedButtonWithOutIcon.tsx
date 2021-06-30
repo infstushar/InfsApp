@@ -4,24 +4,27 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Colors from "../constants/colors";
 import { WithLocalSvg } from "react-native-svg";
 
-const RoundedButton = (props) => {
+const RoundedButtonWithOutIcon = (props) => {
   return (
     <View>
-      {props.visible && props.textVisible ? (
+      {!props.colorChange ? (
         <TouchableOpacity
-          style={{ ...styles.button, ...props.style }}
+          style={styles.button1}
           onPress={() => {
             props.onPress();
           }}
         >
-          <Text style={styles.text}>{props.title}</Text>
-          <View style={styles.iconContainer}>
-            <Icon name={props.name} color="white" size={33}></Icon>
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            {props.textVisible ? (
+              <Text style={styles.text1}>{props.title}</Text>
+            ) : (
+              <WithLocalSvg asset={require("../assets/Iconforward.svg")} />
+            )}
           </View>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
-          style={styles.button1}
+          style={styles.button2}
           onPress={() => {
             props.onPress();
           }}
@@ -40,17 +43,6 @@ const RoundedButton = (props) => {
 };
 
 const styles = StyleSheet.create({
-  button: {
-    flexDirection: "row",
-    height: 50,
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginHorizontal: 20,
-
-    marginTop: 20,
-    borderRadius: 40,
-    backgroundColor: Colors.textColor,
-  },
   button1: {
     flexDirection: "row",
     height: 50,
@@ -60,6 +52,16 @@ const styles = StyleSheet.create({
     paddingEnd: 30,
     borderRadius: 40,
     backgroundColor: Colors.textColor,
+  },
+  button2: {
+    flexDirection: "row",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingStart: 30,
+    paddingEnd: 30,
+    borderRadius: 40,
+    backgroundColor: "#838383",
   },
   text: {
     flex: 1,
@@ -82,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoundedButton;
+export default RoundedButtonWithOutIcon;
