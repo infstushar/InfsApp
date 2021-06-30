@@ -6,6 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createStackNavigator } from '@react-navigation/stack';
 import BookScreen from '../../screens/ScreenNavigator/BookScreen';
 import ResetPasswordScreen from '../..//screens/Auth/ResetPasswordScreen';
+import OpenQuizTaskScreen from '../../screens/Quiz/OpenQuizTaskScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 function DetailsScreen() {
@@ -72,6 +73,16 @@ const BottomTabs = () => {
           options={{
             tabBarIcon: 'message-text-outline',
           }}
+          
+        />
+
+          <Tab.Screen
+          name="Quiz"
+          component={OpenQuizTaskScreen}
+          options={{
+            tabBarIcon: 'lightbulb',
+          }}
+          
         />
  
       
