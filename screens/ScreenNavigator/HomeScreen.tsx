@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BookScreen from '../../screens/ScreenNavigator/BookScreen';
 import ResetPasswordScreen from '../..//screens/Auth/ResetPasswordScreen';
 import OpenQuizTaskScreen from '../../screens/Quiz/OpenQuizTaskScreen';
+import StartingQuizScreen from '../../screens/Quiz/StartingQuizScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 function DetailsScreen() {
@@ -78,7 +79,7 @@ const BottomTabs = () => {
 
           <Tab.Screen
           name="Quiz"
-          component={OpenQuizTaskScreen}
+          component={StartingQuizScreen}
           options={{
             tabBarIcon: 'lightbulb',
           }}
