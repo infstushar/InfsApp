@@ -244,7 +244,6 @@ const LoginScreen = (props: {route:any,navigation: { navigate: (arg0: string) =>
             props.navigation.navigate('Login')
             setIsLoginlicked(true);
             setIsSignUpClicked(false);
-            
         }} title='Sign Up' textVisible={true} visible={true} name='md-arrow-forward-circle'/>
       </View>
     );
