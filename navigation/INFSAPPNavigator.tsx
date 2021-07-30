@@ -21,11 +21,11 @@ const INFSAPPNavigator = () => {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
+          {/*<Stack.Screen
             name="Path"
             component={PathGeneration}
             options={{ headerShown: false }}
-          />
+          />*/}
           <Stack.Screen
             name="Intro"
             component={IntroSliderScreen}

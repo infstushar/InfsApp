@@ -5,15 +5,15 @@ import { svgPathProperties } from "svg-path-properties";
 const { width } = Dimensions.get("window");
 
 export const LeaderPathProperty = {
-  width: width - 180,
+  width: width / 2,
   radius: 50,
 };
 
 export function getPath(month, line) {
-  let fullPath = "M90 100";
+  let fullPath = "M110 60";
   const forwardLine = `l${line.width} 0`;
   const backwardLine = `l${-line.width} 0`;
-  const leftCurve = `a${line.radius} ${line.radius} 0 0 0 0 ${line.radius * 2}`;
+  const leftCurve = `a${line.radius} ${line.radius} 1 0 0 0 ${line.radius * 2}`;
   const rightCurve = `a${line.radius} ${line.radius} 0 0 1 0 ${
     line.radius * 2
   }`;

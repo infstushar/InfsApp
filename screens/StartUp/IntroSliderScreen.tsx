@@ -49,9 +49,9 @@ const IntroSliderScreen = (props: {
     }
   };
   const launchHomeScreen = () => {
-    //props.navigation.navigate('Preference',{'login':false});
+    props.navigation.navigate("Preference", { login: false });
     //Alert.alert('Next Screen Wii be Loaded');
-    props.navigation.navigate("Path", { login: false });
+    // props.navigation.navigate("Path", { login: false });
   };
 
   const skipHandler = () => {
@@ -62,22 +62,6 @@ const IntroSliderScreen = (props: {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-        <View style={{ alignItems: "flex-end", marginRight: 10 }}>
-          {!isSkipAndNext ? (
-            <Text
-              style={{
-                color: "#3D433E",
-                fontSize: 18,
-                marginTop: 20,
-                marginRight: 10,
-                fontFamily: "Poppins-Regular",
-              }}
-              onPress={skipHandler}
-            >
-              Skip
-            </Text>
-          ) : null}
-        </View>
         <ScrollView
           horizontal={true}
           scrollEventThrottle={16}
@@ -148,6 +132,25 @@ const IntroSliderScreen = (props: {
                 </Text>
               </View>
             </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              {console.log("pageIndex", pageIndex)}
+              {Array.from(Array(3).keys()).map((key, index) => (
+                <View
+                  style={[
+                    styles.paginationDots,
+                    { width: pageIndex === index ? 30 : 10 },
+                    { opacity: pageIndex === index ? 1 : 0.6 },
+                  ]}
+                  key={index}
+                />
+              ))}
+            </View>
           </View>
           <View
             style={{
@@ -194,6 +197,25 @@ const IntroSliderScreen = (props: {
                   group of researchers and faculty members
                 </Text>
               </View>
+            </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              {console.log("pageIndex", pageIndex)}
+              {Array.from(Array(3).keys()).map((key, index) => (
+                <View
+                  style={[
+                    styles.paginationDots,
+                    { width: pageIndex === index ? 30 : 10 },
+                    { opacity: pageIndex === index ? 1 : 0.6 },
+                  ]}
+                  key={index}
+                />
+              ))}
             </View>
           </View>
           <View
@@ -242,6 +264,27 @@ const IntroSliderScreen = (props: {
                   professional
                 </Text>
 
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "row",
+                    marginBottom: 20,
+                  }}
+                >
+                  {console.log("pageIndex", pageIndex)}
+                  {Array.from(Array(3).keys()).map((key, index) => (
+                    <View
+                      style={[
+                        styles.paginationDots,
+                        { width: pageIndex === index ? 30 : 10 },
+                        { opacity: pageIndex === index ? 1 : 0.6 },
+                      ]}
+                      key={index}
+                    />
+                  ))}
+                </View>
+
                 <Text
                   style={{
                     color: "black",
@@ -263,6 +306,7 @@ const IntroSliderScreen = (props: {
                     style={{
                       textDecorationLine: "underline",
                       fontFamily: "Poppins-Regular",
+                      marginTop: 5,
                       color: "#7A5F36",
                     }}
                   >
@@ -306,7 +350,7 @@ const IntroSliderScreen = (props: {
               SKIP
           </Text>*/}
 
-            <View
+            {/*<View
               style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -324,6 +368,28 @@ const IntroSliderScreen = (props: {
                   key={index}
                 />
               ))}
+                </View>*/}
+            <View
+              style={{
+                alignItems: "flex-start",
+                justifyContent: "center",
+                marginRight: 10,
+              }}
+            >
+              {!isSkipAndNext ? (
+                <Text
+                  style={{
+                    color: "#3D433E",
+                    fontSize: 18,
+
+                    marginRight: 10,
+                    fontFamily: "Poppins-Regular",
+                  }}
+                  onPress={skipHandler}
+                >
+                  Skip
+                </Text>
+              ) : null}
             </View>
             <View
               style={{
@@ -361,21 +427,37 @@ const IntroSliderScreen = (props: {
                   const index = pageIndex + 1;
                   nextArrowHandler(index);
                 }}
-                textVisible={false}
-                visible={true}
-                OnlyIcon={true}
+                title="Next"
+                textVisible={true}
+                visible={false}
               />
             </View>
           </View>
         ) : (
           <View
             style={{
-              justifyContent: "space-between",
+              justifyContent: "center",
               marginRight: 10,
               flexDirection: "row",
             }}
           >
-            <View
+            <View style={{ alignItems: "flex-start", marginRight: 10 }}>
+              {!isSkipAndNext ? (
+                <Text
+                  style={{
+                    color: "#3D433E",
+                    fontSize: 18,
+                    marginTop: 20,
+                    marginRight: 10,
+                    fontFamily: "Poppins-Regular",
+                  }}
+                  onPress={skipHandler}
+                >
+                  Skip
+                </Text>
+              ) : null}
+            </View>
+            {/*  <View
               style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -394,7 +476,7 @@ const IntroSliderScreen = (props: {
                   key={index}
                 />
               ))}
-            </View>
+                </View>*/}
             {/*  <Button title="GET STARTED" onPress={launchHomeScreen} />*/}
             {/*<TouchableOpacity 
         onPress={()=>{

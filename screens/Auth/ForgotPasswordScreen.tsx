@@ -14,8 +14,9 @@ import { TextInput, Button } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
 import { TouchableOpacity } from "react-native";
 
-
-const ForgotPasswordScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
+const ForgotPasswordScreen = (props: {
+  navigation: { navigate: (arg0: string) => void };
+}) => {
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [username, setUserName] = useState("");
   const SentEmail = () => {
@@ -178,21 +179,26 @@ const ForgotPasswordScreen = (props: { navigation: { navigate: (arg0: string) =>
               />
               <View
                 style={{
+                  height: 60,
+                  borderRadius: 15,
+                  borderWidth: 1,
+                  flexDirection: "row",
+                  borderColor: "#D1D1D1",
+                  justifyContent: "center",
+                  alignItems: "center",
                   marginHorizontal: 20,
-                  marginBottom: 30,
-                  marginTop: 20,
+                  marginVertical: 20,
+                  paddingHorizontal: 10,
+                  overflow: "hidden",
                 }}
               >
+                <Icon name="person" size={23} color="#838383" />
                 <TextInput
-                  style={{ fontFamily: "Poppins-Regular" }}
-                  label="Registered Email"
-                  mode="outlined"
-                  keyboardType="email-address"
                   value={username}
                   onChangeText={(name) => setUserName(name)}
-                  left={
-                    <TextInput.Icon name="account" size={23} color="#838383" />
-                  }
+                  keyboardType="email-address"
+                  placeholder="UserName / Email"
+                  style={{ width: "90%", backgroundColor: "transparent" }}
                 />
               </View>
               <View

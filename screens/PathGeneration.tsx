@@ -13,7 +13,7 @@ export default class PathGeneration extends Component {
 
     this.leaderLineProperty = {
       lineWidth: width - 180,
-      radius: 50,
+      radius: 0,
     };
   }
 
@@ -22,7 +22,7 @@ export default class PathGeneration extends Component {
     this.pathSegmentArray = PathHelper.getPathProperty(
       this.path,
       this.totalDays,
-      5
+      20
     );
     this.area = PathHelper.calculateProgressArea(
       this.totalDays,
@@ -56,8 +56,8 @@ export default class PathGeneration extends Component {
               d={this.area}
               stroke="black"
               strokeWidth={0.5}
-              fill="orange"
-              fillRule="evenodd"
+              fill="#58595B"
+              fillRule="nonzero"
             />
           </Svg>
         </Animated.View>
