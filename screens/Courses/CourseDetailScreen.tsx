@@ -370,6 +370,16 @@ const CourseDetailScreen = (props) => {
             keyExtractor={(item) => item.id}
           />
         </View>
+        <Text
+          style={{
+            fontSize: normalize(17.5),
+            fontFamily: "Poppins-Medium",
+            color: "#3E3E3E",
+            marginLeft: 30,
+          }}
+        >
+          Here’s what you ‘ll learn:
+        </Text>
         <View
           style={{
             marginTop: 5,
@@ -377,16 +387,6 @@ const CourseDetailScreen = (props) => {
             backgroundColor: "#F8F8F8",
           }}
         >
-          <Text
-            style={{
-              fontSize: normalize(17.5),
-              fontFamily: "Poppins-Medium",
-              color: "#3E3E3E",
-              marginLeft: 30,
-            }}
-          >
-            Here’s what you ‘ll learn:
-          </Text>
           <FlatList
             data={DATA[0].learningcontent}
             renderItem={renderItemforlearn}
@@ -476,7 +476,7 @@ const CourseDetailScreen = (props) => {
               fontFamily: "Poppins-SemiBold",
             }}
           >
-            Module Eligibility
+            Course Eligibility
           </Text>
           <Text
             style={{
