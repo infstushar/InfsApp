@@ -5,24 +5,25 @@ import { svgPathProperties } from "svg-path-properties";
 const { width } = Dimensions.get("window");
 
 export const LeaderPathProperty = {
-  width: width / 2,
+  width: width - 330,
   radius: 50,
 };
 
 export function getPath(month, line) {
-  let fullPath = "M110 60";
+  let fullPath = "M220 20";
+
   const forwardLine = `l${line.width} 0`;
   const backwardLine = `l${-line.width} 0`;
-  const leftCurve = `a${line.radius} ${line.radius} 1 0 0 0 ${line.radius * 2}`;
+  const leftCurve = `a${line.radius} ${line.radius} 0 0 0 0 ${line.radius * 3}`;
   const rightCurve = `a${line.radius} ${line.radius} 0 0 1 0 ${
-    line.radius * 2
+    line.radius * 3
   }`;
 
   for (let i = 0; i < month; ++i) {
     if (i % 2 == 0) {
-      fullPath += `${forwardLine} ${rightCurve}`;
+      fullPath += `${rightCurve}`;
     } else {
-      fullPath += `${backwardLine} ${leftCurve}`;
+      fullPath += `${backwardLine} ${leftCurve} ${forwardLine} `;
     }
   }
 

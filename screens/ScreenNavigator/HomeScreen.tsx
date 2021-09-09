@@ -4,11 +4,10 @@ import dummy from "../../components/dummy";
 import Colors from "../../constants/colors";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import BookScreen from "../../screens/ScreenNavigator/BookScreen";
-import ResetPasswordScreen from "../..//screens/Auth/ResetPasswordScreen";
-import OpenQuizTaskScreen from "../../screens/Quiz/OpenQuizTaskScreen";
-import StartingQuizScreen from "../../screens/Quiz/StartingQuizScreen";
+import CourseScreen from "./CourseScreen";
 import PathGeneration from "../../screens/PathGeneration";
+import ProfileScreen from "../ScreenNavigator/ProfileScreen";
+import { WithLocalSvg } from "react-native-svg";
 
 const Tab = createMaterialBottomTabNavigator();
 function DetailsScreen() {
@@ -24,8 +23,8 @@ const HomeStack = createStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Profile" component={dummy} />
-      <HomeStack.Screen name="Details" component={BookScreen} />
+      <HomeStack.Screen name="Profile" component={ProfileScreen} />
+      <HomeStack.Screen name="Course" component={CourseScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -33,7 +32,7 @@ function HomeStackScreen() {
 const BottomTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Path"
       shifting={false}
       barStyle={{ backgroundColor: "white" }}
       activeColor={Colors.textColor}
@@ -44,7 +43,21 @@ const BottomTabs = () => {
         component={PathGeneration}
         options={{
           title: "Path",
-          tabBarIcon: "navigation",
+          tabBarIcon: ({ color }) => (
+            <WithLocalSvg
+              width={26}
+              height={20}
+              asset={require("../../assets/Path.svg")}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Courses"
+        component={CourseScreen}
+        options={{
+          tabBarIcon: "book",
         }}
       />
       <Tab.Screen
@@ -52,37 +65,6 @@ const BottomTabs = () => {
         component={HomeStackScreen}
         options={{
           tabBarIcon: "account",
-        }}
-      />
-
-      <Tab.Screen
-        name="Book"
-        component={BookScreen}
-        options={{
-          tabBarIcon: "book",
-        }}
-      />
-      <Tab.Screen
-        name="Live"
-        component={BookScreen}
-        options={{
-          tabBarIcon: "video",
-        }}
-      />
-
-      <Tab.Screen
-        name="Feeds"
-        component={BookScreen}
-        options={{
-          tabBarIcon: "message-text-outline",
-        }}
-      />
-
-      <Tab.Screen
-        name="Quiz"
-        component={StartingQuizScreen}
-        options={{
-          tabBarIcon: "lightbulb",
         }}
       />
     </Tab.Navigator>

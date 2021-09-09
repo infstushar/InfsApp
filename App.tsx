@@ -8,13 +8,11 @@
  * @format
  */
 
- import 'react-native-gesture-handler';
-import * as React from 'react';
-import INFSAPPNavigator from './navigation/INFSAPPNavigator';
-import { NavigationContainer } from '@react-navigation/native';
+import "react-native-gesture-handler";
+import * as React from "react";
+import INFSAPPNavigator from "./navigation/INFSAPPNavigator";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-  return (
-    <INFSAPPNavigator/>
-  );
+  return <INFSAPPNavigator />;
 }

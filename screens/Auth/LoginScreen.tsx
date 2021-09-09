@@ -6,14 +6,27 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  Dimensions,
+  Platform,
+  PixelRatio,
 } from "react-native";
 import Colors from "../../constants/colors";
 import Card from "../../components/Card";
 import Icon from "react-native-vector-icons/Ionicons";
-import { FAB, Button, TextInput, ActivityIndicator } from "react-native-paper";
+import { TextInput, ActivityIndicator } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
 import RoundedButton from "../../components/RoundedButton";
-import RNPasswordStrengthMeter from "react-native-password-strength-meter";
+
+const { width, height } = Dimensions.get("window");
+const scale = width / 415;
+const normalize = (size) => {
+  const newSize = size * scale;
+  if (Platform.OS == "ios") {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize));
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
+  }
+};
 
 const LoginScreen = (props: {
   route: any;
@@ -38,7 +51,7 @@ const LoginScreen = (props: {
    * @returns Login Code
    */
   const Login = () => {
-    const [radioData, setRadioData] = useState(["Remember Me!"]);
+    const [radioData, setRadioData] = useState(["Remember Me"]);
     const [radioChecked, setRadioChecked] = useState(0);
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -51,7 +64,7 @@ const LoginScreen = (props: {
         <View style={{ marginHorizontal: 20 }}>
           <View
             style={{
-              height: 60,
+              height: 45,
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -62,28 +75,25 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={23} color="#838383" />
+            <Icon name="person" size={19} color="#838383" />
             <TextInput
               value={username}
               keyboardType="email-address"
               onChangeText={(name) => setUserName(name)}
               placeholder="UserName / Email"
-              style={{ width: "90%", backgroundColor: "transparent" }}
+              style={{
+                width: "90%",
+                backgroundColor: "transparent",
+                color: "#B7B7B7",
+                fontSize: normalize(14),
+              }}
             />
           </View>
-          {/* <TextInput
-          style={{fontFamily:'Poppins-Regular'}}
-            label="UserName"
-            mode="outlined"
-            value={username}
-            keyboardType='email-address'
-            onChangeText={(name)=>setUserName(name)}
-         left={<TextInput.Icon name="account" size={23} color="#838383" />}/>*/}
         </View>
-        <View style={{ marginTop: 20, marginHorizontal: 20 }}>
+        <View style={{ marginTop: 10, marginHorizontal: 20 }}>
           <View
             style={{
-              height: 60,
+              height: 45,
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -101,18 +111,14 @@ const LoginScreen = (props: {
               keyboardType="email-address"
               onChangeText={(name) => setPassword(name)}
               placeholder="Password"
-              style={{ width: "90%", backgroundColor: "transparent" }}
+              style={{
+                width: "90%",
+                backgroundColor: "transparent",
+                color: "#B7B7B7",
+                fontSize: normalize(14),
+              }}
             />
           </View>
-          {/*<TextInput
-         style={{fontFamily:'Poppins-Regular'}}
-           label="Password"
-           mode="outlined"
-           value={password}
-           keyboardType='default'
-           onChangeText={(pass)=>setPassword(pass)}
-           secureTextEntry
-        left={<TextInput.Icon name="lock" size={23} color="#838383" />}/>*/}
         </View>
 
         <View style={{ marginTop: 20, marginHorizontal: 5 }}>
@@ -127,12 +133,17 @@ const LoginScreen = (props: {
                     }}
                   >
                     <Icon
-                      color="#20BEC9"
+                      color="#838383"
                       name="md-checkmark-circle"
-                      size={23}
+                      size={19}
                     ></Icon>
                     <Text
-                      style={{ fontFamily: "Poppins-Regular", marginLeft: 5 }}
+                      style={{
+                        fontFamily: "Poppins-Regular",
+                        marginLeft: 5,
+                        fontSize: normalize(17.5),
+                        color: "#00B5E0",
+                      }}
                     >
                       {data}
                     </Text>
@@ -146,12 +157,17 @@ const LoginScreen = (props: {
                     style={styles.btn}
                   >
                     <Icon
-                      color="#20BEC9"
+                      color="#838383"
                       name="radio-button-off"
                       size={23}
                     ></Icon>
                     <Text
-                      style={{ fontFamily: "Poppins-Regular", marginLeft: 5 }}
+                      style={{
+                        fontFamily: "Poppins-Regular",
+                        marginLeft: 5,
+                        color: "#838383",
+                        fontSize: normalize(17.5),
+                      }}
                     >
                       {data}
                     </Text>
@@ -165,7 +181,7 @@ const LoginScreen = (props: {
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 20,
+            marginTop: 10,
             marginBottom: 40,
             marginHorizontal: 10,
           }}
@@ -173,62 +189,19 @@ const LoginScreen = (props: {
           <Text
             onPress={() => {
               //props.navigation.navigate("ForgotPassword");
-              Alert.alert("User Will Go To Forgot UserName Screen");
+              props.navigation.navigate("ForgotUsername");
             }}
             style={{
               marginLeft: 20,
               textDecorationLine: "underline",
               fontFamily: "Poppins-Regular",
-              color: Colors.textColor,
+              color: "#00B5E0",
+              fontSize: normalize(15.75),
             }}
           >
-            Forgot UserName?
+            Forgot Username?
           </Text>
-          {/*
-          {radioData.map((data, key) => {
-            return (
-              <View key={key}>
-                {radioChecked == key ? (
-                  <TouchableOpacity
-                    style={styles.btn}
-                    onPress={() => {
-                      setRadioChecked(-1);
-                    }}
-                  >
-                    <Icon
-                      color="#20BEC9"
-                      name="md-checkmark-circle"
-                      size={23}
-                    ></Icon>
-                    <Text
-                      style={{ fontFamily: "Poppins-Regular", marginLeft: 5 }}
-                    >
-                      {data}
-                    </Text>
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity
-                    onPress={() => {
-                      setRadioChecked(key);
-                      console.log("Key", key);
-                    }}
-                    style={styles.btn}
-                  >
-                    <Icon
-                      color="#20BEC9"
-                      name="radio-button-off"
-                      size={23}
-                    ></Icon>
-                    <Text
-                      style={{ fontFamily: "Poppins-Regular", marginLeft: 5 }}
-                    >
-                      {data}
-                    </Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-            );
-          })} */}
+
           <Text
             onPress={() => {
               props.navigation.navigate("ForgotPassword");
@@ -237,7 +210,8 @@ const LoginScreen = (props: {
               marginRight: 20,
               textDecorationLine: "underline",
               fontFamily: "Poppins-Regular",
-              color: Colors.textColor,
+              color: "#00B5E0",
+              fontSize: normalize(15.75),
             }}
           >
             Forgot Password?
@@ -254,7 +228,6 @@ const LoginScreen = (props: {
           title="Login"
           textVisible={true}
           visible={true}
-          name="md-arrow-forward-circle"
         />
 
         {isDone ? <ActivityIndicator style={{ marginTop: 20 }} /> : null}
@@ -280,42 +253,10 @@ const LoginScreen = (props: {
     };
     return (
       <View style={{ marginBottom: 30 }}>
-        {/* <View style={{ marginHorizontal: 20 }}>
-          <TextInput
-            style={{ fontFamily: "Poppins-Regular" }}
-            label="UserName"
-            mode="outlined"
-            value={username}
-            onChangeText={(name) => setUserName(name)}
-            left={<TextInput.Icon name="account" size={23} color="#838383" />}
-          />
-        </View>
-        <View style={{ marginHorizontal: 20, marginTop: 10 }}>
-          <TextInput
-            style={{ fontFamily: "Poppins-Regular" }}
-            label="Email Address"
-            mode="outlined"
-            value={email}
-            onChangeText={(name) => setEmail(name)}
-            left={<TextInput.Icon name="email" size={23} color="#838383" />}
-          />
-        </View>
-        <View style={{ marginHorizontal: 20, marginBottom: 20, marginTop: 10 }}>
-          <TextInput
-            style={{ fontFamily: "Poppins-Regular" }}
-            label="Password"
-            mode="outlined"
-            value={password}
-            secureTextEntry
-            onChangeText={(name) => setPassword(name)}
-            left={<TextInput.Icon name="lock" size={23} color="#838383" />}
-          />
-    </View> */}
-
         <View style={{ marginHorizontal: 20 }}>
           <View
             style={{
-              height: 60,
+              height: 45,
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -326,18 +267,24 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={23} color="#838383" />
+            <Icon name="person" size={19} color="#838383" />
             <TextInput
               value={username}
               onChangeText={(name) => setUserName(name)}
               keyboardType="email-address"
               placeholder="Full Name"
-              style={{ width: "90%", backgroundColor: "transparent" }}
+              style={{
+                width: "90%",
+                backgroundColor: "transparent",
+                fontFamily: "Poppins-Regular",
+                color: "#B7B7B7",
+                fontSize: normalize(14),
+              }}
             />
           </View>
           <View
             style={{
-              height: 60,
+              height: 45,
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -349,68 +296,94 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={23} color="#838383" />
+            <Icon name="mail" size={19} color="#838383" />
             <TextInput
               keyboardType="default"
               value={email}
               onChangeText={(name) => setEmail(name)}
               placeholder="Email Address"
-              style={{ width: "90%", backgroundColor: "transparent" }}
+              style={{
+                width: "90%",
+                backgroundColor: "transparent",
+                fontFamily: "Poppins-Regular",
+                color: "#B7B7B7",
+                fontSize: normalize(14),
+              }}
             />
           </View>
 
-          {/* <View>
-            <RNPasswordStrengthMeter
-              barStyle={{ width: "90%" }}
-              onChangeText={onChange}
-              meterType="box"
-            />
-         </View>*/}
           <View
             style={{
-              height: 60,
+              height: 45,
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
               borderColor: "#D1D1D1",
               justifyContent: "center",
               alignItems: "center",
-              paddingHorizontal: 10,
+              paddingHorizontal: 20,
               marginTop: 10,
               marginBottom: 20,
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={23} color="#838383" />
+            <Icon
+              name="lock-closed"
+              size={19}
+              color="#838383"
+              style={{ marginLeft: 20 }}
+            />
             <TextInput
               keyboardType="email-address"
               value={password}
               secureTextEntry
               onChangeText={(name) => setPassword(name)}
               placeholder="Password"
-              style={{ width: "90%", backgroundColor: "transparent" }}
+              style={{
+                width: "90%",
+                backgroundColor: "transparent",
+                fontFamily: "Poppins-Regular",
+                color: "#B7B7B7",
+                fontSize: normalize(14),
+              }}
+            />
+            <Icon
+              name="md-information-circle-sharp"
+              size={19}
+              color="#838383"
+              style={{ marginRight: 20 }}
+              onPress={() => {
+                Alert.alert(
+                  `
+                    Password must meet the following requirements:
+                    At least one letter
+                    At least one capital letter
+                    At least one number
+                    Be at least 8 characters
+                  `
+                );
+              }}
             />
           </View>
         </View>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Text
             style={{
-              color: "grey",
-              fontSize: 14,
-
+              color: "#838383",
+              fontSize: normalize(17.5),
               alignContent: "center",
-              fontFamily: "Poppins-Bold",
+              fontFamily: "Poppins-Regular",
             }}
           >
-            By pressing "submit" you are aggree to our
+            By clicking “sign up” you agree to our
           </Text>
           <Text
             onPress={() => {
               Alert.alert("INFS Privacy Policy URL Opened Here!!");
             }}
             style={{
-              color: "grey",
-              fontSize: 16,
+              color: "#00B5E0",
+              fontSize: normalize(15.75),
               marginVertical: 10,
               alignContent: "center",
               textDecorationLine: "underline",
@@ -420,26 +393,6 @@ const LoginScreen = (props: {
             Terms & condition / Privacy Policy
           </Text>
         </View>
-        {/* <TouchableOpacity 
-        onPress={()=>{
-            props.navigation.navigate('Login')
-            setIsLoginlicked(true);
-            setIsSignUpClicked(false);
-            
-        }}
-        style={{flexDirection:'row', height:50,
-        justifyContent:'space-between',
-        alignItems:'center',
-        marginHorizontal:20,marginBottom:30,marginTop:20,
-        borderRadius:40,backgroundColor:Colors.textColor,}}>
-            <Text  style={{flex:1,textAlign:'center',
-            paddingLeft:40,color:'white',fontSize:18,
-            fontFamily:'Poppins-Regular'}}>Sign Up</Text>
-            <View style={{alignItems:'flex-end',
-            justifyContent:'flex-end',paddingRight:10}}>
-            <Icon  name='md-arrow-forward-circle' color='white' size={33}></Icon>
-            </View>
-      </TouchableOpacity>*/}
         <RoundedButton
           onPress={() => {
             setIsDone(true);
@@ -456,7 +409,6 @@ const LoginScreen = (props: {
           title="Sign Up"
           textVisible={true}
           visible={true}
-          name="md-arrow-forward-circle"
         />
         {isDone ? <ActivityIndicator style={{ marginTop: 20 }} /> : null}
       </View>
@@ -474,20 +426,37 @@ const LoginScreen = (props: {
         backgroundColor: "white",
       }}
     >
-      <View>
+      <View style={{ height: "80%" }}>
         <View
           style={{
             backgroundColor: Colors.primaryColor,
             marginBottom: 20,
           }}
         >
+          <View
+            style={{
+              height: "100%",
+              width: "100%",
+              position: "absolute",
+              top: 10,
+              left: -50,
+              right: 10,
+            }}
+          >
+            <WithLocalSvg
+              width={width + 80}
+              height={225}
+              preserveAspectRatio="xMinYMin slice"
+              asset={require("../../assets/Texture-4.svg")}
+            />
+          </View>
           <View>
             {!isSignUpClicked ? (
               <Text
                 style={{
-                  fontSize: 30,
+                  fontSize: normalize(31.5),
                   marginTop: "30%",
-                  color: "white",
+                  color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
                 }}
@@ -497,9 +466,9 @@ const LoginScreen = (props: {
             ) : (
               <Text
                 style={{
-                  fontSize: 30,
+                  fontSize: normalize(31.5),
                   marginTop: "30%",
-                  color: "white",
+                  color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
                 }}
@@ -511,28 +480,29 @@ const LoginScreen = (props: {
               <Text
                 style={{
                   marginHorizontal: 20,
-                  color: "white",
-                  fontSize: 16,
+                  color: "#FFFFFF",
+                  fontSize: normalize(17.5),
                   marginVertical: 10,
-                  marginBottom: 120,
+                  marginBottom: 90,
                   fontFamily: "Poppins-Regular",
                 }}
               >
-                Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                used in laying out print, graphic or web designs.
+                Please log in to access the key to nutrition and fitness
+                education
               </Text>
             ) : (
               <Text
                 style={{
                   marginHorizontal: 20,
-                  color: "white",
-                  fontSize: 16,
+                  color: "#FFFFFF",
+                  fontSize: normalize(17.5),
                   marginVertical: 10,
-                  marginBottom: 120,
+                  marginBottom: 90,
                   fontFamily: "Poppins-Regular",
                 }}
               >
-                Lorem ipsum, or lipsum as it is sometimes known, is dummy text.
+                You are a few steps away from a treasure of knowledge on fitness
+                and nutrition
               </Text>
             )}
           </View>
@@ -550,7 +520,7 @@ const LoginScreen = (props: {
               <View>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: normalize(21),
                     color: Colors.textColor,
                     fontFamily: "Poppins-Regular",
                   }}
@@ -565,7 +535,7 @@ const LoginScreen = (props: {
                   <View
                     style={{
                       width: 50,
-                      height: 2,
+                      height: 3,
                       marginTop: 5,
                       backgroundColor: Colors.textColor,
                     }}
@@ -576,7 +546,7 @@ const LoginScreen = (props: {
               <View style={{ marginHorizontal: 20 }}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: normalize(21),
                     color: Colors.textColor,
                     fontFamily: "Poppins-Regular",
                   }}
@@ -590,8 +560,8 @@ const LoginScreen = (props: {
                 {isSignUpClicked ? (
                   <View
                     style={{
-                      width: 60,
-                      height: 2,
+                      width: 70,
+                      height: 3,
                       marginTop: 5,
                       backgroundColor: Colors.textColor,
                     }}
@@ -603,12 +573,19 @@ const LoginScreen = (props: {
               {isLoginClicked ? <Login /> : <SignUp />}
             </View>
           </Card>
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ marginVertical: 20, fontFamily: "Poppins-Regular" }}>
-              OR
-            </Text>
-          </View>
         </View>
+      </View>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Text
+          style={{
+            fontFamily: "Poppins-Regular",
+            color: "#838383",
+            fontSize: normalize(21),
+            marginBottom: 10,
+          }}
+        >
+          Or
+        </Text>
       </View>
       <View
         style={{
@@ -620,13 +597,13 @@ const LoginScreen = (props: {
         <View
           style={{
             flexDirection: "row",
-
             justifyContent: "center",
             alignItems: "center",
             borderColor: "#e0e0e0",
             borderRadius: 25,
             borderWidth: 1,
             backgroundColor: "#3b5988",
+            marginTop: 10,
             padding: 10,
           }}
         >
@@ -642,7 +619,7 @@ const LoginScreen = (props: {
             alignItems: "center",
             borderColor: "#e0e0e0",
             borderRadius: 25,
-            marginTop: 20,
+            marginTop: 10,
             marginBottom: 30,
             borderWidth: 1,
             backgroundColor: "#db4437",
@@ -657,46 +634,6 @@ const LoginScreen = (props: {
             Login With Google
           </Text>
         </View>
-        {/*<View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-            marginRight: 20,
-          }}
-        >
-          <TouchableOpacity style={{ flex: 0.7, marginTop: 20 }}>
-            <WithLocalSvg asset={require("../../assets/facebook.svg")} />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <WithLocalSvg asset={require("../../assets/google.svg")} />
-          </TouchableOpacity>
-        </View>*/}
-        {/*<WithLocalSvg
-              width="50"
-              height="80"
-              asset={require('../../assets/facebook.svg')}
-             />
-             <WithLocalSvg
-              width="50"
-              height="50"
-              asset={require('../../assets/google.svg')}
-          />
-        <FAB
-          style={styles.socialButton}
-          small
-          color="#222"
-          icon="facebook"
-          onPress={() => console.log('Pressed')}
-        />
-        <FAB
-          style={styles.socialButton}
-          small
-          icon="google"
-          color="#222"
-          onPress={() => console.log('Pressed')}
-          />*/}
       </View>
     </ScrollView>
   );
@@ -706,11 +643,13 @@ const styles = StyleSheet.create({
   card: {
     marginHorizontal: 20,
     marginTop: -100,
+    marginBottom: 10,
   },
   btn: {
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: 20,
+    color: "#838383",
   },
   fab: {
     right: 0,

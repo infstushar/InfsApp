@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -14,20 +14,20 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_1_428x926" translatesAutoresizingMaskIntoConstraints="NO" id="xud-Xq-fuE">
-                                <rect key="frame" x="0.0" y="-44" width="320" height="656"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash screen2x" translatesAutoresizingMaskIntoConstraints="NO" id="EjY-7w-9Uv">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xud-Xq-fuE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1Xr-bN-hmr"/>
-                            <constraint firstItem="xud-Xq-fuE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-44" id="8gT-iN-vHA"/>
-                            <constraint firstItem="xud-Xq-fuE" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="KYU-9F-D2J"/>
-                            <constraint firstItem="xud-Xq-fuE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YNd-C4-x6Y"/>
+                            <constraint firstAttribute="trailing" secondItem="EjY-7w-9Uv" secondAttribute="trailing" id="HBB-FP-W4P"/>
+                            <constraint firstAttribute="bottom" secondItem="EjY-7w-9Uv" secondAttribute="bottom" id="Mil-Cs-aaR"/>
+                            <constraint firstItem="EjY-7w-9Uv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fgZ-Yv-G2i"/>
+                            <constraint firstItem="EjY-7w-9Uv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rtQ-88-ZxN"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,7 +37,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_1_428x926" width="142.5" height="308.5"/>
+        <image name="Splash screen2x" width="286.33334350585938" height="617"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

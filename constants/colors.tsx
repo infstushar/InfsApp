@@ -1,7 +1,7 @@
-export default{
-    primaryColor:'#7ECCE6',
-    textColor:'#20BEC9',
-    forgotbg:'#34B44D',
-    forgotbgsent:'#FBAD1D',
-    resetpassbg:'#ED4666',
-}
+export default {
+  primaryColor: "#00B5E0",
+  textColor: "#00B5E0",
+  forgotbg: "#ED2020",
+  forgotbgsent: "#FBAD1D",
+  resetpassbg: "#34B94C",
+};

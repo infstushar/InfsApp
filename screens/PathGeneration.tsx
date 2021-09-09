@@ -1,10 +1,20 @@
 import React, { Component, useRef } from "react";
-import { Text, Dimensions, ScrollView, Animated } from "react-native";
-import Svg, { Path } from "react-native-svg";
+import {
+  Text,
+  Dimensions,
+  ScrollView,
+  Animated,
+  View,
+  StyleSheet,
+} from "react-native";
+import { white } from "react-native-paper/lib/typescript/styles/colors";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Path, Ellipse, Circle } from "react-native-svg";
 import * as PathHelper from "./PathHelper";
 
 const { width } = Dimensions.get("screen");
 export default class PathGeneration extends Component {
+  // size = 0;
   constructor(props) {
     super(props);
 
@@ -13,7 +23,7 @@ export default class PathGeneration extends Component {
 
     this.leaderLineProperty = {
       lineWidth: width - 180,
-      radius: 0,
+      radius: 50,
     };
   }
 
@@ -22,15 +32,22 @@ export default class PathGeneration extends Component {
     this.pathSegmentArray = PathHelper.getPathProperty(
       this.path,
       this.totalDays,
+      //this.incrementPathSize()
       20
     );
+
     this.area = PathHelper.calculateProgressArea(
       this.totalDays,
       this.pathSegmentArray
     );
   };
 
-  addAnimationListener = () => {
+  /* incrementPathSize = () => {
+    size = +30;
+    return size;
+  };*/
+
+  /*addAnimationListener = () => {
     this.state.animation.addListener(({ value }) => {
       const progress = value * this.totalDays;
       const path = PathHelper.calculateProgressArea(
@@ -44,20 +61,31 @@ export default class PathGeneration extends Component {
         });
       }
     });
-  };
+  };*/
 
   render() {
     this.startProcessing();
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={{
+          backgroundColor: "white",
+          flexGrow: 1,
+          marginBottom: 50,
+        }}
+      >
         <Animated.View>
-          <Svg style={{ width: "100%", height: this.month * 100 + 120 }}>
+          <Svg
+            style={{
+              width: "100%",
+              height: this.month * 100 + 120,
+            }}
+          >
             <Path
               d={this.area}
               stroke="black"
               strokeWidth={0.5}
-              fill="#58595B"
-              fillRule="nonzero"
+              fill="gray"
+              fillRule="evenodd"
             />
           </Svg>
         </Animated.View>

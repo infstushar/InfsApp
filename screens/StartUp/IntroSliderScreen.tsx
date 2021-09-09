@@ -1,29 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   ScrollView,
   Text,
   StyleSheet,
   Dimensions,
-  StatusBar,
-  SafeAreaView,
-  Animated,
-  Button,
-  Alert,
-  TouchableOpacity,
+  Platform,
+  PixelRatio,
 } from "react-native";
-import Colors from "../../constants/colors";
 import { WithLocalSvg } from "react-native-svg";
-import Icon from "react-native-vector-icons/Ionicons";
 import RoundedButton from "../../components/RoundedButton";
+import OnboardingScreen1 from "./OnboardingScreen1";
+import OnboardingScreen2 from "./OnboardingScreen2";
+import OnboardingScreen3 from "./OnboardingScreen3";
+
+const { width, height } = Dimensions.get("window");
+const scale = width / 415;
+const normalize = (size) => {
+  const newSize = size * scale;
+  if (Platform.OS == "ios") {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize));
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
+  }
+};
+
 const IntroSliderScreen = (props: {
   navigation: { navigate: (arg0: string, arg1: Object) => void };
 }) => {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
-  const { width, height } = Dimensions.get("window");
+
   const scrollViewRef = useRef<ScrollView>(null);
   const [isSkipAndNext, setIsSkipAndNext] = useState(false);
-  const [page, setPage] = useState(0);
 
   const { currentPage: pageIndex } = sliderState;
 
@@ -48,10 +56,9 @@ const IntroSliderScreen = (props: {
       });
     }
   };
+
   const launchHomeScreen = () => {
-    props.navigation.navigate("Preference", { login: false });
-    //Alert.alert('Next Screen Wii be Loaded');
-    // props.navigation.navigate("Path", { login: false });
+    nextArrowHandler(2);
   };
 
   const skipHandler = () => {
@@ -60,85 +67,51 @@ const IntroSliderScreen = (props: {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-        <ScrollView
-          horizontal={true}
-          scrollEventThrottle={16}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          onScroll={(event) => {
-            const { currentPage } = sliderState;
-            const x = event.nativeEvent.contentOffset.x;
-            const indexOfNextScreen = Math.round(x / width);
-            if (indexOfNextScreen !== currentPage) {
-              setSliderState({
-                ...sliderState,
-                currentPage: indexOfNextScreen,
-              });
-              console.log("currntPage", currentPage);
-            }
-            if (pageIndex === 2) {
-              setIsSkipAndNext(true);
-            } else {
-              setIsSkipAndNext(false);
-            }
-          }}
-          ref={scrollViewRef}
-        >
-          <View
-            style={{
-              flex: 1,
-              alignItems: "center",
-              height,
-              width,
-            }}
-          >
-            <View>
-              <WithLocalSvg
-                width={width}
-                height={400}
-                asset={require("../../assets/vector1.svg")}
-              />
+      <ScrollView
+        horizontal={true}
+        scrollEventThrottle={16}
+        pagingEnabled={true}
+        showsHorizontalScrollIndicator={false}
+        onScroll={(event) => {
+          const { currentPage } = sliderState;
+          const x = event.nativeEvent.contentOffset.x;
+          const indexOfNextScreen = Math.round(x / width);
+          if (indexOfNextScreen !== currentPage) {
+            setSliderState({
+              ...sliderState,
+              currentPage: indexOfNextScreen,
+            });
+            console.log("currntPage", currentPage);
+          }
+          if (pageIndex === 2) {
+            setIsSkipAndNext(true);
+          } else {
+            setIsSkipAndNext(false);
+          }
+        }}
+        ref={scrollViewRef}
+      >
+        <View style={{}}>
+          <OnboardingScreen1 />
+          <View style={{ marginBottom: height * 0.1 }}>
+            <View style={styles.pageDotView}>
+              {Array.from(Array(3).keys()).map((key, index) => (
+                <View
+                  style={[
+                    styles.paginationDots,
+                    { width: pageIndex === index ? 30 : 10 },
+                    { opacity: pageIndex === index ? 1 : 0.6 },
+                  ]}
+                  key={index}
+                />
+              ))}
             </View>
-            <View
-              style={{
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: "#21BDC8",
-                  fontFamily: "Poppins-Bold",
-                }}
-              >
-                The Knowledge you need
-              </Text>
-
-              <View>
-                <Text
-                  style={{
-                    color: "#838383",
-                    fontSize: 18,
-                    textAlign: "center",
-                    marginHorizontal: 10,
-                    marginVertical: 30,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Looking for authentic evidence backed health and nutrition
-                  knowledge? You’re at the right place!
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
+          </View>
+        </View>
+        <View>
+          <OnboardingScreen2 />
+          <View style={{ marginBottom: height * 0.1 }}>
+            <View style={styles.pageDotView}>
               {console.log("pageIndex", pageIndex)}
               {Array.from(Array(3).keys()).map((key, index) => (
                 <View
@@ -152,59 +125,12 @@ const IntroSliderScreen = (props: {
               ))}
             </View>
           </View>
-          <View
-            style={{
-              flex: 1,
+        </View>
 
-              height,
-              width,
-            }}
-          >
-            <View>
-              <WithLocalSvg
-                width={"100%"}
-                height={400}
-                asset={require("../../assets/vector2.svg")}
-              />
-            </View>
-            <View
-              style={{
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: "#21BDC8",
-                  fontFamily: "Poppins-Bold",
-                }}
-              >
-                Education that Empowers
-              </Text>
-
-              <View>
-                <Text
-                  style={{
-                    color: "#838383",
-                    fontSize: 18,
-                    textAlign: "center",
-                    marginHorizontal: 10,
-                    marginVertical: 30,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Our courses are designed for everyone by a highly experienced
-                  group of researchers and faculty members
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
+        <View>
+          <OnboardingScreen3 />
+          <View style={{ marginTop: 10 }}>
+            <View style={styles.pageDotView}>
               {console.log("pageIndex", pageIndex)}
               {Array.from(Array(3).keys()).map((key, index) => (
                 <View
@@ -217,292 +143,69 @@ const IntroSliderScreen = (props: {
                 />
               ))}
             </View>
-          </View>
-          <View
-            style={{
-              flex: 1,
 
-              height,
-              width,
-            }}
-          >
-            <View style={{ alignItems: "center" }}>
-              <WithLocalSvg
-                width={"100%"}
-                height={400}
-                asset={require("../../assets/vector3.svg")}
-              />
-            </View>
-            <View
-              style={{
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: "#21BDC8",
-                  fontFamily: "Poppins-Bold",
-                }}
-              >
-                Interactive Platform
-              </Text>
-
-              <View>
+            <View style={{ marginTop: 5 }}>
+              <Text style={styles.accountText}>Already have an account?</Text>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
-                  style={{
-                    color: "#838383",
-                    fontSize: 18,
-                    textAlign: "center",
-                    marginHorizontal: 10,
-                    marginVertical: 30,
-                    fontFamily: "Poppins-Regular",
+                  onPress={() => {
+                    props.navigation.navigate("Login", { login: true });
                   }}
+                  style={styles.logInText}
                 >
-                  You will have access to live lectures, Discussion forums,
-                  cutting edge content and a spectacular community of fitness
-                  professional
+                  Login here
                 </Text>
-
-                <View
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "row",
-                    marginBottom: 20,
-                  }}
-                >
-                  {console.log("pageIndex", pageIndex)}
-                  {Array.from(Array(3).keys()).map((key, index) => (
-                    <View
-                      style={[
-                        styles.paginationDots,
-                        { width: pageIndex === index ? 30 : 10 },
-                        { opacity: pageIndex === index ? 1 : 0.6 },
-                      ]}
-                      key={index}
-                    />
-                  ))}
-                </View>
-
-                <Text
-                  style={{
-                    color: "black",
-                    fontSize: 18,
-                    textAlign: "center",
-                    marginHorizontal: 10,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Already have an account?
-                </Text>
-                <View
-                  style={{ justifyContent: "center", alignItems: "center" }}
-                >
-                  <Text
-                    onPress={() => {
-                      props.navigation.navigate("Login", { login: true });
-                    }}
-                    style={{
-                      textDecorationLine: "underline",
-                      fontFamily: "Poppins-Regular",
-                      marginTop: 5,
-                      color: "#7A5F36",
-                    }}
-                  >
-                    Login here
-                  </Text>
-                </View>
               </View>
             </View>
           </View>
-        </ScrollView>
-        {/* <View
-          style={{
-            marginBottom: '10%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
-          {console.log('pageIndex', pageIndex)}
-          {Array.from(Array(3).keys()).map((key, index) => (
-            <View
-              style={[
-                styles.paginationDots,
-                {width: pageIndex === index ? 30 : 10},
-                {opacity: pageIndex === index ? 1 : 0.6},
-              ]}
-              key={index}
-            />
-          ))}
-            </View>*/}
+        </View>
+      </ScrollView>
 
-        {!isSkipAndNext ? (
+      {!isSkipAndNext ? (
+        <View style={styles.skipNextContainer}>
+          {!isSkipAndNext ? (
+            <Text style={styles.skipButtonText} onPress={skipHandler}>
+              Skip
+            </Text>
+          ) : null}
+
           <View
             style={{
               flexDirection: "row",
-              marginHorizontal: 20,
-              alignItems: "center",
               justifyContent: "space-between",
             }}
           >
-            {/*<Text style={{color: 'white', fontSize: 18,fontFamily: 'Poppins-Regular'}} onPress={skipHandler}>
-              SKIP
-          </Text>*/}
-
-            {/*<View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-              }}
-            >
-              {console.log("pageIndex", pageIndex)}
-              {Array.from(Array(3).keys()).map((key, index) => (
-                <View
-                  style={[
-                    styles.paginationDots,
-                    { width: pageIndex === index ? 30 : 10 },
-                    { opacity: pageIndex === index ? 1 : 0.6 },
-                  ]}
-                  key={index}
-                />
-              ))}
-                </View>*/}
-            <View
-              style={{
-                alignItems: "flex-start",
-                justifyContent: "center",
-                marginRight: 10,
-              }}
-            >
-              {!isSkipAndNext ? (
-                <Text
-                  style={{
-                    color: "#3D433E",
-                    fontSize: 18,
-
-                    marginRight: 10,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                  onPress={skipHandler}
-                >
-                  Skip
-                </Text>
-              ) : null}
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              {/* <Icon
-                name="arrow-forward"
-                color="#19B6C1"
-                size={33}
-                onPress={() => {
-                  const index = pageIndex + 1;
-                  nextArrowHandler(index);
-                }}
-              />*/}
-
-              {/*<TouchableOpacity 
-        onPress={()=>{
-          const index = pageIndex + 1;
-          nextArrowHandler(index);
-        }}
-        style={{flexDirection:'row', height:40,
-        justifyContent:'center',alignItems:'center',
-        paddingStart:25,paddingEnd:25,
-        borderRadius:40,backgroundColor:Colors.textColor,}}>
-            <View style={{alignItems:'center'}}>
-               <WithLocalSvg
-             asset={require('../../assets/Iconforward.svg')} />
-             </View>
-      </TouchableOpacity>*/}
-
-              <RoundedButton
-                onPress={() => {
-                  const index = pageIndex + 1;
-                  nextArrowHandler(index);
-                }}
-                title="Next"
-                textVisible={true}
-                visible={false}
-              />
-            </View>
-          </View>
-        ) : (
-          <View
-            style={{
-              justifyContent: "center",
-              marginRight: 10,
-              flexDirection: "row",
-            }}
-          >
-            <View style={{ alignItems: "flex-start", marginRight: 10 }}>
-              {!isSkipAndNext ? (
-                <Text
-                  style={{
-                    color: "#3D433E",
-                    fontSize: 18,
-                    marginTop: 20,
-                    marginRight: 10,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                  onPress={skipHandler}
-                >
-                  Skip
-                </Text>
-              ) : null}
-            </View>
-            {/*  <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "row",
-                marginLeft: 10,
-              }}
-            >
-              {console.log("pageIndex", pageIndex)}
-              {Array.from(Array(3).keys()).map((key, index) => (
-                <View
-                  style={[
-                    styles.paginationDots,
-                    { width: pageIndex === index ? 30 : 10 },
-                    { opacity: pageIndex === index ? 1 : 0.6 },
-                  ]}
-                  key={index}
-                />
-              ))}
-                </View>*/}
-            {/*  <Button title="GET STARTED" onPress={launchHomeScreen} />*/}
-            {/*<TouchableOpacity 
-        onPress={()=>{
-            launchHomeScreen()
-        }}
-        style={{flexDirection:'row', height:40,
-        justifyContent:'center',alignItems:'center',
-        paddingStart:30,paddingEnd:30,
-        borderRadius:40,backgroundColor:Colors.textColor,}}>
-            <Text  style={{textAlign:'center',
-            alignItems:'center',
-            color:'white',fontSize:18,
-            fontFamily:'Poppins-Regular'}}>Get Started</Text> 
-      </TouchableOpacity>*/}
-
             <RoundedButton
               onPress={() => {
-                launchHomeScreen();
+                const index = pageIndex + 1;
+                nextArrowHandler(index);
               }}
-              title="Get Started"
+              title="Next"
               textVisible={true}
               visible={false}
             />
           </View>
-        )}
-      </SafeAreaView>
+        </View>
+      ) : (
+        <View style={styles.bottomContainer}>
+          <View style={{ alignItems: "flex-start", marginRight: 10 }}>
+            {!isSkipAndNext ? (
+              <Text style={styles.skipButtonText} onPress={skipHandler}>
+                Skip
+              </Text>
+            ) : null}
+          </View>
+
+          <RoundedButton
+            onPress={() => {
+              props.navigation.navigate("Preference", { login: false });
+            }}
+            title="Get Started"
+            textVisible={true}
+            visible={false}
+          />
+        </View>
+      )}
     </>
   );
 };
@@ -516,14 +219,83 @@ const styles = StyleSheet.create({
     width: 10,
     marginHorizontal: 5,
     borderRadius: 10 / 2,
-    backgroundColor: "#19B6C1",
+    backgroundColor: "#00B5E0",
   },
   roundedButton: {
-    borderRadius: 20,
+    borderRadius: 29,
     overflow: "hidden",
     marginVertical: 20,
     justifyContent: "center",
-    borderColor: "#888",
+    borderColor: "#00B5E0",
+  },
+  titleText: {
+    fontSize: normalize(26.25),
+    color: "#555555",
+    fontFamily: "Poppins-Medium",
+  },
+  infoText: {
+    color: "#838383",
+    fontSize: normalize(17.5),
+    textAlign: "center",
+    marginHorizontal: 10,
+    marginVertical: 10,
+    fontFamily: "Poppins-Regular",
+    marginTop: 10,
+    marginBottom: 30,
+    marginStart: 20,
+    marginEnd: 20,
+    letterSpacing: 0,
+  },
+  skipButtonText: {
+    color: "#838383",
+    fontSize: normalize(17.5),
+    textDecorationLine: "underline",
+    marginRight: 10,
+    fontFamily: "Poppins-Regular",
+  },
+  textureImage: {
+    position: "absolute",
+    top: -(height / 7),
+    marginLeft: 10,
+    height: "2%",
+  },
+  fullPageView: {
+    flex: 1,
+    alignItems: "center",
+    width: width,
+  },
+  pageDotView: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  skipNextContainer: {
+    flexDirection: "row",
+    marginHorizontal: 20,
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 40,
+  },
+  bottomContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 10,
+    flexDirection: "row",
+    marginBottom: height * 0.04,
+  },
+  accountText: {
+    color: "#6F7070",
+    fontSize: normalize(21),
+    textAlign: "center",
+    fontFamily: "Poppins-Medium",
+    marginTop: height * 0.015,
+  },
+  logInText: {
+    textDecorationLine: "underline",
+    fontFamily: "Poppins-Regular",
+    color: "#00b5e0",
+    fontSize: normalize(15.75),
+    marginBottom: 50,
   },
 });
 export default IntroSliderScreen;

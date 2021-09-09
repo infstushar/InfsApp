@@ -6,6 +6,9 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  Dimensions,
+  Platform,
+  PixelRatio,
 } from "react-native";
 
 import StepIndicator from "react-native-step-indicator";
@@ -14,25 +17,44 @@ import Colors from "../../constants/colors";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Chip, ToggleButton } from "react-native-paper";
 import RoundedButton from "../../components/RoundedButton";
+import DecisionScreen from "./DecisionScreen";
 
+const { width, height } = Dimensions.get("window");
+const scale = width / 375;
+const normalize = (size) => {
+  const newSize = size * scale;
+  if (Platform.OS == "ios") {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize));
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
+  }
+};
 const firstIndicatorStyles = {
   stepIndicatorSize: 30,
   currentStepIndicatorSize: 40,
-  separatorStrokeWidth: 3,
-  currentStepStrokeWidth: 5,
-  separatorFinishedColor: "#4aae4f",
-  separatorUnFinishedColor: "#e0e0e0",
-  stepIndicatorFinishedColor: "#4aae4f",
-  stepIndicatorUnFinishedColor: "#e0e0e0",
-  stepIndicatorCurrentColor: "#ffffff",
+  separatorStrokeWidth: 4,
+  currentStepStrokeWidth: 3,
+  stepStrokeWidth: 2,
+  stepStrokeCurrentColor: "#FFFFFF",
+  stepStrokeFinishedColor: "#FFFFFF",
+  stepStrokeUnFinishedColor: "#FFFFFF",
+  separatorFinishedColor: "#34B94C",
+  separatorUnFinishedColor: "#838383",
+  stepIndicatorFinishedColor: "#34B94C",
+  stepIndicatorUnFinishedColor: "#838383",
+  stepIndicatorCurrentColor: "#34B94C",
   stepIndicatorLabelFontSize: 15,
   currentStepIndicatorLabelFontSize: 15,
-  stepIndicatorLabelCurrentColor: "#000000",
-  stepIndicatorLabelFinishedColor: "#ffffff",
-  stepIndicatorLabelUnFinishedColor: "rgba(255,255,255,0.5)",
-  labelColor: "#666666",
+  stepIndicatorLabelCurrentColor: "#FFFFFF",
+  stepIndicatorLabelFinishedColor: "#FFFFFF",
+  stepIndicatorLabelUnFinishedColor: "#FFFFFF",
+  labelColor: "#FFFFFF",
   labelSize: 12,
-  currentStepLabelColor: "#4aae4f",
+  currentStepLabelColor: "#FFFFFF",
+  shadowColor: "#00000029",
+  shadowOffset: { width: -2, height: 4 },
+  shadowOpacity: 1,
+  shadowRadius: 3,
 };
 
 const PreferenceScreen = (props: {
@@ -174,7 +196,7 @@ const PreferenceScreen = (props: {
     <View style={styles.item}>
       {list[id].checked ? (
         <Chip
-          style={{ backgroundColor: "#34B44D" }}
+          style={styles.chipContainer}
           onPress={() => {
             onCheck(id);
             if (list[id].checked === true) {
@@ -186,20 +208,32 @@ const PreferenceScreen = (props: {
             setPreference([...preference, { title }]);
           }}
         >
-          <Text style={{ color: "white", fontFamily: "Poppins-Bold" }}>
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontFamily: "Poppins-Bold",
+              fontSize: normalize(17.5),
+            }}
+          >
             {title}
           </Text>
         </Chip>
       ) : (
         <Chip
-          style={{ backgroundColor: "#E6E7E9" }}
+          style={{ backgroundColor: "#E6E7E9", borderColor: "#E2E2E2" }}
           onPress={() => {
             onCheck(id);
             console.log(list);
             setPreference([...preference, title]);
           }}
         >
-          <Text style={{ color: "black", fontFamily: "Poppins-Bold" }}>
+          <Text
+            style={{
+              color: "#555555",
+              fontFamily: "Poppins-Bold",
+              fontSize: normalize(17.5),
+            }}
+          >
             {title}
           </Text>
         </Chip>
@@ -213,23 +247,43 @@ const PreferenceScreen = (props: {
     <View style={styles.item}>
       {list1[id].checked ? (
         <Chip
-          style={{ backgroundColor: "#34B44D" }}
+          style={styles.chipContainer}
           onPress={() => {
             onCheck1(id);
             setPreference([...preference, title]);
           }}
         >
-          <Text style={{ color: "white" }}>{title}</Text>
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontFamily: "Poppins-Bold",
+              fontSize: normalize(17.5),
+            }}
+          >
+            {title}
+          </Text>
         </Chip>
       ) : (
         <Chip
-          style={{ backgroundColor: "#E6E7E9" }}
+          style={{
+            backgroundColor: "#E6E7E9",
+            borderColor: "#E2E2E2",
+            borderWidth: 2,
+          }}
           onPress={() => {
             onCheck1(id);
             setPreference([...preference, title]);
           }}
         >
-          <Text style={{ color: "black" }}>{title}</Text>
+          <Text
+            style={{
+              color: "#555555",
+              fontFamily: "Poppins-Bold",
+              fontSize: normalize(17.5),
+            }}
+          >
+            {title}
+          </Text>
         </Chip>
       )}
     </View>
@@ -241,23 +295,39 @@ const PreferenceScreen = (props: {
     <View style={styles.item}>
       {list2[id].checked ? (
         <Chip
-          style={{ backgroundColor: "#34B44D" }}
+          style={styles.chipContainer}
           onPress={() => {
             onCheck2(id);
             setPreference([...preference, title]);
           }}
         >
-          <Text style={{ color: "white" }}>{title}</Text>
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontFamily: "Poppins-Regular",
+              fontSize: normalize(17.5),
+            }}
+          >
+            {title}
+          </Text>
         </Chip>
       ) : (
         <Chip
-          style={{ backgroundColor: "#E6E7E9" }}
+          style={{ backgroundColor: "#E6E7E9", borderColor: "#E2E2E2" }}
           onPress={() => {
             onCheck2(id);
             setPreference([...preference, title]);
           }}
         >
-          <Text style={{ color: "black" }}>{title}</Text>
+          <Text
+            style={{
+              color: "#555555",
+              fontFamily: "Poppins-Regular",
+              fontSize: normalize(17.5),
+            }}
+          >
+            {title}
+          </Text>
         </Chip>
       )}
     </View>
@@ -302,16 +372,17 @@ const PreferenceScreen = (props: {
             >
               <Text
                 style={{
-                  fontFamily: "Poppins-Bold",
+                  fontFamily: "Poppins-SemiBold",
                   color: "#555555",
-                  fontSize: 18,
+                  fontSize: normalize(26.25),
                 }}
               >
                 Select Your Interests
               </Text>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: normalize(17.5),
+                  opacity: 1,
                   marginTop: 10,
                   fontFamily: "Poppins-Regular",
                   color: "#838383",
@@ -320,7 +391,7 @@ const PreferenceScreen = (props: {
                 Help us learn more about you
               </Text>
 
-              <View style={{ height: 200 }}>
+              <View style={{ height: 200, marginTop: 20 }}>
                 <FlatList
                   data={DATA}
                   numColumns={2}
@@ -332,45 +403,9 @@ const PreferenceScreen = (props: {
                 onPress={() => {
                   onStepPress(1);
                 }}
-                style={{
-                  flexDirection: "row",
-                  height: 45,
-                  justifyContent: "space-between",
-                  width: "80%",
-                  alignItems: "center",
-                  position: "absolute",
-                  bottom: 0,
-                  marginBottom: "10%",
-                  marginTop: 20,
-                  borderRadius: 40,
-                  backgroundColor: Colors.textColor,
-                }}
+                style={styles.buttonContainer}
               >
-                <Text
-                  style={{
-                    flex: 1,
-                    textAlign: "center",
-                    paddingLeft: 40,
-                    color: "white",
-                    fontSize: 18,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Continue
-                </Text>
-                <View
-                  style={{
-                    alignItems: "flex-end",
-                    justifyContent: "flex-end",
-                    paddingRight: 10,
-                  }}
-                >
-                  <Icon
-                    name="md-arrow-forward-circle"
-                    color="white"
-                    size={33}
-                  ></Icon>
-                </View>
+                <Text style={styles.continueButton}>Continue</Text>
               </TouchableOpacity>
             </View>
           ) : null}
@@ -384,16 +419,16 @@ const PreferenceScreen = (props: {
             >
               <Text
                 style={{
-                  fontFamily: "Poppins-Bold",
+                  fontFamily: "Poppins-SemiBold",
                   color: "#555555",
-                  fontSize: 18,
+                  fontSize: normalize(26.25),
                 }}
               >
                 Select your Reason
               </Text>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: normalize(17.5),
                   marginTop: 10,
                   fontFamily: "Poppins-Regular",
                   color: "#838383",
@@ -428,31 +463,7 @@ const PreferenceScreen = (props: {
                   backgroundColor: Colors.textColor,
                 }}
               >
-                <Text
-                  style={{
-                    flex: 1,
-                    textAlign: "center",
-                    paddingLeft: 40,
-                    color: "white",
-                    fontSize: 18,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Continue
-                </Text>
-                <View
-                  style={{
-                    alignItems: "flex-end",
-                    justifyContent: "flex-end",
-                    paddingRight: 10,
-                  }}
-                >
-                  <Icon
-                    name="md-arrow-forward-circle"
-                    color="white"
-                    size={33}
-                  ></Icon>
-                </View>
+                <Text style={styles.continueButton}>Continue</Text>
               </TouchableOpacity>
             </View>
           ) : null}
@@ -466,9 +477,9 @@ const PreferenceScreen = (props: {
             >
               <Text
                 style={{
-                  fontFamily: "Poppins-Bold",
+                  fontFamily: "Poppins-SemiBold",
                   color: "#555555",
-                  fontSize: 18,
+                  fontSize: normalize(26.25),
                   textAlign: "center",
                   marginVertical: 10,
                 }}
@@ -494,7 +505,8 @@ const PreferenceScreen = (props: {
                       uniqueData.toString() +
                       " Will send Over API Call To Store User Preference."
                   );
-                  props.navigation.navigate("Login", { login: false });
+                  props.navigation.navigate("Decision", { login: false });
+                  //props.navigation.navigate("Login", { login: false });
                 }}
                 style={{
                   flexDirection: "row",
@@ -510,31 +522,7 @@ const PreferenceScreen = (props: {
                   backgroundColor: Colors.textColor,
                 }}
               >
-                <Text
-                  style={{
-                    flex: 1,
-                    textAlign: "center",
-                    paddingLeft: 40,
-                    color: "white",
-                    fontSize: 18,
-                    fontFamily: "Poppins-Regular",
-                  }}
-                >
-                  Continue
-                </Text>
-                <View
-                  style={{
-                    alignItems: "flex-end",
-                    justifyContent: "flex-end",
-                    paddingRight: 10,
-                  }}
-                >
-                  <Icon
-                    name="md-arrow-forward-circle"
-                    color="white"
-                    size={33}
-                  ></Icon>
-                </View>
+                <Text style={styles.continueButton}>Continue</Text>
               </TouchableOpacity>
             </View>
           ) : null}
@@ -558,22 +546,48 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   stepLabel: {
-    fontSize: 12,
+    fontSize: normalize(14),
     textAlign: "center",
-    fontWeight: "500",
+    fontFamily: "Poppins-Medium",
     color: "#999999",
   },
   stepLabelSelected: {
-    fontSize: 12,
+    fontSize: normalize(14),
     textAlign: "center",
-    fontWeight: "500",
+    fontFamily: "Poppins-Medium",
     color: "#4aae4f",
   },
   item: {
     padding: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: normalize(31),
+  },
+  chipContainer: {
+    backgroundColor: "#34B94C",
+    borderColor: "#FFFFFF",
+    borderWidth: 2,
+  },
+  continueButton: {
+    flex: 1,
+    textAlign: "center",
+    paddingLeft: 40,
+    color: "#FFFFFF",
+    fontSize: normalize(17.5),
+    fontFamily: "Poppins-Medium",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    height: 45,
+    justifyContent: "space-between",
+    width: "80%",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 0,
+    marginBottom: "10%",
+    marginTop: 20,
+    borderRadius: 40,
+    backgroundColor: Colors.textColor,
   },
 });
 export default PreferenceScreen;

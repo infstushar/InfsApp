@@ -43,6 +43,9 @@
 		<string>Ionicons.ttf</string>
 		<string>fonts/Poppins-Bold.ttf</string>
 		<string>fonts/Poppins-Regular.ttf</string>
+		<string>fonts/Poppins-SemiBold.ttf</string>
+		<string>fonts/Poppins-Italic.ttf</string>
+		<string>fonts/Poppins-Medium.ttf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>MaterialCommunityIcons.ttf</string>
 	</array>

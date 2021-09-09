@@ -5,7 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  Dimensions,
   Alert,
+  Platform,
+  PixelRatio,
 } from "react-native";
 import Colors from "../../constants/colors";
 import Card from "../../components/Card";
@@ -13,6 +16,18 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { TextInput, Button } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
 import { TouchableOpacity } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+
+const scale = width / 415;
+const normalize = (size) => {
+  const newSize = size * scale;
+  if (Platform.OS == "ios") {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize));
+  } else {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
+  }
+};
 
 const ForgotPasswordScreen = (props: {
   navigation: { navigate: (arg0: string) => void };
@@ -35,7 +50,7 @@ const ForgotPasswordScreen = (props: {
                   onPress={() => {
                     setIsEmailSent(false);
                   }}
-                  size={24}
+                  size={19}
                   color="white"
                   name="arrow-back"
                   style={{ marginHorizontal: 10 }}
@@ -43,9 +58,9 @@ const ForgotPasswordScreen = (props: {
               </SafeAreaView>
               <Text
                 style={{
-                  fontSize: 30,
+                  fontSize: normalize(31.5),
                   marginTop: "10%",
-                  color: "white",
+                  color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
                 }}
@@ -55,14 +70,14 @@ const ForgotPasswordScreen = (props: {
               <Text
                 style={{
                   marginHorizontal: 20,
-                  color: "white",
-                  fontSize: 16,
+                  color: "#FFFFFF",
+                  fontSize: normalize(17.5),
                   marginVertical: 10,
                   marginBottom: 120,
                   fontFamily: "Poppins-Regular",
                 }}
               >
-                Please check your inbox and click on received link to reset a
+                We have sent you an email with a link to{"\n"} reset your
                 password
               </Text>
             </View>
@@ -87,18 +102,25 @@ const ForgotPasswordScreen = (props: {
                   style={{
                     justifyContent: "center",
                     alignItems: "center",
-                    marginTop: 30,
+                    marginTop: height * 0.08,
                   }}
                 >
-                  <Text style={{ fontFamily: "Poppins-Regular" }}>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Medium",
+                      color: "#3E3E3E",
+                      fontSize: normalize(21),
+                    }}
+                  >
                     Didn't receive the link?
                   </Text>
                   <Text
                     style={{
                       textDecorationLine: "underline",
                       marginTop: 10,
-                      color: "#20BEC9",
+                      color: "#00B5E0",
                       fontFamily: "Poppins-Regular",
+                      fontSize: normalize(15.75),
                     }}
                     onPress={() => {
                       // Alert.alert('Email Resend Functionality Will Be Called Here!')
@@ -130,6 +152,23 @@ const ForgotPasswordScreen = (props: {
               backgroundColor: Colors.forgotbg,
             }}
           >
+            <View
+              style={{
+                height: "100%",
+                width: "100%",
+                position: "absolute",
+                top: 10,
+                left: -50,
+                right: 10,
+              }}
+            >
+              <WithLocalSvg
+                width={width + 80}
+                height={225}
+                preserveAspectRatio="xMinYMin slice"
+                asset={require("../../assets/Texture-4.svg")}
+              />
+            </View>
             <View>
               <SafeAreaView>
                 <Icon
@@ -144,9 +183,9 @@ const ForgotPasswordScreen = (props: {
               </SafeAreaView>
               <Text
                 style={{
-                  fontSize: 30,
+                  fontSize: normalize(31.5),
                   marginTop: "10%",
-                  color: "white",
+                  color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
                 }}
@@ -157,29 +196,30 @@ const ForgotPasswordScreen = (props: {
                 style={{
                   marginHorizontal: 20,
                   color: "white",
-                  fontSize: 16,
+                  fontSize: normalize(17.5),
                   marginVertical: 10,
                   marginBottom: 120,
                   fontFamily: "Poppins-Regular",
                 }}
               >
-                Enter your registered email below to receive password reset
-                instruction
+                Enter your registered email below to get a{"\n"} link to reset
+                your password
               </Text>
             </View>
           </View>
 
-          <View>
+          <View style={{ marginBottom: 20, marginTop: 30 }}>
             <Card style={styles.card}>
               <View style={{ marginTop: 20 }}></View>
               <WithLocalSvg
                 width="100%"
-                height="35%"
-                asset={require("../../assets/fp.svg")}
+                height="50%"
+                asset={require("../../assets/Vector_1-2.svg")}
               />
+
               <View
                 style={{
-                  height: 60,
+                  height: 50,
                   borderRadius: 15,
                   borderWidth: 1,
                   flexDirection: "row",
@@ -192,38 +232,20 @@ const ForgotPasswordScreen = (props: {
                   overflow: "hidden",
                 }}
               >
-                <Icon name="person" size={23} color="#838383" />
+                <Icon name="mail" size={19} color="#838383" />
                 <TextInput
                   value={username}
                   onChangeText={(name) => setUserName(name)}
                   keyboardType="email-address"
-                  placeholder="UserName / Email"
-                  style={{ width: "90%", backgroundColor: "transparent" }}
-                />
-              </View>
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginBottom: 30,
-                }}
-              >
-                <Text style={{ fontFamily: "Poppins-Regular" }}>
-                  Remember Password?
-                </Text>
-                <Text
+                  placeholder="Enter Register Email Address"
                   style={{
-                    textDecorationLine: "underline",
-                    marginTop: 10,
-                    color: "#20BEC9",
+                    width: "90%",
+                    backgroundColor: "transparent",
+                    fontSize: normalize(14),
                     fontFamily: "Poppins-Regular",
+                    color: "#B7B7B7",
                   }}
-                  onPress={() => {
-                    props.navigation.navigate("Login");
-                  }}
-                >
-                  Login
-                </Text>
+                />
               </View>
               <TouchableOpacity
                 onPress={() => {
@@ -237,6 +259,8 @@ const ForgotPasswordScreen = (props: {
                   marginHorizontal: 20,
                   borderRadius: 40,
                   backgroundColor: Colors.textColor,
+                  marginTop: 20,
+                  marginBottom: 10,
                 }}
               >
                 <Text
@@ -245,7 +269,7 @@ const ForgotPasswordScreen = (props: {
                     textAlign: "center",
                     paddingLeft: 40,
                     color: "white",
-                    fontSize: 18,
+                    fontSize: normalize(18),
                     fontFamily: "Poppins-Regular",
                   }}
                 >
@@ -257,13 +281,7 @@ const ForgotPasswordScreen = (props: {
                     justifyContent: "flex-end",
                     paddingRight: 10,
                   }}
-                >
-                  <Icon
-                    name="md-arrow-forward-circle"
-                    color="white"
-                    size={33}
-                  ></Icon>
-                </View>
+                ></View>
               </TouchableOpacity>
             </Card>
           </View>
@@ -278,7 +296,8 @@ const ForgotPasswordScreen = (props: {
 const styles = StyleSheet.create({
   card: {
     marginHorizontal: 20,
-    marginTop: -100,
+    marginTop: -120,
+    height: height * 0.57,
   },
   btn: {
     flexDirection: "row",

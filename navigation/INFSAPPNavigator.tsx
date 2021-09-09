@@ -14,6 +14,19 @@ import ResetPasswordScreen from "../screens/Auth/ResetPasswordScreen";
 import OpenQuizTaskScreen from "../screens/Quiz/OpenQuizTaskScreen";
 import StartingQuizScreen from "../screens/Quiz/StartingQuizScreen";
 import PathGeneration from "../screens/PathGeneration";
+import DecisionScreen from "../screens/StartUp/DecisionScreen";
+import QuizScreen from "../screens/Quiz/StartingQuizScreen";
+import ProfileScreen from "../screens/ScreenNavigator/ProfileScreen";
+import CourseScreen from "../screens/ScreenNavigator/CourseScreen";
+import CardComponent from "../components/CardCoponentScreent";
+import CourseDetails from "../screens/Courses/CourseDetailScreen";
+import Module from "../screens/Courses/ModuleScreen";
+import ModuleDetails from "../screens/Courses/ModuleDetails";
+import ForgotUserScreen from "../screens/Auth/ForgotUserScreen";
+import UnitScreen from "../screens/Courses/UnitScreen";
+import UnitTextScreen from "../screens/Courses/UnitTextScreen";
+import UnitVideoTextScreen from "../screens/Courses/UnitVideoTextScreen";
+import UnitTextScreenFirst from "../screens/Courses/UnitTextScreenFirst";
 
 const INFSAPPNavigator = () => {
   const Stack = createStackNavigator();
@@ -41,8 +54,111 @@ const INFSAPPNavigator = () => {
             }}
           />
           <Stack.Screen
+            name="CardScreen"
+            component={CardComponent}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="ForgotUsername"
+            component={ForgotUserScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="Decision"
+            component={DecisionScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+
+          <Stack.Screen
+            name="Quiz"
+            component={QuizScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              headerShown: true,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+
+          <Stack.Screen
+            name="Courses"
+            component={CourseScreen}
+            options={{
+              headerShown: true,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+
+          <Stack.Screen
+            name="UnitVideoTextScreen"
+            component={UnitVideoTextScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="Module"
+            component={Module}
+            options={{
+              headerShown: true,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="CourseDetails"
+            component={CourseDetails}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="UnitScreen"
+            component={UnitScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="ModuleDetails"
+            component={ModuleDetails}
             options={{
               headerShown: false,
               headerTitleStyle: { fontFamily: "Poppins-Regular" },
@@ -54,7 +170,33 @@ const INFSAPPNavigator = () => {
             component={dummy}
             options={{ title: "Path" }}
           />
-          <Stack.Screen name="Preference" component={PreferenceScreen} />
+          <Stack.Screen
+            name="Preference"
+            component={PreferenceScreen}
+            options={{
+              headerShown: true,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="UnitTextScreen"
+            component={UnitTextScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="UnitTextScreenFirst"
+            component={UnitTextScreenFirst}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
           <Stack.Screen
             name="StudentDecision"
             component={OpenQuizTaskScreen}
