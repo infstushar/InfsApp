@@ -37,102 +37,116 @@ const ForgotPasswordScreen = (props: {
   const SentEmail = () => {
     return (
       <View>
-        <View>
+        <View
+          style={{
+            backgroundColor: Colors.forgotbgsent,
+            height: height * 0.4,
+          }}
+        >
           <View
             style={{
-              backgroundColor: Colors.forgotbgsent,
+              height: "100%",
+              width: "100%",
+              position: "absolute",
+              top: 10,
+              left: -50,
+              right: 10,
+            }}
+          >
+            <WithLocalSvg
+              width={width + 100}
+              height={height * 0.5}
+              style={{ posision: "absolute", top: -200 }}
+              preserveAspectRatio="xMinYMin slice"
+              asset={require("../../assets/Texture(1).svg")}
+            />
+          </View>
+          <SafeAreaView>
+            <WithLocalSvg
+              width={24}
+              height={16}
+              asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+              style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
+              onPress={() => {
+                setIsEmailSent(false);
+              }}
+            />
+          </SafeAreaView>
+          <Text
+            style={{
+              fontSize: normalize(31.5),
+              color: "#FFFFFF",
+              marginHorizontal: 20,
+              fontFamily: "Poppins-Bold",
+              marginTop: 30,
+            }}
+          >
+            Email has been sent!
+          </Text>
+          <Text
+            style={{
+              marginHorizontal: 10,
+              color: "#FFFFFF",
+              fontSize: normalize(17.5),
+              marginVertical: 10,
+              marginLeft: 25,
+              fontFamily: "Poppins-Regular",
               marginBottom: 20,
             }}
           >
-            <View>
-              <SafeAreaView>
-                <Icon
-                  onPress={() => {
-                    setIsEmailSent(false);
-                  }}
-                  size={19}
-                  color="white"
-                  name="arrow-back"
-                  style={{ marginHorizontal: 10 }}
-                />
-              </SafeAreaView>
-              <Text
-                style={{
-                  fontSize: normalize(31.5),
-                  marginTop: "10%",
-                  color: "#FFFFFF",
-                  marginHorizontal: 20,
-                  fontFamily: "Poppins-Bold",
-                }}
-              >
-                Email has been sent!
-              </Text>
-              <Text
-                style={{
-                  marginHorizontal: 20,
-                  color: "#FFFFFF",
-                  fontSize: normalize(17.5),
-                  marginVertical: 10,
-                  marginBottom: 120,
-                  fontFamily: "Poppins-Regular",
-                }}
-              >
-                We have sent you an email with a link to{"\n"} reset your
-                password
-              </Text>
-            </View>
-          </View>
+            We have sent you an email with a link to{"\n"} reset your password
+          </Text>
+        </View>
 
-          <View>
-            <Card style={styles.card}>
+        <View>
+          <Card style={styles.card}>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View style={{}}></View>
+
+              <WithLocalSvg
+                width="100%"
+                height="50%"
+                asset={require("../../assets/fpsent.svg")}
+              />
               <View
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
+                  marginTop: height * 0.08,
                 }}
               >
-                <View style={{ marginTop: 40 }}></View>
-                {/* <Icon name="md-mail" size={80} color="black" />*/}
-                <WithLocalSvg
-                  width="100%"
-                  height="50%"
-                  asset={require("../../assets/fpsent.svg")}
-                />
-                <View
+                <Text
                   style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: height * 0.08,
+                    fontFamily: "Poppins-Medium",
+                    color: "#3E3E3E",
+                    fontSize: normalize(21),
                   }}
                 >
-                  <Text
-                    style={{
-                      fontFamily: "Poppins-Medium",
-                      color: "#3E3E3E",
-                      fontSize: normalize(21),
-                    }}
-                  >
-                    Didn't receive the link?
-                  </Text>
-                  <Text
-                    style={{
-                      textDecorationLine: "underline",
-                      marginTop: 10,
-                      color: "#00B5E0",
-                      fontFamily: "Poppins-Regular",
-                      fontSize: normalize(15.75),
-                    }}
-                    onPress={() => {
-                      // Alert.alert('Email Resend Functionality Will Be Called Here!')
-                      setIsEmailSent(false);
-                    }}
-                  >
-                    Resend
-                  </Text>
-                </View>
+                  Didn't receive the link?
+                </Text>
+                <Text
+                  style={{
+                    textDecorationLine: "underline",
+                    marginTop: 10,
+                    color: "#00B5E0",
+                    fontFamily: "Poppins-Regular",
+                    fontSize: normalize(15.75),
+                  }}
+                  onPress={() => {
+                    // Alert.alert('Email Resend Functionality Will Be Called Here!')
+                    setIsEmailSent(false);
+                  }}
+                >
+                  Resend
+                </Text>
               </View>
-            </Card>
-          </View>
+            </View>
+          </Card>
         </View>
       </View>
     );
@@ -163,22 +177,23 @@ const ForgotPasswordScreen = (props: {
               }}
             >
               <WithLocalSvg
-                width={width + 80}
-                height={225}
+                width={width + 100}
+                height={height * 0.5}
+                style={{ posision: "absolute", top: -200 }}
                 preserveAspectRatio="xMinYMin slice"
-                asset={require("../../assets/Texture-4.svg")}
+                asset={require("../../assets/Texture(1).svg")}
               />
             </View>
             <View>
               <SafeAreaView>
-                <Icon
+                <WithLocalSvg
+                  width={24}
+                  height={16}
+                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                  style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
                   onPress={() => {
                     props.navigation.navigate("Login");
                   }}
-                  size={24}
-                  color="white"
-                  name="arrow-back"
-                  style={{ marginHorizontal: 20 }}
                 />
               </SafeAreaView>
               <Text
@@ -232,7 +247,11 @@ const ForgotPasswordScreen = (props: {
                   overflow: "hidden",
                 }}
               >
-                <Icon name="mail" size={19} color="#838383" />
+                <WithLocalSvg
+                  width={21}
+                  height={14}
+                  asset={require("../../assets/Iconzocial-email.svg")}
+                />
                 <TextInput
                   value={username}
                   onChangeText={(name) => setUserName(name)}
@@ -297,7 +316,7 @@ const styles = StyleSheet.create({
   card: {
     marginHorizontal: 20,
     marginTop: -120,
-    height: height * 0.57,
+    height: height * 0.45,
   },
   btn: {
     flexDirection: "row",

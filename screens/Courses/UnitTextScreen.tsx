@@ -89,7 +89,11 @@ const UnitTextScreen = (props) => {
           <View style={{ margin: 10 }}>
             <Image
               source={require("../../assets/component.png")}
-              style={{ width: 350, height: 350, resizeMode: "stretch" }}
+              style={{
+                width: normalize(350),
+                height: normalize(350),
+                resizeMode: "stretch",
+              }}
             />
             <View
               style={{
@@ -105,7 +109,7 @@ const UnitTextScreen = (props) => {
                   lineHeight: normalize(24.5),
                   color: "#3E3E3E",
                   paddingLeft: 2,
-                  marginBottom: 20,
+                  marginBottom: normalize(20),
                 }}
               >
                 Figure1:
@@ -159,7 +163,11 @@ const UnitTextScreen = (props) => {
           <View style={{ margin: 10 }}>
             <Image
               source={require("../../assets/Health.png")}
-              style={{ width: 350, height: 450, resizeMode: "stretch" }}
+              style={{
+                width: normalize(350),
+                height: normalize(450),
+                resizeMode: "stretch",
+              }}
             />
             <View
               style={{

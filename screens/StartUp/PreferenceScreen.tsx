@@ -30,11 +30,11 @@ const normalize = (size) => {
   }
 };
 const firstIndicatorStyles = {
-  stepIndicatorSize: 30,
-  currentStepIndicatorSize: 40,
+  stepIndicatorSize: normalize(40),
+  currentStepIndicatorSize: normalize(50),
   separatorStrokeWidth: 4,
   currentStepStrokeWidth: 3,
-  stepStrokeWidth: 2,
+  stepStrokeWidth: 3,
   stepStrokeCurrentColor: "#FFFFFF",
   stepStrokeFinishedColor: "#FFFFFF",
   stepStrokeUnFinishedColor: "#FFFFFF",
@@ -43,18 +43,14 @@ const firstIndicatorStyles = {
   stepIndicatorFinishedColor: "#34B94C",
   stepIndicatorUnFinishedColor: "#838383",
   stepIndicatorCurrentColor: "#34B94C",
-  stepIndicatorLabelFontSize: 15,
-  currentStepIndicatorLabelFontSize: 15,
+  stepIndicatorLabelFontSize: normalize(15),
+  currentStepIndicatorLabelFontSize: normalize(15),
   stepIndicatorLabelCurrentColor: "#FFFFFF",
   stepIndicatorLabelFinishedColor: "#FFFFFF",
   stepIndicatorLabelUnFinishedColor: "#FFFFFF",
   labelColor: "#FFFFFF",
-  labelSize: 12,
+  labelSize: normalize(12),
   currentStepLabelColor: "#FFFFFF",
-  shadowColor: "#00000029",
-  shadowOffset: { width: -2, height: 4 },
-  shadowOpacity: 1,
-  shadowRadius: 3,
 };
 
 const PreferenceScreen = (props: {

@@ -9,6 +9,7 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
+import { WithLocalSvg } from "react-native-svg";
 
 const { width, height } = Dimensions.get("window");
 const scale = width / 415;
@@ -39,10 +40,10 @@ const Header = (props) => {
         }}
         style={{}}
       />*/}
-        <View>
+        <View style={{ flexDirection: "row" }}>
           <Text
             style={{
-              fontSize: normalize(31),
+              fontSize: normalize(31.5),
               fontFamily: "Poppins-SemiBold",
               color: "#FFFFFF",
               marginLeft: 10,
@@ -50,15 +51,13 @@ const Header = (props) => {
           >
             {props.title}
           </Text>
+          <WithLocalSvg
+            width={18}
+            height={18}
+            asset={require("../assets/Notification.svg")}
+            style={{ marginLeft: width * 0.5, marginTop: 15 }}
+          />
         </View>
-
-        <Appbar.Action
-          icon="bell"
-          onPress={() => {}}
-          color="#FFFFFF"
-          size={22}
-          style={{ marginLeft: 200 }}
-        />
       </Appbar.Header>
     </ImageBackground>
   );

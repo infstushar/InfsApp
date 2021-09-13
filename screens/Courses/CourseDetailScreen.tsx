@@ -18,6 +18,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swiper from "react-native-swiper";
 import Header from "../../components/HeaderwithBack";
+import { WithLocalSvg } from "react-native-svg";
 
 import {
   Avatar,
@@ -30,6 +31,7 @@ import {
 } from "react-native-paper";
 
 const { width, height } = Dimensions.get("window");
+
 const scale = width / 415;
 const normalize = (size) => {
   const newSize = size * scale;
@@ -111,9 +113,12 @@ const CourseDetailScreen = (props) => {
   const renderItemforCourseContent = ({ item }) => (
     <View style={styles.column}>
       <View style={styles.row}>
-        <View style={styles.bullet}>
-          <Icon name="ellipse" size={8} color="#3E3E3E" />
-        </View>
+        <WithLocalSvg
+          width={10}
+          height={7}
+          asset={require("../../assets/dot-svgrepo-com.svg")}
+          style={{ marginTop: 5, marginLeft: 5 }}
+        />
         <View style={styles.bulletText}>
           <Text>
             <Text style={styles.boldText}>{item.tag}</Text>
@@ -126,9 +131,12 @@ const CourseDetailScreen = (props) => {
   const renderItemforlearn = ({ item }) => (
     <View style={styles.column}>
       <View style={styles.row}>
-        <View style={styles.bullet}>
-          <Icon name="ios-checkmark-sharp" size={13} color="#34B94C" />
-        </View>
+        <WithLocalSvg
+          width={10}
+          height={10}
+          asset={require("../../assets/Path1128.svg")}
+          style={{ marginTop: 7, marginLeft: 15 }}
+        />
         <View style={styles.bulletText}>
           <Text>
             <Text style={styles.boldText}>{item.tag}</Text>
@@ -140,9 +148,12 @@ const CourseDetailScreen = (props) => {
   const renderItemforUnit = ({ item }) => (
     <View style={styles.column}>
       <View style={styles.row}>
-        <View style={styles.bullet}>
-          <Icon name="ellipse" size={8} color="#3E3E3E" />
-        </View>
+        <WithLocalSvg
+          width={10}
+          height={7}
+          asset={require("../../assets/dot-svgrepo-com.svg")}
+          style={{ marginTop: 5, marginLeft: 5 }}
+        />
         <View style={styles.bulletText}>
           <Text>
             <Text
@@ -300,12 +311,13 @@ const CourseDetailScreen = (props) => {
             </Text>
           </View>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
-            <Icon
-              name="ios-people-sharp"
-              color="#3E3E3E"
-              size={22}
-              style={{}}
-            ></Icon>
+            <WithLocalSvg
+              width={28}
+              height={18}
+              asset={require("../../assets/Icon-material-group.svg")}
+              style={{ marginTop: 5 }}
+            />
+
             <Text
               style={{
                 paddingLeft: 5,
@@ -318,12 +330,12 @@ const CourseDetailScreen = (props) => {
               {DATA[0].stud} Students Enrolled
             </Text>
             <View style={{ flexDirection: "row" }}>
-              <Icon
-                name="md-alarm-sharp"
-                color="#3E3E3E"
-                size={22}
-                style={{ marginLeft: 20 }}
-              ></Icon>
+              <WithLocalSvg
+                width={21}
+                height={22}
+                asset={require("../../assets/Icon-ionic-ios-stopwatch.svg")}
+                style={{ marginTop: 3, marginLeft: 10 }}
+              />
               <Text
                 style={{
                   fontFamily: "Poppins-Medium",
@@ -616,31 +628,46 @@ const CourseDetailScreen = (props) => {
                         Foundation Course,
                       </Text>
                     </View>
+
                     <Chip
                       disabled
                       style={{
-                        marginRight: 5,
+                        width: 50,
                         height: 20,
                         alignItems: "center",
                         backgroundColor: "#37B84C",
                         marginLeft: 50,
-                        marginTop: 20,
-                      }}
-                      textStyle={{
-                        fontSize: normalize(14),
-                        fontFamily: "Poppins-Regular",
-                        color: "#FFFFFF",
+                        marginTop: 15,
                       }}
                     >
-                      {DATA[0].star}
-                      <Icon
-                        name="star"
-                        color="#FFFFFF"
-                        size={12}
-                        style={{ marginLeft: 5 }}
-                      ></Icon>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          marginTop: 15,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontSize: normalize(12),
+                            fontFamily: "Poppins-Medium",
+                            color: "#FFFFFF",
+                            marginTop: 7,
+                          }}
+                        >
+                          {DATA[0].star}
+                        </Text>
+
+                        <WithLocalSvg
+                          width={12}
+                          height={12}
+                          asset={require("../../assets/Iconionic-ios-star.svg")}
+                          style={{ marginLeft: 3, marginTop: 5 }}
+                        />
+                      </View>
                     </Chip>
                   </View>
+
                   <Text
                     style={{
                       fontSize: normalize(14),
@@ -698,26 +725,39 @@ const CourseDetailScreen = (props) => {
                     <Chip
                       disabled
                       style={{
-                        marginRight: 5,
+                        width: 50,
                         height: 20,
                         alignItems: "center",
                         backgroundColor: "#37B84C",
                         marginLeft: 50,
-                        marginTop: 20,
-                      }}
-                      textStyle={{
-                        fontSize: normalize(14),
-                        fontFamily: "Poppins-Regular",
-                        color: "#FFFFFF",
+                        marginTop: 15,
                       }}
                     >
-                      {DATA[0].star}
-                      <Icon
-                        name="star"
-                        color="#FFFFFF"
-                        size={12}
-                        style={{ marginLeft: 5 }}
-                      ></Icon>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          marginTop: 15,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontSize: normalize(12),
+                            fontFamily: "Poppins-Medium",
+                            color: "#FFFFFF",
+                            marginTop: 7,
+                          }}
+                        >
+                          {DATA[0].star}
+                        </Text>
+
+                        <WithLocalSvg
+                          width={12}
+                          height={12}
+                          asset={require("../../assets/Iconionic-ios-star.svg")}
+                          style={{ marginLeft: 3, marginTop: 5 }}
+                        />
+                      </View>
                     </Chip>
                   </View>
                   <Text
@@ -816,16 +856,25 @@ const CourseDetailScreen = (props) => {
           >
             Course Cost
           </Text>
-          <Text
-            style={{
-              fontFamily: "Poppins-SemiBold",
-              fontSize: normalize(17.5),
-              color: "#3E3E3E",
-              marginTop: 2,
-            }}
-          >
-            Rs: {DATA[0].price}
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <WithLocalSvg
+              width={12}
+              height={14}
+              asset={require("../../assets/Iconawesome-rupee-sign.svg")}
+              style={{ marginTop: 5 }}
+            />
+            <Text
+              style={{
+                fontFamily: "Poppins-SemiBold",
+                fontSize: normalize(17.5),
+                color: "#3E3E3E",
+                marginTop: 2,
+                marginLeft: 3,
+              }}
+            >
+              {DATA[0].price}
+            </Text>
+          </View>
         </View>
 
         <TouchableOpacity
@@ -903,6 +952,7 @@ const styles = StyleSheet.create({
   bulletText: {
     flex: 1,
     paddingRight: 10,
+    marginLeft: 5,
   },
   boldText: {
     fontFamily: "Poppins-Regular",

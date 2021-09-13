@@ -44,16 +44,34 @@ const ForgotUserScreen = (props: {
               marginBottom: 20,
             }}
           >
+            <View
+              style={{
+                height: "100%",
+                width: "100%",
+                position: "absolute",
+                top: 10,
+                left: -50,
+                right: 10,
+              }}
+            >
+              <WithLocalSvg
+                width={width + 100}
+                height={height * 0.5}
+                style={{ posision: "absolute", top: -200 }}
+                preserveAspectRatio="xMinYMin slice"
+                asset={require("../../assets/Texture(1).svg")}
+              />
+            </View>
             <View>
               <SafeAreaView>
-                <Icon
+                <WithLocalSvg
+                  width={24}
+                  height={16}
+                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                  style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
                   onPress={() => {
                     setIsEmailSent(false);
                   }}
-                  size={19}
-                  color="white"
-                  name="arrow-back"
-                  style={{ marginHorizontal: 10 }}
                 />
               </SafeAreaView>
               <Text
@@ -163,22 +181,23 @@ const ForgotUserScreen = (props: {
               }}
             >
               <WithLocalSvg
-                width={width + 80}
-                height={225}
+                width={width + 100}
+                height={height * 0.5}
+                style={{ posision: "absolute", top: -200 }}
                 preserveAspectRatio="xMinYMin slice"
-                asset={require("../../assets/Texture-4.svg")}
+                asset={require("../../assets/Texture(1).svg")}
               />
             </View>
             <View>
               <SafeAreaView>
-                <Icon
+                <WithLocalSvg
+                  width={24}
+                  height={16}
+                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                  style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
                   onPress={() => {
                     props.navigation.navigate("Login");
                   }}
-                  size={24}
-                  color="white"
-                  name="arrow-back"
-                  style={{ marginHorizontal: 20 }}
                 />
               </SafeAreaView>
               <Text

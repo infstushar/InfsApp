@@ -58,21 +58,23 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
             }}
           >
             <WithLocalSvg
-              width={width + 80}
+              width={width + 100}
+              height={height * 0.5}
+              style={{ posision: "absolute", top: -200 }}
               preserveAspectRatio="xMinYMin slice"
-              asset={require("../../assets/Background-2.svg")}
+              asset={require("../../assets/Texture(1).svg")}
             />
           </View>
           <View>
             <SafeAreaView>
-              <Icon
+              <WithLocalSvg
+                width={24}
+                height={16}
+                asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
                 onPress={() => {
                   props.navigation.goBack();
                 }}
-                size={24}
-                color="white"
-                name="arrow-back"
-                style={{ marginHorizontal: 20 }}
               />
             </SafeAreaView>
             <Text

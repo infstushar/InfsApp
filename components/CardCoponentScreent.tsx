@@ -48,26 +48,39 @@ const CardCoponentScreent = (props) => {
         <Chip
           disabled
           style={{
-            width: 57,
+            width: 50,
             height: 20,
             alignItems: "center",
             backgroundColor: "#37B84C",
             marginLeft: width * 0.73,
             marginTop: 2,
           }}
-          textStyle={{
-            fontSize: normalize(12),
-            fontFamily: "Poppins-Regular",
-            color: "#FFFFFF",
-          }}
         >
-          5.0
-          <Icon
-            name="star"
-            color="#FFFFFF"
-            size={12}
-            style={{ paddingLeft: 10 }}
-          ></Icon>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 15,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: normalize(12),
+                fontFamily: "Poppins-Medium",
+                color: "#FFFFFF",
+                marginTop: 7,
+              }}
+            >
+              5.0
+            </Text>
+
+            <WithLocalSvg
+              width={12}
+              height={12}
+              asset={require("../assets/Iconionic-ios-star.svg")}
+              style={{ marginLeft: 3, marginTop: 5 }}
+            />
+          </View>
         </Chip>
 
         <Paragraph style={{ marginTop: height * 0.22 }}>
@@ -163,10 +176,10 @@ const CardCoponentScreent = (props) => {
             </View>
             <View style={{ flexDirection: "row", marginTop: 2 }}>
               <WithLocalSvg
-                width={18}
-                height={19}
-                asset={require("../assets/Icon-material-group.svg")}
-                style={{}}
+                width={22}
+                height={14}
+                asset={require("../assets/Iconmaterial-group(2).svg")}
+                style={{ marginTop: 3 }}
               />
               <Text
                 style={{
@@ -185,7 +198,7 @@ const CardCoponentScreent = (props) => {
               <WithLocalSvg
                 width={18}
                 height={19}
-                asset={require("../assets/Icon-ionic-ios-stopwatch.svg")}
+                asset={require("../assets/Iconionic-ios-stopwatch(1).svg")}
                 style={{}}
               />
               <Text

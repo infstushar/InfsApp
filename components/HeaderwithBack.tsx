@@ -30,34 +30,37 @@ const HeaderwithBack = (props) => {
       style={{ width: width }}
     >
       <Appbar.Header style={{ backgroundColor: "transparent" }}>
-        <Appbar.BackAction
-          onPress={() => {
-            props.onPress();
-          }}
-          color="#FFFFFF"
-        />
-
-        <View style={{ width: 200 }}>
-          <Text
-            style={{
-              fontSize: normalize(21),
-              fontFamily: "Poppins-SemiBold",
-              color: "#FFFFFF",
-              marginLeft: 10,
+        <View style={{ width: normalize(200), flexDirection: "row" }}>
+          <WithLocalSvg
+            width={24}
+            height={16}
+            asset={require("../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+            style={{ marginLeft: 15, marginTop: 7 }}
+            onPress={() => {
+              props.onPress();
             }}
-            numberOfLines={1}
-          >
-            {props.title}
-          </Text>
-        </View>
+          />
+          <View style={{ width: width * 0.5 }}>
+            <Text
+              style={{
+                fontSize: normalize(21),
+                fontFamily: "Poppins-SemiBold",
+                color: "#FFFFFF",
+                marginLeft: 10,
+              }}
+              numberOfLines={1}
+            >
+              {props.title}
+            </Text>
+          </View>
 
-        <Appbar.Action
-          icon="bell"
-          onPress={() => {}}
-          color="#FFFFFF"
-          size={19}
-          style={{ marginLeft: 80 }}
-        />
+          <WithLocalSvg
+            width={18}
+            height={18}
+            asset={require("../assets/Notification.svg")}
+            style={{ marginLeft: width * 0.25, marginTop: 7 }}
+          />
+        </View>
       </Appbar.Header>
     </ImageBackground>
   );

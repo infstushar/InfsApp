@@ -108,7 +108,7 @@ const UnitTextScreenFirst = (props) => {
               flexDirection: "row",
               shadowColor: "#0000001A",
               shadowOpacity: 1,
-              width: 350,
+              width: normalize(350),
               height: 120,
               marginRight: 15,
             }}

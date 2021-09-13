@@ -36,6 +36,7 @@ const BottomTabs = () => {
       shifting={false}
       barStyle={{ backgroundColor: "white" }}
       activeColor={Colors.textColor}
+      inactiveColor="#838383"
       sceneAnimationEnabled={false}
     >
       <Tab.Screen
@@ -57,14 +58,28 @@ const BottomTabs = () => {
         name="Courses"
         component={CourseScreen}
         options={{
-          tabBarIcon: "book",
+          title: "Courses",
+          tabBarIcon: ({ color }) => (
+            <WithLocalSvg
+              width={20}
+              height={22}
+              asset={require("../../assets/Course.svg")}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Profile"
         component={HomeStackScreen}
         options={{
-          tabBarIcon: "account",
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <WithLocalSvg
+              width={25}
+              height={25}
+              asset={require("../../assets/Profile.svg")}
+            />
+          ),
         }}
       />
     </Tab.Navigator>

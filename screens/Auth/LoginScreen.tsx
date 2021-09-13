@@ -75,7 +75,11 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={19} color="#838383" />
+            <WithLocalSvg
+              width={19}
+              height={20}
+              asset={require("../../assets/Iconawesome-user.svg")}
+            />
             <TextInput
               value={username}
               keyboardType="email-address"
@@ -104,7 +108,11 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="lock-closed" size={23} color="#838383" />
+            <WithLocalSvg
+              width={16.2}
+              height={19}
+              asset={require("../../assets/Iconawesome-lock.svg")}
+            />
             <TextInput
               value={password}
               secureTextEntry
@@ -267,7 +275,11 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="person" size={19} color="#838383" />
+            <WithLocalSvg
+              width={19}
+              height={20}
+              asset={require("../../assets/Iconawesome-user.svg")}
+            />
             <TextInput
               value={username}
               onChangeText={(name) => setUserName(name)}
@@ -296,7 +308,11 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon name="mail" size={19} color="#838383" />
+            <WithLocalSvg
+              width={21}
+              height={14}
+              asset={require("../../assets/Iconzocial-email.svg")}
+            />
             <TextInput
               keyboardType="default"
               value={email}
@@ -327,11 +343,10 @@ const LoginScreen = (props: {
               overflow: "hidden",
             }}
           >
-            <Icon
-              name="lock-closed"
-              size={19}
-              color="#838383"
-              style={{ marginLeft: 20 }}
+            <WithLocalSvg
+              width={16.2}
+              height={19}
+              asset={require("../../assets/Iconawesome-lock.svg")}
             />
             <TextInput
               keyboardType="email-address"
@@ -347,22 +362,10 @@ const LoginScreen = (props: {
                 fontSize: normalize(14),
               }}
             />
-            <Icon
-              name="md-information-circle-sharp"
-              size={19}
-              color="#838383"
-              style={{ marginRight: 20 }}
-              onPress={() => {
-                Alert.alert(
-                  `
-                    Password must meet the following requirements:
-                    At least one letter
-                    At least one capital letter
-                    At least one number
-                    Be at least 8 characters
-                  `
-                );
-              }}
+            <WithLocalSvg
+              width={21}
+              height={21}
+              asset={require("../../assets/Iconionic-ios-information-circle.svg")}
             />
           </View>
         </View>
@@ -444,10 +447,11 @@ const LoginScreen = (props: {
             }}
           >
             <WithLocalSvg
-              width={width + 80}
-              height={225}
+              width={width + 100}
+              height={height * 0.5}
+              style={{ posision: "absolute", top: -200 }}
               preserveAspectRatio="xMinYMin slice"
-              asset={require("../../assets/Texture-4.svg")}
+              asset={require("../../assets/Texture(1).svg")}
             />
           </View>
           <View>
@@ -575,7 +579,13 @@ const LoginScreen = (props: {
           </Card>
         </View>
       </View>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: -40,
+        }}
+      >
         <Text
           style={{
             fontFamily: "Poppins-Regular",
@@ -592,6 +602,7 @@ const LoginScreen = (props: {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          marginTop: -20,
         }}
       >
         <View
@@ -605,12 +616,15 @@ const LoginScreen = (props: {
             backgroundColor: "#3b5988",
             marginTop: 10,
             padding: 10,
+            width: 250,
+            height: 40,
           }}
         >
-          <Icon name="logo-facebook" size={23} color="white" />
-          <Text style={{ marginHorizontal: 10, color: "white" }}>
-            Login With Facebook
-          </Text>
+          <WithLocalSvg
+            width={250}
+            height={40}
+            asset={require("../../assets/facebook.svg")}
+          />
         </View>
         <View
           style={{
@@ -619,20 +633,23 @@ const LoginScreen = (props: {
             alignItems: "center",
             borderColor: "#e0e0e0",
             borderRadius: 25,
-            marginTop: 10,
+            marginTop: 20,
             marginBottom: 30,
             borderWidth: 1,
             backgroundColor: "#db4437",
             paddingRight: 20,
             paddingLeft: 20,
             paddingTop: 10,
-            paddingBottom: 10,
+            paddingBottom: 20,
+            width: 250,
+            height: 40,
           }}
         >
-          <Icon name="logo-google" size={23} color="white" />
-          <Text style={{ marginHorizontal: 10, color: "white" }}>
-            Login With Google
-          </Text>
+          <WithLocalSvg
+            width={250}
+            height={40}
+            asset={require("../../assets/Googleplus.svg")}
+          />
         </View>
       </View>
     </ScrollView>
