@@ -64,15 +64,18 @@ const ForgotUserScreen = (props: {
             </View>
             <View>
               <SafeAreaView>
-                <WithLocalSvg
-                  width={24}
-                  height={16}
-                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
-                  style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
+                <TouchableOpacity
                   onPress={() => {
                     setIsEmailSent(false);
                   }}
-                />
+                >
+                  <WithLocalSvg
+                    width={24}
+                    height={16}
+                    asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                    style={{ marginLeft: 15, marginTop: 7 }}
+                  />
+                </TouchableOpacity>
               </SafeAreaView>
               <Text
                 style={{
@@ -190,15 +193,18 @@ const ForgotUserScreen = (props: {
             </View>
             <View>
               <SafeAreaView>
-                <WithLocalSvg
-                  width={24}
-                  height={16}
-                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
-                  style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
+                <TouchableOpacity
                   onPress={() => {
                     props.navigation.navigate("Login");
                   }}
-                />
+                >
+                  <WithLocalSvg
+                    width={24}
+                    height={16}
+                    asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                    style={{ marginLeft: 15, marginTop: 7 }}
+                  />
+                </TouchableOpacity>
               </SafeAreaView>
               <Text
                 style={{
@@ -251,7 +257,11 @@ const ForgotUserScreen = (props: {
                   overflow: "hidden",
                 }}
               >
-                <Icon name="mail" size={19} color="#838383" />
+                <WithLocalSvg
+                  width={21}
+                  height={14}
+                  asset={require("../../assets/Iconzocial-email.svg")}
+                />
                 <TextInput
                   value={username}
                   onChangeText={(name) => setUserName(name)}
@@ -264,6 +274,7 @@ const ForgotUserScreen = (props: {
                     fontFamily: "Poppins-Regular",
                     color: "#B7B7B7",
                   }}
+                  placeholderTextColor="#B7B7B7"
                 />
               </View>
               <TouchableOpacity

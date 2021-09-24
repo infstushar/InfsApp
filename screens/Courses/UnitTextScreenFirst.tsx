@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 
@@ -146,11 +146,11 @@ const UnitTextScreenFirst = (props) => {
             there are 3 types of nutrients;
           </Text>
           <View style={{ flexDirection: "row" }}>
-            <Icon
-              name="ellipse"
-              size={8}
-              color="#3E3E3E"
-              style={{ marginTop: 7 }}
+            <WithLocalSvg
+              width={10}
+              height={7}
+              asset={require("../../assets/dot-svgrepo-com.svg")}
+              style={{ marginTop: 8, marginLeft: 5 }}
             />
             <Text
               style={{
@@ -178,11 +178,11 @@ const UnitTextScreenFirst = (props) => {
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
-            <Icon
-              name="ellipse"
-              size={8}
-              color="#3E3E3E"
-              style={{ marginTop: 7 }}
+            <WithLocalSvg
+              width={10}
+              height={7}
+              asset={require("../../assets/dot-svgrepo-com.svg")}
+              style={{ marginTop: 8, marginLeft: 5 }}
             />
             <Text
               style={{
@@ -211,11 +211,11 @@ const UnitTextScreenFirst = (props) => {
           </View>
 
           <View style={{ flexDirection: "row" }}>
-            <Icon
-              name="ellipse"
-              size={8}
-              color="#3E3E3E"
-              style={{ marginTop: 7 }}
+            <WithLocalSvg
+              width={10}
+              height={7}
+              asset={require("../../assets/dot-svgrepo-com.svg")}
+              style={{ marginTop: 8, marginLeft: 5 }}
             />
             <Text
               style={{

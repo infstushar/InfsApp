@@ -6,41 +6,26 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  TouchableHighlight,
   FlatList,
   StatusBar,
-  LogBox,
   Platform,
   PixelRatio,
 } from "react-native";
 import CourseContentScreen from "../../components/CourseContentScreen";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import Swiper from "react-native-swiper";
 import Header from "../../components/HeaderwithBack";
 import { WithLocalSvg } from "react-native-svg";
 
+import { Card, Chip, List } from "react-native-paper";
+import Font from "../../constants/Font";
 import {
-  Avatar,
-  Button,
-  Card,
-  Chip,
-  Title,
-  Paragraph,
-  List,
-} from "react-native-paper";
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 const { width, height } = Dimensions.get("window");
-
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const DATA = [
   {
@@ -93,16 +78,16 @@ const DATA = [
 const CourseDetailScreen = (props) => {
   const renderItem = ({ item }) => (
     <Chip
-      onPress={() => console.log("Pressed")}
       style={{
         marginRight: 5,
         height: 25,
         alignItems: "center",
         marginTop: 10,
-        marginLeft: 10,
+
+        backgroundColor: "#F4F4F4",
       }}
       textStyle={{
-        fontSize: normalize(12.5),
+        fontSize: Font.p2,
         fontFamily: "Poppins-Regular",
         color: "#3E3E3E",
       }}
@@ -159,7 +144,7 @@ const CourseDetailScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Regular",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
               }}
             >
@@ -192,11 +177,16 @@ const CourseDetailScreen = (props) => {
       <ScrollView style={{ flexGrow: 1 }}>
         <View style={{ marginLeft: 15 }}>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
-            <Icon name="star" color="#34B94C" size={15} style={{}} />
+            <WithLocalSvg
+              width={12}
+              height={12}
+              asset={require("../../assets/Icon-ionic-ios-star-(1).svg")}
+              style={{ marginTop: 4 }}
+            />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginLeft: 10,
               }}
@@ -207,7 +197,7 @@ const CourseDetailScreen = (props) => {
               style={{
                 textDecorationLine: "underline",
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginLeft: 5,
               }}
@@ -218,7 +208,7 @@ const CourseDetailScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-SemiBold",
-              fontSize: normalize(21),
+              fontSize: Font.p1,
               color: "#3E3E3E",
               paddingBottom: 10,
 
@@ -228,47 +218,14 @@ const CourseDetailScreen = (props) => {
             {DATA[0].title}
           </Text>
           <View style={{ flexDirection: "row" }}>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
-                color: "#3E3E3E",
-              }}
-            >
-              {DATA[0].level}
-            </Text>
+            <Text style={styles.textStyleForheaderMedium}>{DATA[0].level}</Text>
             <View style={styles.hairline} />
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
-                color: "#838383",
-                paddingLeft: 5,
-              }}
-            >
-              Last updated on
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
-                color: "#3E3E3E",
-                paddingLeft: 5,
-              }}
-            >
+            <Text style={styles.textStyleForheaderMedium}>Last updated on</Text>
+            <Text style={styles.textStyleForheaderMedium}>
               {DATA[0].update}
             </Text>
             <View style={styles.hairline} />
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
-                color: "#3E3E3E",
-                paddingLeft: 5,
-              }}
-            >
-              {DATA[0].lang}
-            </Text>
+            <Text style={styles.textStyleForheaderMedium}>{DATA[0].lang}</Text>
           </View>
 
           <View style={{ flexDirection: "row", paddingTop: 5 }}>
@@ -289,7 +246,7 @@ const CourseDetailScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Regular",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#838383",
                 marginLeft: 10,
                 marginTop: 5,
@@ -300,7 +257,7 @@ const CourseDetailScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 paddingLeft: 5,
                 marginLeft: 5,
@@ -322,7 +279,7 @@ const CourseDetailScreen = (props) => {
               style={{
                 paddingLeft: 5,
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginTop: 5,
               }}
@@ -339,7 +296,7 @@ const CourseDetailScreen = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-Medium",
-                  fontSize: normalize(14),
+                  fontSize: Font.p1,
                   color: "#3E3E3E",
                   paddingLeft: 5,
                   paddingTop: 5,
@@ -368,7 +325,7 @@ const CourseDetailScreen = (props) => {
         >
           <Text
             style={{
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-Medium",
               color: "#3E3E3E",
               marginLeft: 20,
@@ -384,7 +341,7 @@ const CourseDetailScreen = (props) => {
         </View>
         <Text
           style={{
-            fontSize: normalize(17.5),
+            fontSize: Font.h5,
             fontFamily: "Poppins-Medium",
             color: "#3E3E3E",
             marginLeft: 30,
@@ -411,7 +368,7 @@ const CourseDetailScreen = (props) => {
               color: "#3E3E3E",
               marginLeft: 15,
               fontFamily: "Poppins-SemiBold",
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
             }}
           >
             Course Content :
@@ -451,7 +408,12 @@ const CourseDetailScreen = (props) => {
           }}
           onPress={() => {}}
         >
-          <Icon name="md-chevron-down-sharp" color="#FFFFFF" size={24}></Icon>
+          <WithLocalSvg
+            width={14}
+            height={15}
+            asset={require("../../assets/Icon-ionic-ios-arrow-dropdown-circle.svg")}
+            style={{ marginTop: 5 }}
+          />
         </TouchableOpacity>
 
         <View>
@@ -459,7 +421,7 @@ const CourseDetailScreen = (props) => {
             style={{
               color: "#3E3E3E",
               marginLeft: 15,
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-SemiBold",
               marginTop: 5,
             }}
@@ -469,7 +431,7 @@ const CourseDetailScreen = (props) => {
           <Text
             style={{
               marginLeft: 15,
-              fontSize: normalize(14),
+              fontSize: Font.p1,
               fontFamily: "Poppins-Regular",
               paddingVertical: 10,
               marginHorizontal: 10,
@@ -484,7 +446,7 @@ const CourseDetailScreen = (props) => {
             style={{
               color: "#3E3E3E",
               marginLeft: 15,
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -493,7 +455,7 @@ const CourseDetailScreen = (props) => {
           <Text
             style={{
               marginLeft: 15,
-              fontSize: normalize(14),
+              fontSize: Font.p1,
               fontFamily: "Poppins-Regular",
               paddingVertical: 10,
               marginHorizontal: 10,
@@ -508,7 +470,7 @@ const CourseDetailScreen = (props) => {
             style={{
               color: "#3E3E3E",
               marginLeft: 15,
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -550,7 +512,7 @@ const CourseDetailScreen = (props) => {
             style={{
               color: "#3E3E3E",
               marginLeft: 15,
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -561,7 +523,8 @@ const CourseDetailScreen = (props) => {
               borderWidth: 1,
               borderRadius: 10,
               margin: 10,
-              height: height * 0.25,
+              height: height * 0.35,
+              backgroundColor: "#FFFFFF",
             }}
           >
             <Swiper
@@ -611,7 +574,7 @@ const CourseDetailScreen = (props) => {
                         style={{
                           color: "#3E3E3E",
                           marginLeft: 15,
-                          fontSize: normalize(17.5),
+                          fontSize: Font.h5,
                           fontFamily: "Poppins-Medium",
                         }}
                       >
@@ -621,7 +584,7 @@ const CourseDetailScreen = (props) => {
                         style={{
                           color: "#3E3E3E",
                           marginLeft: 15,
-                          fontSize: normalize(14),
+                          fontSize: Font.p1,
                           fontFamily: "Poppins-Regular",
                         }}
                       >
@@ -643,13 +606,13 @@ const CourseDetailScreen = (props) => {
                       <View
                         style={{
                           flexDirection: "row",
-                          marginTop: 15,
+
                           alignItems: "center",
                         }}
                       >
                         <Text
                           style={{
-                            fontSize: normalize(12),
+                            fontSize: Font.p2,
                             fontFamily: "Poppins-Medium",
                             color: "#FFFFFF",
                             marginTop: 7,
@@ -670,7 +633,7 @@ const CourseDetailScreen = (props) => {
 
                   <Text
                     style={{
-                      fontSize: normalize(14),
+                      fontSize: Font.p1,
                       fontFamily: "Poppins-Regular",
                       color: "#838383",
                     }}
@@ -705,7 +668,7 @@ const CourseDetailScreen = (props) => {
                         style={{
                           color: "#3E3E3E",
                           marginLeft: 15,
-                          fontSize: normalize(17.5),
+                          fontSize: Font.h5,
                           fontFamily: "Poppins-Medium",
                         }}
                       >
@@ -715,7 +678,7 @@ const CourseDetailScreen = (props) => {
                         style={{
                           color: "#3E3E3E",
                           marginLeft: 15,
-                          fontSize: normalize(14),
+                          fontSize: Font.p1,
                           fontFamily: "Poppins-Regular",
                         }}
                       >
@@ -736,13 +699,13 @@ const CourseDetailScreen = (props) => {
                       <View
                         style={{
                           flexDirection: "row",
-                          marginTop: 15,
+
                           alignItems: "center",
                         }}
                       >
                         <Text
                           style={{
-                            fontSize: normalize(12),
+                            fontSize: Font.p2,
                             fontFamily: "Poppins-Medium",
                             color: "#FFFFFF",
                             marginTop: 7,
@@ -762,7 +725,7 @@ const CourseDetailScreen = (props) => {
                   </View>
                   <Text
                     style={{
-                      fontSize: normalize(14),
+                      fontSize: Font.p1,
                       fontFamily: "Poppins-Regular",
                       color: "#838383",
                     }}
@@ -782,7 +745,7 @@ const CourseDetailScreen = (props) => {
           style={{
             color: "#3E3E3E",
             marginLeft: 15,
-            fontSize: normalize(17.5),
+            fontSize: Font.h5,
             fontFamily: "Poppins-SemiBold",
             marginTop: 10,
           }}
@@ -795,10 +758,11 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Diploma in Nutrition and Fitness?"
                 titleStyle={{
-                  fontSize: 12,
+                  fontSize: Font.p2,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
+                style={{ backgroundColor: "#F4F4F4" }}
               >
                 <FlatList
                   data={DATA[0].faq}
@@ -810,10 +774,11 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Content Prep course?"
                 titleStyle={{
-                  fontSize: 12,
+                  fontSize: Font.p2,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
+                style={{ backgroundColor: "#F4F4F4" }}
               >
                 <FlatList
                   data={DATA[0].faq}
@@ -824,10 +789,11 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Calisthenics Trainer Certification?"
                 titleStyle={{
-                  fontSize: 12,
+                  fontSize: Font.p2,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
+                style={{ backgroundColor: "#F4F4F4" }}
               >
                 <FlatList
                   data={DATA[0].faq}
@@ -850,7 +816,7 @@ const CourseDetailScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Regular",
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               color: "#3E3E3E",
             }}
           >
@@ -866,7 +832,7 @@ const CourseDetailScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-SemiBold",
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 color: "#3E3E3E",
                 marginTop: 2,
                 marginLeft: 3,
@@ -900,7 +866,7 @@ const CourseDetailScreen = (props) => {
               textAlign: "center",
 
               color: "#FFFFFF",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -930,6 +896,7 @@ const styles = StyleSheet.create({
     width: 2,
     marginTop: 5,
     marginLeft: 5,
+    marginRight: 5,
   },
   column: {
     flexDirection: "row",
@@ -956,7 +923,7 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontFamily: "Poppins-Regular",
-    fontSize: normalize(14),
+    fontSize: Font.p1,
     color: "#3E3E3E",
     marginLeft: 15,
   },
@@ -968,6 +935,11 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     shadowColor: "#00000029",
     shadowOpacity: 1,
+  },
+  textStyleForheaderMedium: {
+    fontFamily: "Poppins-Medium",
+    fontSize: Font.p1,
+    color: "#3E3E3E",
   },
 });
 

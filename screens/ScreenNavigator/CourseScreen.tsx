@@ -4,26 +4,18 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
-  Platform,
-  PixelRatio,
+  Modal,
+  Pressable,
 } from "react-native";
 import CardComponentScreent from "../../components/CardCoponentScreent";
 import { ScrollView } from "react-native-gesture-handler";
 
 import Header from "../../components/Header";
-import { withDecay } from "react-native-reanimated";
 
-const { width, height } = Dimensions.get("window");
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
+import Font from "../../constants/Font";
+import FilterScreen from "../Courses/FilterScreen";
+
+import { WithLocalSvg } from "react-native-svg";
 
 const Data = [
   {
@@ -65,20 +57,16 @@ const CourseScreen = (props: {
   route: any;
   navigation: { navigate: (arg0: string) => void };
 }) => {
-  return (
-    <View style={{ flex: 1 }}>
-      <Header title="Courses" />
-      <View>
-        {/*<View
-          style={{
-            backgroundColor: "#E6E7E9",
-            width: width * 0.7,
-            height: 50,
-            borderRadius: 25,
-            marginLeft: 30,
-            marginTop: 10,
-          }}
-        ></View>*/}
+  const [modalVisible, setModalVisible] = useState(false);
+  const [isAllCoursesClicked, setIsAllCoursesClicked] = useState(true);
+  const [isEnrolledClicked, setIsEnrolledClicked] = useState(false);
+  useEffect(() => {
+    setIsAllCoursesClicked(true);
+    setIsEnrolledClicked(false);
+  }, []);
+  const AllCourses = () => {
+    return (
+      <View style={{ flex: 1 }}>
         <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
           <View style={styles.screen}>
             <CardComponentScreent
@@ -128,18 +116,200 @@ const CourseScreen = (props: {
           <View style={{ height: 110 }}></View>
         </ScrollView>
       </View>
+    );
+  };
+
+  const EnrolledCourses = () => {
+    return (
+      <View style={{ flex: 1 }}>
+        <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
+          <View style={styles.screen}>
+            <CardComponentScreent
+              Img={Data[0].Img}
+              title={Data[0].title}
+              description={Data[0].description}
+              author={Data[0].author}
+              price={Data[0].price}
+              studentEnroll={Data[0].studentEnroll}
+              hrs={Data[0].hrs}
+              tag={Data[0].tag[0]}
+              onPress={() => {
+                props.navigation.navigate("CourseDetails");
+              }}
+            />
+          </View>
+
+          <View style={{ height: 110 }}></View>
+        </ScrollView>
+      </View>
+    );
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Header title="Courses" />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <FilterScreen onPress={() => setModalVisible(!modalVisible)} />
+      </Modal>
+      <View style={{ flexDirection: "row", marginTop: 5 }}>
+        <View
+          style={{
+            borderRadius: 25,
+            backgroundColor: "#E6E7E9",
+            width: 300,
+            height: 50,
+            marginLeft: 20,
+            flexDirection: "row",
+          }}
+        >
+          {isAllCoursesClicked ? (
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#00B5E0",
+                width: 140,
+                height: 40,
+                margin: 5,
+                borderRadius: 25,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => {
+                setIsAllCoursesClicked(true);
+                setIsEnrolledClicked(false);
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  color: "#FFFFFF",
+                  fontSize: Font.p1,
+                }}
+              >
+                All Courses
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#E6E7E9",
+                width: 140,
+                height: 40,
+                margin: 5,
+                borderRadius: 25,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => {
+                setIsAllCoursesClicked(true);
+                setIsEnrolledClicked(false);
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  color: "#838383",
+                  fontSize: Font.p1,
+                }}
+              >
+                All Courses
+              </Text>
+            </TouchableOpacity>
+          )}
+
+          {isEnrolledClicked ? (
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#00B5E0",
+                width: 140,
+                height: 40,
+                margin: 5,
+                borderRadius: 25,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => {
+                setIsAllCoursesClicked(true);
+                setIsEnrolledClicked(false);
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  color: "#FFFFFF",
+                  fontSize: Font.p1,
+                }}
+              >
+                Enrolled Courses
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#E6E7E9",
+                width: 140,
+                height: 40,
+                margin: 5,
+                borderRadius: 25,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onPress={() => {
+                setIsAllCoursesClicked(false);
+                setIsEnrolledClicked(true);
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  color: "#838383",
+                  fontSize: Font.p1,
+                }}
+              >
+                Enrolled Courses
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+
+        <TouchableOpacity
+          style={{
+            width: 40,
+            backgroundColor: "#00B5E0",
+            height: 40,
+            borderRadius: 20,
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: 15,
+            marginTop: 5,
+          }}
+          onPress={() => setModalVisible(true)}
+        >
+          <WithLocalSvg
+            width={21}
+            height={20}
+            asset={require("../../assets/filter.svg")}
+          />
+        </TouchableOpacity>
+      </View>
+
+      {isAllCoursesClicked ? <AllCourses /> : <EnrolledCourses />}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     marginTop: 20,
     marginLeft: 1,
     marginRight: -8,
+    flexGrow: 1,
   },
 });
 

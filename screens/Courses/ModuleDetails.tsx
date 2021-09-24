@@ -16,7 +16,7 @@ import {
 import CourseContentScreen from "../../components/CourseContentScreen";
 import { ScrollView } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
-import Icon from "react-native-vector-icons/Ionicons";
+import Font from "../../constants/Font";
 import { Chip, Paragraph, List, Card } from "react-native-paper";
 
 import Header from "../../components/HeaderwithBack";
@@ -124,13 +124,13 @@ const ModuleDetails = (props) => {
   const handlePress = () => setExpanded(!expanded);
   const renderItem = ({ item }) => (
     <Chip
-      onPress={() => console.log("Pressed")}
       style={{
         marginRight: 5,
         height: 25,
         alignItems: "center",
         marginTop: 10,
-        marginLeft: 10,
+
+        backgroundColor: "#F4F4F4",
       }}
       textStyle={{
         fontSize: normalize(12),
@@ -145,9 +145,12 @@ const ModuleDetails = (props) => {
   const renderItemforUnit = ({ item }) => (
     <View style={styles.column}>
       <View style={styles.row}>
-        <View style={styles.bullet}>
-          <Icon name="ellipse" size={8} color="#3E3E3E" />
-        </View>
+        <WithLocalSvg
+          width={10}
+          height={7}
+          asset={require("../../assets/dot-svgrepo-com.svg")}
+          style={{ marginTop: 5, marginLeft: 5 }}
+        />
         <View style={styles.bulletText}>
           <Text>
             <Text
@@ -203,7 +206,12 @@ const ModuleDetails = (props) => {
       <ScrollView>
         <View style={{ marginLeft: 15 }}>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
-            <Icon name="star" color="#34B94C" size={15} style={{}} />
+            <WithLocalSvg
+              width={12}
+              height={12}
+              asset={require("../../assets/Icon-ionic-ios-star-(1).svg")}
+              style={{ marginLeft: 2, marginTop: 2 }}
+            />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
@@ -391,7 +399,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 color: "#3E3E3E",
-                marginLeft: 15,
+
                 fontFamily: "Poppins-Medium",
                 fontSize: normalize(17.5),
               }}
@@ -401,7 +409,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 color: "#838383",
-                marginLeft: 15,
+
                 fontFamily: "Poppins-Regular",
                 fontSize: normalize(14),
               }}
@@ -412,7 +420,7 @@ const ModuleDetails = (props) => {
           </View>
           <View style={{ width: width, height: "20%" }}>
             <ScrollView>
-              <List.Section>
+              <List.Section style={{ marginRight: 5 }}>
                 <List.Accordion
                   title={<Text>To define Health and Fitness</Text>}
                   titleStyle={{
@@ -420,6 +428,7 @@ const ModuleDetails = (props) => {
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
+                  style={{ backgroundColor: "#F4F4F4" }}
                 >
                   <FlatList
                     data={DATA[0].unitcontent}
@@ -435,6 +444,7 @@ const ModuleDetails = (props) => {
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
+                  style={{ backgroundColor: "#F4F4F4" }}
                 >
                   <FlatList
                     data={DATA[0].unitcontent1}
@@ -449,6 +459,7 @@ const ModuleDetails = (props) => {
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
+                  style={{ backgroundColor: "#F4F4F4" }}
                 >
                   <FlatList
                     data={DATA[0].unitcontent2}
@@ -523,8 +534,9 @@ const ModuleDetails = (props) => {
                 borderWidth: 1,
                 borderRadius: 10,
                 marginBottom: 10,
-                height: height * 0.25,
+                height: height * 0.33,
                 width: width - 30,
+                backgroundColor: "#FFFFFF",
               }}
             >
               <Swiper
@@ -591,43 +603,38 @@ const ModuleDetails = (props) => {
                           Foundation Course,
                         </Text>
                       </View>
-                      <Chip
-                        disabled
+                      <View
                         style={{
+                          flexDirection: "row",
+
+                          alignItems: "center",
                           width: 50,
                           height: 20,
-                          alignItems: "center",
+                          borderRadius: 10,
                           backgroundColor: "#37B84C",
-                          marginLeft: 50,
-                          marginTop: 15,
+                          marginLeft: 60,
+                          marginTop: 20,
+                          flexGrow: 1,
+                          justifyContent: "center",
                         }}
                       >
-                        <View
+                        <Text
                           style={{
-                            flexDirection: "row",
-                            marginTop: 15,
-                            alignItems: "center",
+                            fontSize: Font.p2,
+                            fontFamily: "Poppins-Medium",
+                            color: "#FFFFFF",
                           }}
                         >
-                          <Text
-                            style={{
-                              fontSize: normalize(12),
-                              fontFamily: "Poppins-Medium",
-                              color: "#FFFFFF",
-                              marginTop: 7,
-                            }}
-                          >
-                            {DATA[0].star}
-                          </Text>
+                          4.5
+                        </Text>
 
-                          <WithLocalSvg
-                            width={12}
-                            height={12}
-                            asset={require("../../assets/Iconionic-ios-star.svg")}
-                            style={{ marginLeft: 3, marginTop: 5 }}
-                          />
-                        </View>
-                      </Chip>
+                        <WithLocalSvg
+                          width={12}
+                          height={12}
+                          asset={require("../../assets/Iconionic-ios-star.svg")}
+                          style={{ marginLeft: 3 }}
+                        />
+                      </View>
                     </View>
                     <Text
                       style={{
@@ -683,43 +690,38 @@ const ModuleDetails = (props) => {
                           Foundation Course,
                         </Text>
                       </View>
-                      <Chip
-                        disabled
+                      <View
                         style={{
+                          flexDirection: "row",
+
+                          alignItems: "center",
                           width: 50,
                           height: 20,
-                          alignItems: "center",
+                          borderRadius: 10,
                           backgroundColor: "#37B84C",
                           marginLeft: 50,
-                          marginTop: 15,
+                          marginTop: 20,
+                          flexGrow: 1,
+                          justifyContent: "center",
                         }}
                       >
-                        <View
+                        <Text
                           style={{
-                            flexDirection: "row",
-                            marginTop: 15,
-                            alignItems: "center",
+                            fontSize: Font.p2,
+                            fontFamily: "Poppins-Medium",
+                            color: "#FFFFFF",
                           }}
                         >
-                          <Text
-                            style={{
-                              fontSize: normalize(12),
-                              fontFamily: "Poppins-Medium",
-                              color: "#FFFFFF",
-                              marginTop: 7,
-                            }}
-                          >
-                            {DATA[0].star}
-                          </Text>
+                          4.5
+                        </Text>
 
-                          <WithLocalSvg
-                            width={12}
-                            height={12}
-                            asset={require("../../assets/Iconionic-ios-star.svg")}
-                            style={{ marginLeft: 3, marginTop: 5 }}
-                          />
-                        </View>
-                      </Chip>
+                        <WithLocalSvg
+                          width={12}
+                          height={12}
+                          asset={require("../../assets/Iconionic-ios-star.svg")}
+                          style={{ marginLeft: 3 }}
+                        />
+                      </View>
                     </View>
                     <Text
                       style={{

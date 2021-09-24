@@ -11,17 +11,13 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import Colors from "../constants/colors";
 import { WithLocalSvg } from "react-native-svg";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
+import Font from "../constants/Font";
 
 const { width, height } = Dimensions.get("window");
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const RoundedButton = (props) => {
   return (
@@ -61,7 +57,7 @@ const RoundedButton = (props) => {
 const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
-    height: 50,
+    height: hp("5%"),
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: 20,
@@ -75,7 +71,7 @@ const styles = StyleSheet.create({
   },
   button1: {
     flexDirection: "row",
-    height: 50,
+    height: hp("5%"),
     justifyContent: "center",
     alignItems: "center",
     paddingStart: 30,
@@ -90,15 +86,15 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     textAlign: "center",
-    paddingLeft: 40,
+
     color: "white",
-    fontSize: normalize(21),
+    fontSize: Font.h4,
     fontFamily: "Poppins-Medium",
   },
   text1: {
     textAlign: "center",
     color: "white",
-    fontSize: normalize(21),
+    fontSize: Font.h4,
     fontFamily: "Poppins-Medium",
   },
   iconContainer: {

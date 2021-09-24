@@ -27,7 +27,7 @@ import UnitScreen from "../screens/Courses/UnitScreen";
 import UnitTextScreen from "../screens/Courses/UnitTextScreen";
 import UnitVideoTextScreen from "../screens/Courses/UnitVideoTextScreen";
 import UnitTextScreenFirst from "../screens/Courses/UnitTextScreenFirst";
-
+import QuizForStartUpScreen from "../screens/Quiz/QuizForStartUpScreen";
 const INFSAPPNavigator = () => {
   const Stack = createStackNavigator();
   return (
@@ -125,6 +125,15 @@ const INFSAPPNavigator = () => {
             component={UnitVideoTextScreen}
             options={{
               headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="QuizForStartUpScreen"
+            component={QuizForStartUpScreen}
+            options={{
+              headerShown: true,
               headerTitleStyle: { fontFamily: "Poppins-Regular" },
               headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
             }}

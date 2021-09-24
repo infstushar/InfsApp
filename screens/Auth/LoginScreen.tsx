@@ -7,26 +7,20 @@ import {
   ScrollView,
   Alert,
   Dimensions,
-  Platform,
-  PixelRatio,
 } from "react-native";
 import Colors from "../../constants/colors";
 import Card from "../../components/Card";
-import Icon from "react-native-vector-icons/Ionicons";
-import { TextInput, ActivityIndicator } from "react-native-paper";
+
+import { TextInput, ActivityIndicator, Modal } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
 import RoundedButton from "../../components/RoundedButton";
+import Font from "../../constants/Font";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 const { width, height } = Dimensions.get("window");
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const LoginScreen = (props: {
   route: any;
@@ -89,8 +83,9 @@ const LoginScreen = (props: {
                 width: "90%",
                 backgroundColor: "transparent",
                 color: "#B7B7B7",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
               }}
+              placeholderTextColor="#B7B7B7"
             />
           </View>
         </View>
@@ -123,8 +118,9 @@ const LoginScreen = (props: {
                 width: "90%",
                 backgroundColor: "transparent",
                 color: "#B7B7B7",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
               }}
+              placeholderTextColor="#B7B7B7"
             />
           </View>
         </View>
@@ -140,17 +136,34 @@ const LoginScreen = (props: {
                       setRadioChecked(-1);
                     }}
                   >
-                    <Icon
-                      color="#838383"
-                      name="md-checkmark-circle"
-                      size={19}
-                    ></Icon>
+                    <View
+                      style={{
+                        borderWidth: 2,
+                        borderRadius: 25,
+                        width: 18,
+                        height: 18,
+                        borderColor: "#838383",
+                      }}
+                    >
+                      <WithLocalSvg
+                        width={"300%"}
+                        height={"300%"}
+                        asset={require("../../assets/Remember_me.svg")}
+                        style={{
+                          position: "absolute",
+                          top: -14,
+                          marginRight: 40,
+                          marginLeft: -14,
+                        }}
+                      />
+                    </View>
+
                     <Text
                       style={{
                         fontFamily: "Poppins-Regular",
                         marginLeft: 5,
-                        fontSize: normalize(17.5),
-                        color: "#00B5E0",
+                        fontSize: Font.h5,
+                        color: "#838383",
                       }}
                     >
                       {data}
@@ -164,17 +177,21 @@ const LoginScreen = (props: {
                     }}
                     style={styles.btn}
                   >
-                    <Icon
-                      color="#838383"
-                      name="radio-button-off"
-                      size={23}
-                    ></Icon>
+                    <View
+                      style={{
+                        borderWidth: 2,
+                        borderRadius: 25,
+                        width: 18,
+                        height: 18,
+                        borderColor: "#838383",
+                      }}
+                    ></View>
                     <Text
                       style={{
                         fontFamily: "Poppins-Regular",
                         marginLeft: 5,
                         color: "#838383",
-                        fontSize: normalize(17.5),
+                        fontSize: Font.h5,
                       }}
                     >
                       {data}
@@ -200,11 +217,11 @@ const LoginScreen = (props: {
               props.navigation.navigate("ForgotUsername");
             }}
             style={{
-              marginLeft: 20,
+              marginLeft: 10,
               textDecorationLine: "underline",
               fontFamily: "Poppins-Regular",
               color: "#00B5E0",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
             }}
           >
             Forgot Username?
@@ -215,11 +232,11 @@ const LoginScreen = (props: {
               props.navigation.navigate("ForgotPassword");
             }}
             style={{
-              marginRight: 20,
+              marginRight: 10,
               textDecorationLine: "underline",
               fontFamily: "Poppins-Regular",
               color: "#00B5E0",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
             }}
           >
             Forgot Password?
@@ -227,11 +244,7 @@ const LoginScreen = (props: {
         </View>
         <RoundedButton
           onPress={() => {
-            setIsDone(true);
-            setTimeout(() => {
-              props.navigation.navigate("Home");
-              setIsDone(false);
-            }, 2000);
+            props.navigation.navigate("Home");
           }}
           title="Login"
           textVisible={true}
@@ -251,6 +264,10 @@ const LoginScreen = (props: {
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [visible, setVisible] = React.useState(false);
+
+    const showModal = () => setVisible(true);
+    const hideModal = () => setVisible(false);
 
     const onChange = (
       password,
@@ -264,7 +281,7 @@ const LoginScreen = (props: {
         <View style={{ marginHorizontal: 20 }}>
           <View
             style={{
-              height: 45,
+              height: hp("5.9%"),
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -286,17 +303,18 @@ const LoginScreen = (props: {
               keyboardType="email-address"
               placeholder="Full Name"
               style={{
-                width: "90%",
+                width: wp("60%"),
                 backgroundColor: "transparent",
                 fontFamily: "Poppins-Regular",
                 color: "#B7B7B7",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
               }}
+              placeholderTextColor="#B7B7B7"
             />
           </View>
           <View
             style={{
-              height: 45,
+              height: hp("5.9%"),
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -319,18 +337,19 @@ const LoginScreen = (props: {
               onChangeText={(name) => setEmail(name)}
               placeholder="Email Address"
               style={{
-                width: "90%",
+                width: wp("60%"),
                 backgroundColor: "transparent",
                 fontFamily: "Poppins-Regular",
-                color: "#B7B7B7",
-                fontSize: normalize(14),
+                color: "black",
+                fontSize: Font.p1,
               }}
+              placeholderTextColor="#B7B7B7"
             />
           </View>
 
           <View
             style={{
-              height: 45,
+              height: hp("5.9%"),
               borderRadius: 15,
               borderWidth: 1,
               flexDirection: "row",
@@ -355,12 +374,13 @@ const LoginScreen = (props: {
               onChangeText={(name) => setPassword(name)}
               placeholder="Password"
               style={{
-                width: "90%",
+                width: wp("55%"),
                 backgroundColor: "transparent",
                 fontFamily: "Poppins-Regular",
                 color: "#B7B7B7",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
               }}
+              placeholderTextColor="#B7B7B7"
             />
             <WithLocalSvg
               width={21}
@@ -373,9 +393,10 @@ const LoginScreen = (props: {
           <Text
             style={{
               color: "#838383",
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               alignContent: "center",
-              fontFamily: "Poppins-Regular",
+              fontFamily: "Poppins-Medium",
+              lineHeight: 26,
             }}
           >
             By clicking “sign up” you agree to our
@@ -386,7 +407,7 @@ const LoginScreen = (props: {
             }}
             style={{
               color: "#00B5E0",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               marginVertical: 10,
               alignContent: "center",
               textDecorationLine: "underline",
@@ -398,21 +419,21 @@ const LoginScreen = (props: {
         </View>
         <RoundedButton
           onPress={() => {
-            setIsDone(true);
-            setTimeout(() => {
-              Alert.alert(
-                "Account has been created, Please check your email to verify your account!"
-              );
-              props.navigation.navigate("Login");
-              setIsLoginlicked(true);
-              setIsSignUpClicked(false);
-              setIsDone(false);
-            }, 2000);
+            props.navigation.navigate("Login");
           }}
           title="Sign Up"
           textVisible={true}
           visible={true}
         />
+
+        <Modal
+          visible={visible}
+          onDismiss={hideModal}
+          contentContainerStyle={{}}
+        >
+          <Text>Example Modal. Click outside this area to dismiss.</Text>
+        </Modal>
+
         {isDone ? <ActivityIndicator style={{ marginTop: 20 }} /> : null}
       </View>
     );
@@ -433,13 +454,13 @@ const LoginScreen = (props: {
         <View
           style={{
             backgroundColor: Colors.primaryColor,
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
           <View
             style={{
-              height: "100%",
-              width: "100%",
+              height: wp("100%"),
+              width: hp("100%"),
               position: "absolute",
               top: 10,
               left: -50,
@@ -447,9 +468,9 @@ const LoginScreen = (props: {
             }}
           >
             <WithLocalSvg
-              width={width + 100}
-              height={height * 0.5}
-              style={{ posision: "absolute", top: -200 }}
+              width={wp("126%")}
+              height={hp("50%")}
+              style={{ posision: "absolute", top: -wp("24%") }}
               preserveAspectRatio="xMinYMin slice"
               asset={require("../../assets/Texture(1).svg")}
             />
@@ -458,8 +479,8 @@ const LoginScreen = (props: {
             {!isSignUpClicked ? (
               <Text
                 style={{
-                  fontSize: normalize(31.5),
-                  marginTop: "30%",
+                  fontSize: Font.h2,
+                  marginTop: hp("5%"),
                   color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
@@ -470,8 +491,8 @@ const LoginScreen = (props: {
             ) : (
               <Text
                 style={{
-                  fontSize: normalize(31.5),
-                  marginTop: "30%",
+                  fontSize: Font.h2,
+                  marginTop: hp("5%"),
                   color: "#FFFFFF",
                   marginHorizontal: 20,
                   fontFamily: "Poppins-Bold",
@@ -485,9 +506,9 @@ const LoginScreen = (props: {
                 style={{
                   marginHorizontal: 20,
                   color: "#FFFFFF",
-                  fontSize: normalize(17.5),
+                  fontSize: Font.h5,
                   marginVertical: 10,
-                  marginBottom: 90,
+                  marginBottom: 70,
                   fontFamily: "Poppins-Regular",
                 }}
               >
@@ -499,9 +520,9 @@ const LoginScreen = (props: {
                 style={{
                   marginHorizontal: 20,
                   color: "#FFFFFF",
-                  fontSize: normalize(17.5),
+                  fontSize: Font.h5,
                   marginVertical: 10,
-                  marginBottom: 90,
+                  marginBottom: 70,
                   fontFamily: "Poppins-Regular",
                 }}
               >
@@ -524,7 +545,7 @@ const LoginScreen = (props: {
               <View>
                 <Text
                   style={{
-                    fontSize: normalize(21),
+                    fontSize: Font.h4,
                     color: Colors.textColor,
                     fontFamily: "Poppins-Regular",
                   }}
@@ -538,7 +559,7 @@ const LoginScreen = (props: {
                 {isLoginClicked ? (
                   <View
                     style={{
-                      width: 50,
+                      width: wp("13%"),
                       height: 3,
                       marginTop: 5,
                       backgroundColor: Colors.textColor,
@@ -550,7 +571,7 @@ const LoginScreen = (props: {
               <View style={{ marginHorizontal: 20 }}>
                 <Text
                   style={{
-                    fontSize: normalize(21),
+                    fontSize: Font.h4,
                     color: Colors.textColor,
                     fontFamily: "Poppins-Regular",
                   }}
@@ -564,7 +585,7 @@ const LoginScreen = (props: {
                 {isSignUpClicked ? (
                   <View
                     style={{
-                      width: 70,
+                      width: wp("18%"),
                       height: 3,
                       marginTop: 5,
                       backgroundColor: Colors.textColor,
@@ -583,15 +604,16 @@ const LoginScreen = (props: {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          marginTop: -40,
+          marginTop: -wp("15%"),
         }}
       >
         <Text
           style={{
             fontFamily: "Poppins-Regular",
             color: "#838383",
-            fontSize: normalize(21),
+            fontSize: Font.h4,
             marginBottom: 10,
+            marginTop: 45,
           }}
         >
           Or
@@ -602,7 +624,6 @@ const LoginScreen = (props: {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          marginTop: -20,
         }}
       >
         <View
@@ -616,13 +637,13 @@ const LoginScreen = (props: {
             backgroundColor: "#3b5988",
             marginTop: 10,
             padding: 10,
-            width: 250,
-            height: 40,
+            width: wp("64%"),
+            height: hp("5%"),
           }}
         >
           <WithLocalSvg
-            width={250}
-            height={40}
+            width={wp("70%")}
+            height={hp("100%")}
             asset={require("../../assets/facebook.svg")}
           />
         </View>
@@ -641,13 +662,13 @@ const LoginScreen = (props: {
             paddingLeft: 20,
             paddingTop: 10,
             paddingBottom: 20,
-            width: 250,
-            height: 40,
+            width: wp("64%"),
+            height: hp("5%"),
           }}
         >
           <WithLocalSvg
-            width={250}
-            height={40}
+            width={wp("70%")}
+            height={hp("100%%")}
             asset={require("../../assets/Googleplus.svg")}
           />
         </View>
@@ -659,8 +680,8 @@ const LoginScreen = (props: {
 const styles = StyleSheet.create({
   card: {
     marginHorizontal: 20,
-    marginTop: -100,
-    marginBottom: 10,
+    marginTop: -hp("10%"),
+    marginBottom: 5,
   },
   btn: {
     flexDirection: "row",
@@ -678,7 +699,7 @@ const styles = StyleSheet.create({
   fabS: {
     right: 0,
     bottom: 0,
-    marginTop: -48,
+    marginTop: -hp("5%"),
     elevation: 10,
     backgroundColor: "#4e4e4e",
   },
@@ -691,14 +712,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   container: {
-    paddingTop: 100,
+    paddingTop: hp("12%"),
   },
   textInput: {
     borderBottomWidth: 0.3,
     borderBottomColor: "black",
-    height: 25,
-    fontSize: 16,
-    marginVertical: 50,
+    height: hp("3%"),
+    fontSize: Font.h6,
+    marginVertical: hp("6%"),
     marginHorizontal: 20,
   },
 });

@@ -1,4 +1,3 @@
-import { HeaderTitle } from "@react-navigation/stack";
 import React from "react";
 import { ScrollView } from "react-native";
 import {
@@ -10,20 +9,12 @@ import {
   Platform,
   PixelRatio,
 } from "react-native";
-import { baseProps } from "react-native-gesture-handler/lib/typescript/handlers/gestureHandlers";
+
 import { WithLocalSvg } from "react-native-svg";
 import RoundedButton from "../../components/RoundedButton";
+import Font from "../../constants/Font";
 
 const { width, height } = Dimensions.get("window");
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const DecisionScreen = (props: {
   navigation: { navigate: (arg0: string, arg1: Object) => void };
@@ -49,7 +40,7 @@ const DecisionScreen = (props: {
           <Text
             style={{
               color: "#555555",
-              fontSize: normalize(21),
+              fontSize: Font.h4,
               textAlign: "center",
               marginTop: 20,
               marginHorizontal: 10,
@@ -94,7 +85,7 @@ const DecisionScreen = (props: {
                 flex: 1,
                 textAlign: "center",
                 color: "#838383",
-                fontSize: normalize(18),
+                fontSize: Font.h5,
                 fontFamily: "Poppins-Regular",
               }}
             >

@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Dimensions,
-  Platform,
-  PixelRatio,
-  Image,
-} from "react-native";
-import { Card, Paragraph, Chip } from "react-native-paper";
-import Icon from "react-native-vector-icons/Ionicons";
+import React from "react";
+import { StyleSheet, View, Text, Dimensions, Image } from "react-native";
+import { Card, Chip } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
+import Font from "../constants/Font";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 const { width, height } = Dimensions.get("window");
-
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const CardCoponentScreent = (props) => {
   return (
@@ -33,81 +19,57 @@ const CardCoponentScreent = (props) => {
       }}
     >
       <Card.Content>
-        <Image
-          source={props.Img}
+        <Image source={props.Img} style={styles.imageContainer}></Image>
+
+        <View
           style={{
-            width: width * 0.94,
-            height: height * 0.25,
-            position: "absolute",
-            top: 0,
-            borderTopLeftRadius: 15,
-            borderTopRightRadius: 15,
-            resizeMode: "stretch",
-          }}
-        ></Image>
-        <Chip
-          disabled
-          style={{
+            flexDirection: "row",
+            alignItems: "center",
             width: 50,
             height: 20,
-            alignItems: "center",
+            borderRadius: 10,
             backgroundColor: "#37B84C",
             marginLeft: width * 0.73,
             marginTop: 2,
+            flexGrow: 1,
+            justifyContent: "center",
           }}
         >
-          <View
+          <Text
             style={{
-              flexDirection: "row",
-              marginTop: 15,
-              alignItems: "center",
+              fontSize: Font.p2,
+              fontFamily: "Poppins-Medium",
+              color: "#FFFFFF",
             }}
           >
-            <Text
-              style={{
-                fontSize: normalize(12),
-                fontFamily: "Poppins-Medium",
-                color: "#FFFFFF",
-                marginTop: 7,
-              }}
-            >
-              5.0
-            </Text>
+            4.5
+          </Text>
 
-            <WithLocalSvg
-              width={12}
-              height={12}
-              asset={require("../assets/Iconionic-ios-star.svg")}
-              style={{ marginLeft: 3, marginTop: 5 }}
-            />
-          </View>
-        </Chip>
+          <WithLocalSvg
+            width={12}
+            height={12}
+            asset={require("../assets/Iconionic-ios-star.svg")}
+            style={{ marginLeft: 3 }}
+          />
+        </View>
 
-        <Paragraph style={{ marginTop: height * 0.22 }}>
+        <View style={{ marginTop: hp("21%"), flexGrow: 1 }}>
           <View>
             <View style={{ flexDirection: "row" }}>
               <Text
                 style={{
                   fontFamily: "Poppins-SemiBold",
-                  fontSize: normalize(17.5),
+                  fontSize: Font.h5,
                   color: "#3E3E3E",
-                  lineHeight: normalize(25),
+                  lineHeight: 25,
                   paddingBottom: 10,
                 }}
               >
                 {props.title}
               </Text>
             </View>
-            <View style={{ width: width * 0.8, height: 70 }}>
-              <Text
-                numberOfLines={3}
-                style={{
-                  fontFamily: "Poppins-Regular",
-                  fontSize: normalize(14),
-                  color: "#838383",
-                  lineHeight: normalize(24),
-                }}
-              >
+            <View style={{ width: wp("80%"), height: hp("8.6%") }}>
+              <Text numberOfLines={3} style={styles.cardTextStyleForRegular}>
                 {props.description}
               </Text>
             </View>
@@ -121,7 +83,6 @@ const CardCoponentScreent = (props) => {
                   backgroundColor: "#FFFFFF",
                   justifyContent: "center",
                   alignItems: "center",
-
                   borderWidth: 1,
                   borderColor: "#FFFFFF",
                 }}
@@ -129,30 +90,20 @@ const CardCoponentScreent = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-Regular",
-                  fontSize: normalize(14),
+                  fontSize: Font.p1,
                   color: "#838383",
-                  lineHeight: normalize(24),
+                  lineHeight: 24,
                   marginLeft: 5,
                 }}
               >
                 Instructor:
               </Text>
-              <Text
-                style={{
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(14),
-                  color: "#3E3E3E",
-                  lineHeight: normalize(24),
-                  paddingLeft: 5,
-                }}
-              >
-                {props.author}
-              </Text>
+              <Text style={styles.cardTextStyleforMedium}>{props.author}</Text>
 
               <View
                 style={{
                   flexDirection: "row",
-                  marginLeft: 50,
+                  marginLeft: 35,
                 }}
               >
                 <WithLocalSvg
@@ -161,17 +112,7 @@ const CardCoponentScreent = (props) => {
                   asset={require("../assets/Iconawesome-rupee-sign.svg")}
                   style={{ marginTop: 5 }}
                 />
-                <Text
-                  style={{
-                    fontFamily: "Poppins-SemiBold",
-                    fontSize: normalize(17.5),
-                    color: "#3E3E3E",
-                    marginLeft: 5,
-                    lineHeight: normalize(24),
-                  }}
-                >
-                  {props.price}
-                </Text>
+                <Text style={styles.priceTextStyle}>{props.price}</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", marginTop: 2 }}>
@@ -181,16 +122,7 @@ const CardCoponentScreent = (props) => {
                 asset={require("../assets/Iconmaterial-group(2).svg")}
                 style={{ marginTop: 3 }}
               />
-              <Text
-                style={{
-                  paddingLeft: 5,
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(14),
-                  color: "#3E3E3E",
-
-                  lineHeight: normalize(24),
-                }}
-              >
+              <Text style={styles.cardTextStyleforMedium}>
                 {props.studentEnroll} Students Enrolled
               </Text>
             </View>
@@ -201,64 +133,35 @@ const CardCoponentScreent = (props) => {
                 asset={require("../assets/Iconionic-ios-stopwatch(1).svg")}
                 style={{}}
               />
-              <Text
-                style={{
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(14),
-                  color: "#3E3E3E",
-                  paddingLeft: 5,
-
-                  lineHeight: normalize(24),
-                }}
-              >
+              <Text style={styles.cardTextStyleforMedium}>
                 {props.hrs} hours
               </Text>
             </View>
           </View>
-        </Paragraph>
+        </View>
 
         <View style={{ flexDirection: "row", marginTop: 5, marginBottom: 15 }}>
           <Chip
-            onPress={() => console.log("Pressed")}
-            style={{ marginRight: 5, height: 25, alignItems: "center" }}
-            textStyle={{
-              fontSize: normalize(14),
-              fontFamily: "Poppins-Regular",
-              color: "#3E3E3E",
-            }}
+            style={styles.chipContainerStyle}
+            textStyle={styles.tagtextStyle}
           >
             {props.tag}
           </Chip>
           <Chip
-            onPress={() => console.log("Pressed")}
-            style={{ marginRight: 5, height: 25, alignItems: "center" }}
-            textStyle={{
-              fontSize: normalize(14),
-              fontFamily: "Poppins-Regular",
-              color: "#3E3E3E",
-            }}
+            style={styles.chipContainerStyle}
+            textStyle={styles.tagtextStyle}
           >
             Fitness
           </Chip>
           <Chip
-            onPress={() => console.log("Pressed")}
-            style={{ marginRight: 5, height: 25, alignItems: "center" }}
-            textStyle={{
-              fontSize: normalize(14),
-              fontFamily: "Poppins-Regular",
-              color: "#3E3E3E",
-            }}
+            style={styles.chipContainerStyle}
+            textStyle={styles.tagtextStyle}
           >
             Health
           </Chip>
           <Chip
-            onPress={() => console.log("Pressed")}
-            style={{ marginRight: 5, height: 25, alignItems: "center" }}
-            textStyle={{
-              fontSize: normalize(14),
-              fontFamily: "Poppins-Regular",
-              color: "#3E3E3E",
-            }}
+            style={styles.chipContainerStyle}
+            textStyle={styles.tagtextStyle}
           >
             Health
           </Chip>
@@ -279,8 +182,58 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: 10,
     marginRight: 20,
-    width: width * 0.94,
-    height: height * 0.54,
+    width: wp("94%"),
+    height: hp("59%"),
+    flexGrow: 1,
+  },
+  imageContainer: {
+    width: wp("95%"),
+    height: hp("25%"),
+    position: "absolute",
+    top: 0,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    resizeMode: "stretch",
+  },
+  tagtextStyle: {
+    fontSize: Font.p1,
+    fontFamily: "Poppins-Regular",
+    color: "#3E3E3E",
+  },
+  chipContainerStyle: {
+    marginRight: 5,
+    height: 25,
+    alignItems: "center",
+    backgroundColor: "#F4F4F4",
+  },
+  ratingContainerStyle: {
+    width: 50,
+    height: 20,
+    alignItems: "center",
+    backgroundColor: "#37B84C",
+    marginLeft: width * 0.73,
+    marginTop: 2,
+    flexGrow: 1,
+  },
+  cardTextStyleforMedium: {
+    fontFamily: "Poppins-Medium",
+    fontSize: Font.p1,
+    color: "#3E3E3E",
+    paddingLeft: 5,
+    lineHeight: 24,
+  },
+  priceTextStyle: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: Font.h5,
+    color: "#3E3E3E",
+    marginLeft: 1,
+    lineHeight: 24,
+  },
+  cardTextStyleForRegular: {
+    fontFamily: "Poppins-Regular",
+    fontSize: Font.p1,
+    color: "#838383",
+    lineHeight: 24,
   },
 });
 

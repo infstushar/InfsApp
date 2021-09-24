@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
 import Colors from "../constants/colors";
 import { WithLocalSvg } from "react-native-svg";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
+import Font from "../constants/Font";
 
 const RoundedButtonWithOutIcon = (props) => {
   return (
@@ -45,7 +49,7 @@ const RoundedButtonWithOutIcon = (props) => {
 const styles = StyleSheet.create({
   button1: {
     flexDirection: "row",
-    height: 40,
+    height: hp("4%"),
     justifyContent: "center",
     alignItems: "center",
     paddingStart: 30,
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
   },
   button2: {
     flexDirection: "row",
-    height: 40,
+    height: hp("4%"),
     justifyContent: "center",
     alignItems: "center",
     paddingStart: 30,
@@ -74,15 +78,15 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     textAlign: "center",
-    paddingLeft: 40,
+
     color: "white",
-    fontSize: 18,
+    fontSize: Font.h6,
     fontFamily: "Poppins-SemiBold",
   },
   text1: {
     textAlign: "center",
     color: "white",
-    fontSize: 18,
+    fontSize: Font.h6,
     fontFamily: "Poppins-SemiBold",
   },
   iconContainer: {

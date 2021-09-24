@@ -67,15 +67,18 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
           </View>
           <View>
             <SafeAreaView>
-              <WithLocalSvg
-                width={24}
-                height={16}
-                asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
-                style={{ marginLeft: 20, marginTop: 5, marginBottom: 20 }}
+              <TouchableOpacity
                 onPress={() => {
                   props.navigation.goBack();
                 }}
-              />
+              >
+                <WithLocalSvg
+                  width={24}
+                  height={16}
+                  asset={require("../../assets/Icon-ionic-ios-arrow-round-back_white.svg")}
+                  style={{ marginLeft: 15, marginTop: 7 }}
+                />
+              </TouchableOpacity>
             </SafeAreaView>
             <Text
               style={{
@@ -130,7 +133,11 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
                   overflow: "hidden",
                 }}
               >
-                <Icon name="lock-closed" size={19} color="#838383" />
+                <WithLocalSvg
+                  width={16.2}
+                  height={19}
+                  asset={require("../../assets/Iconawesome-lock.svg")}
+                />
                 <TextInput
                   value={password}
                   onChangeText={(name) => setPassword(name)}
@@ -143,6 +150,7 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
                     fontFamily: "Poppin-Regular",
                     fontSize: normalize(15.75),
                   }}
+                  placeholderTextColor="#B7B7B7"
                 />
               </View>
               <View
@@ -160,7 +168,11 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
                   overflow: "hidden",
                 }}
               >
-                <Icon name="lock-closed" size={19} color="#838383" />
+                <WithLocalSvg
+                  width={16.2}
+                  height={19}
+                  asset={require("../../assets/Iconawesome-lock.svg")}
+                />
                 <TextInput
                   value={cpassword}
                   onChangeText={(name) => setCPassword(name)}
@@ -173,6 +185,7 @@ const ResetPasswordScreen = (props: { navigation: { goBack: () => void } }) => {
                     fontFamily: "Poppin-Regular",
                     fontSize: normalize(15.75),
                   }}
+                  placeholderTextColor="#B7B7B7"
                 />
               </View>
             </View>

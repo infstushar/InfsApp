@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 
@@ -58,36 +58,8 @@ const UnitVideoTextScreen = (props) => {
                 lineHeight: normalize(28),
               }}
             >
-              Physical fitness is just a leaf of a tree known
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
-                color: "#3E3E3E",
-                lineHeight: normalize(28),
-              }}
-            >
-              as Health and can be defined as the
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
-                color: "#3E3E3E",
-                lineHeight: normalize(28),
-              }}
-            >
-              physical ability to perform and enjoy daily
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
-                color: "#3E3E3E",
-                lineHeight: normalize(28),
-              }}
-            >
+              Physical fitness is just a leaf of a tree known as Health and can
+              be defined as thephysical ability to perform and enjoy daily
               activities with ease.
             </Text>
           </View>

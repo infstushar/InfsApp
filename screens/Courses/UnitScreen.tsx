@@ -10,7 +10,7 @@ import {
   Alert,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
+import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 
 const width = Dimensions.get("window").width;
@@ -34,12 +34,11 @@ const UnitScreen = (props) => {
           props.navigation.goBack(null);
         }}
       />
-      <View style={{ flexDirection: "row", marginTop: 15 }}>
-        <Icon
-          name="ios-chatbox-ellipses"
-          color="#00B5E0"
-          size={22}
-          style={{ marginLeft: 15 }}
+      <View style={{ flexDirection: "row", marginTop: 15, marginLeft: 20 }}>
+        <WithLocalSvg
+          width={21}
+          height={21}
+          asset={require("../../assets/Chatbox.svg")}
         />
         <Text
           style={{
@@ -75,11 +74,11 @@ const UnitScreen = (props) => {
                 What is Health?
               </Text>
               <View style={{ flexDirection: "row" }}>
-                <Icon
-                  name="bookmarks"
-                  color="#838383"
-                  size={13}
-                  style={{ marginLeft: 15 }}
+                <WithLocalSvg
+                  width={12}
+                  height={14}
+                  asset={require("../../assets/Iconopen-document.svg")}
+                  style={{ marginLeft: 20 }}
                 />
                 <Text style={{ marginLeft: 5 }}>Lesson</Text>
               </View>
@@ -104,11 +103,11 @@ const UnitScreen = (props) => {
                 What is Fitness?
               </Text>
               <View style={{ flexDirection: "row" }}>
-                <Icon
-                  name="bookmarks"
-                  color="#838383"
-                  size={13}
-                  style={{ marginLeft: 15 }}
+                <WithLocalSvg
+                  width={12}
+                  height={14}
+                  asset={require("../../assets/Iconopen-document.svg")}
+                  style={{ marginLeft: 20 }}
                 />
                 <Text style={{ marginLeft: 5 }}>Lesson & Video</Text>
               </View>
@@ -133,11 +132,11 @@ const UnitScreen = (props) => {
                 What is Nutrition?
               </Text>
               <View style={{ flexDirection: "row" }}>
-                <Icon
-                  name="bookmarks"
-                  color="#838383"
-                  size={13}
-                  style={{ marginLeft: 15 }}
+                <WithLocalSvg
+                  width={12}
+                  height={14}
+                  asset={require("../../assets/Iconopen-document.svg")}
+                  style={{ marginLeft: 20 }}
                 />
                 <Text style={{ marginLeft: 5 }}>Lesson</Text>
               </View>
@@ -160,11 +159,11 @@ const UnitScreen = (props) => {
                 Dietetics
               </Text>
               <View style={{ flexDirection: "row" }}>
-                <Icon
-                  name="bookmarks"
-                  color="#838383"
-                  size={13}
-                  style={{ marginLeft: 15 }}
+                <WithLocalSvg
+                  width={12}
+                  height={14}
+                  asset={require("../../assets/Iconopen-document.svg")}
+                  style={{ marginLeft: 20 }}
                 />
                 <Text style={{ marginLeft: 5 }}>Lesson</Text>
               </View>
@@ -187,11 +186,11 @@ const UnitScreen = (props) => {
                 Therapeutic Nutrition
               </Text>
               <View style={{ flexDirection: "row" }}>
-                <Icon
-                  name="bookmarks"
-                  color="#838383"
-                  size={13}
-                  style={{ marginLeft: 15 }}
+                <WithLocalSvg
+                  width={12}
+                  height={14}
+                  asset={require("../../assets/Iconopen-document.svg")}
+                  style={{ marginLeft: 20 }}
                 />
                 <Text style={{ marginLeft: 5 }}>Lesson</Text>
               </View>

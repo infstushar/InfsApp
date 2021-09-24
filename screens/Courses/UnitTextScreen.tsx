@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 

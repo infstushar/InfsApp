@@ -14,10 +14,8 @@ import {
 import StepIndicator from "react-native-step-indicator";
 import Swiper from "react-native-swiper";
 import Colors from "../../constants/colors";
-import Icon from "react-native-vector-icons/Ionicons";
-import { Chip, ToggleButton } from "react-native-paper";
-import RoundedButton from "../../components/RoundedButton";
-import DecisionScreen from "./DecisionScreen";
+
+import { Chip } from "react-native-paper";
 
 const { width, height } = Dimensions.get("window");
 const scale = width / 375;
@@ -300,7 +298,7 @@ const PreferenceScreen = (props: {
           <Text
             style={{
               color: "#FFFFFF",
-              fontFamily: "Poppins-Regular",
+              fontFamily: "Poppins-Bold",
               fontSize: normalize(17.5),
             }}
           >
@@ -318,7 +316,7 @@ const PreferenceScreen = (props: {
           <Text
             style={{
               color: "#555555",
-              fontFamily: "Poppins-Regular",
+              fontFamily: "Poppins-Bold",
               fontSize: normalize(17.5),
             }}
           >
@@ -446,8 +444,7 @@ const PreferenceScreen = (props: {
                   onStepPress(2);
                 }}
                 style={{
-                  flexDirection: "row",
-                  height: 45,
+                  height: 50,
                   justifyContent: "space-between",
                   width: "80%",
                   alignItems: "center",
@@ -567,10 +564,9 @@ const styles = StyleSheet.create({
   continueButton: {
     flex: 1,
     textAlign: "center",
-    paddingLeft: 40,
     color: "#FFFFFF",
     fontSize: normalize(17.5),
-    fontFamily: "Poppins-Medium",
+    fontFamily: "Poppins-SemiBold",
   },
   buttonContainer: {
     flexDirection: "row",

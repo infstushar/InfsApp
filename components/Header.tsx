@@ -9,41 +9,27 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 import { WithLocalSvg } from "react-native-svg";
+import Font from "../constants/Font";
 
 const { width, height } = Dimensions.get("window");
-const scale = width / 415;
-const normalize = (size) => {
-  const newSize = size * scale;
-  if (Platform.OS == "ios") {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-};
 
 const Header = (props) => {
   return (
     <ImageBackground
       source={require("../assets/Background3x.png")}
       resizeMode="cover"
-      style={{ width: width }}
+      style={{ width: wp("100%") }}
     >
       <Appbar.Header style={{ backgroundColor: "transparent" }}>
-        {/*<Appbar.Content
-        title={props.title}
-        color="#FFFFFF"
-        titleStyle={{
-          fontWeight: "500",
-          fontSize: normalize(31),
-          marginRight: 150,
-        }}
-        style={{}}
-      />*/}
         <View style={{ flexDirection: "row" }}>
           <Text
             style={{
-              fontSize: normalize(31.5),
+              fontSize: Font.h2,
               fontFamily: "Poppins-SemiBold",
               color: "#FFFFFF",
               marginLeft: 10,
@@ -55,7 +41,7 @@ const Header = (props) => {
             width={18}
             height={18}
             asset={require("../assets/Notification.svg")}
-            style={{ marginLeft: width * 0.5, marginTop: 15 }}
+            style={{ marginLeft: wp("50%"), marginTop: 15 }}
           />
         </View>
       </Appbar.Header>

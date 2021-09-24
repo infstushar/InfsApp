@@ -25,6 +25,7 @@
     "react-native-paper": "^4.9.1",
     "react-native-password-strength-meter": "0.0.5",
     "react-native-reanimated": "^2.2.0",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.3.0",
     "react-native-step-indicator": "^1.0.3",
