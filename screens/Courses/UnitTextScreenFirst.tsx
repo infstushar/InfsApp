@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
+import Font from "../../constants/Font";
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 
@@ -42,7 +42,7 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-SemiBold",
                 color: "#00B5E0",
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 lineHeight: normalize(28),
                 textTransform: "uppercase",
               }}
@@ -53,7 +53,7 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-Medium",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
               }}
             >
@@ -63,7 +63,7 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-Medium",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
               }}
             >
@@ -74,7 +74,7 @@ const UnitTextScreenFirst = (props) => {
             style={{
               fontFamily: "Poppins-SemiBold",
               color: "#00B5E0",
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               textTransform: "uppercase",
               marginTop: 15,
               marginBottom: 10,
@@ -87,7 +87,7 @@ const UnitTextScreenFirst = (props) => {
             style={{
               fontFamily: "Poppins-Medium",
               color: "#838383",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               lineHeight: normalize(24.5),
               marginBottom: 10,
             }}
@@ -109,7 +109,7 @@ const UnitTextScreenFirst = (props) => {
               shadowColor: "#0000001A",
               shadowOpacity: 1,
               width: normalize(350),
-              height: 120,
+              height: 90,
               marginRight: 15,
             }}
           >
@@ -121,23 +121,23 @@ const UnitTextScreenFirst = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(15.75),
+                fontSize: Font.h6,
                 paddingLeft: 5,
                 color: "#3E3E3E",
                 lineHeight: normalize(24.5),
               }}
             >
-              Small chemical components of food that{"\n"} are needed in
-              adequate amounts by the{"\n"} body to grow, reproduce and lead a
-              {"\n"} normal healthy
-              {"\n"}Life are nutrients.
+              Small chemical components of food that are needed in
+              adequate amounts by the body to grow, reproduce and lead a
+              normal healthy
+              Life are nutrients.
             </Text>
           </View>
           <Text
             style={{
               fontFamily: "Poppins-SemiBold",
               color: "#00B5E0",
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               lineHeight: normalize(28),
               textTransform: "uppercase",
             }}
@@ -145,21 +145,20 @@ const UnitTextScreenFirst = (props) => {
             Everything that is consumed consists of nutrients. Broadly speaking,
             there are 3 types of nutrients;
           </Text>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row",marginRight:10 }}>
             <WithLocalSvg
               width={10}
               height={7}
               asset={require("../../assets/dot-svgrepo-com.svg")}
-              style={{ marginTop: 8, marginLeft: 5 }}
+              style={{ marginTop: 8, }}
             />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                marginLeft:5
               }}
             >
               Macronutrients -
@@ -168,13 +167,13 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-Regular",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                paddingLeft:5,
+                
               }}
             >
-              Proteins, Fats, and Carbohydrates
+              Proteins, Fats,and {"\n"}Carbohydrates
             </Text>
           </View>
           <View style={{ flexDirection: "row" }}>
@@ -182,16 +181,15 @@ const UnitTextScreenFirst = (props) => {
               width={10}
               height={7}
               asset={require("../../assets/dot-svgrepo-com.svg")}
-              style={{ marginTop: 8, marginLeft: 5 }}
+              style={{ marginTop: 8 }}
             />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                marginLeft:5
               }}
             >
               Micronutrients -
@@ -200,10 +198,9 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-Regular",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                paddingLeft:5
               }}
             >
               Vitamins and Minerals.
@@ -215,16 +212,15 @@ const UnitTextScreenFirst = (props) => {
               width={10}
               height={7}
               asset={require("../../assets/dot-svgrepo-com.svg")}
-              style={{ marginTop: 8, marginLeft: 5 }}
+              style={{ marginTop: 8}}
             />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                marginLeft:5
               }}
             >
               Inorganic Nutrients -
@@ -233,10 +229,9 @@ const UnitTextScreenFirst = (props) => {
               style={{
                 fontFamily: "Poppins-Regular",
                 color: "#3E3E3E",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 lineHeight: normalize(24.5),
-
-                paddingLeft: 5,
+                paddingLeft:5,
               }}
             >
               Water and Oxygen
@@ -245,7 +240,7 @@ const UnitTextScreenFirst = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Medium",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               paddingLeft: 5,
               color: "#838383",
               lineHeight: normalize(24.5),
@@ -320,7 +315,7 @@ const UnitTextScreenFirst = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#838383",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-Regular",
             }}
           >
@@ -351,7 +346,7 @@ const UnitTextScreenFirst = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#FFFFFF",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-SemiBold",
             }}
           >

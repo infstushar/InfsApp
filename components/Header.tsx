@@ -25,7 +25,7 @@ const Header = (props) => {
       resizeMode="cover"
       style={{ width: wp("100%") }}
     >
-      <Appbar.Header style={{ backgroundColor: "transparent" }}>
+      <Appbar.Header style={{ backgroundColor: "transparent", }}>
         <View style={{ flexDirection: "row" }}>
           <Text
             style={{

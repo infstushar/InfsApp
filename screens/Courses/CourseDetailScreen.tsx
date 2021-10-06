@@ -181,7 +181,7 @@ const CourseDetailScreen = (props) => {
               width={12}
               height={12}
               asset={require("../../assets/Icon-ionic-ios-star-(1).svg")}
-              style={{ marginTop: 4 }}
+              style={{ marginTop: 5 }}
             />
             <Text
               style={{
@@ -208,7 +208,7 @@ const CourseDetailScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-SemiBold",
-              fontSize: Font.p1,
+              fontSize: Font.h4,
               color: "#3E3E3E",
               paddingBottom: 10,
 
@@ -592,22 +592,18 @@ const CourseDetailScreen = (props) => {
                       </Text>
                     </View>
 
-                    <Chip
-                      disabled
-                      style={{
-                        width: 50,
-                        height: 20,
-                        alignItems: "center",
-                        backgroundColor: "#37B84C",
-                        marginLeft: 50,
-                        marginTop: 15,
-                      }}
-                    >
-                      <View
+                    <View
                         style={{
                           flexDirection: "row",
-
                           alignItems: "center",
+                          width: 50,
+                          height: 20,
+                          borderRadius: 10,
+                          backgroundColor: "#37B84C",
+                          marginLeft: 50,
+                          marginTop: 20,
+                          flexGrow: 1,
+                          justifyContent: "center",
                         }}
                       >
                         <Text
@@ -615,27 +611,25 @@ const CourseDetailScreen = (props) => {
                             fontSize: Font.p2,
                             fontFamily: "Poppins-Medium",
                             color: "#FFFFFF",
-                            marginTop: 7,
                           }}
                         >
-                          {DATA[0].star}
+                          4.5
                         </Text>
 
                         <WithLocalSvg
                           width={12}
                           height={12}
                           asset={require("../../assets/Iconionic-ios-star.svg")}
-                          style={{ marginLeft: 3, marginTop: 5 }}
+                          style={{ marginLeft: 3 }}
                         />
                       </View>
-                    </Chip>
                   </View>
 
                   <Text
                     style={{
                       fontSize: Font.p1,
-                      fontFamily: "Poppins-Regular",
-                      color: "#838383",
+                        fontFamily: "Poppins-Regular",
+                        color: "#838383",
                     }}
                   >
                     There are many variations of passages of Ipsum available,
@@ -685,22 +679,19 @@ const CourseDetailScreen = (props) => {
                         Foundation Course,
                       </Text>
                     </View>
-                    <Chip
-                      disabled
-                      style={{
-                        width: 50,
-                        height: 20,
-                        alignItems: "center",
-                        backgroundColor: "#37B84C",
-                        marginLeft: 50,
-                        marginTop: 15,
-                      }}
-                    >
-                      <View
+                    <View
                         style={{
                           flexDirection: "row",
 
                           alignItems: "center",
+                          width: 50,
+                          height: 20,
+                          borderRadius: 10,
+                          backgroundColor: "#37B84C",
+                          marginLeft: 50,
+                          marginTop: 20,
+                          flexGrow: 1,
+                          justifyContent: "center",
                         }}
                       >
                         <Text
@@ -708,20 +699,18 @@ const CourseDetailScreen = (props) => {
                             fontSize: Font.p2,
                             fontFamily: "Poppins-Medium",
                             color: "#FFFFFF",
-                            marginTop: 7,
                           }}
                         >
-                          {DATA[0].star}
+                          4.5
                         </Text>
 
                         <WithLocalSvg
                           width={12}
                           height={12}
                           asset={require("../../assets/Iconionic-ios-star.svg")}
-                          style={{ marginLeft: 3, marginTop: 5 }}
+                          style={{ marginLeft: 3 }}
                         />
                       </View>
-                    </Chip>
                   </View>
                   <Text
                     style={{
@@ -758,7 +747,7 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Diploma in Nutrition and Fitness?"
                 titleStyle={{
-                  fontSize: Font.p2,
+                  fontSize: Font.p1,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
@@ -774,7 +763,7 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Content Prep course?"
                 titleStyle={{
-                  fontSize: Font.p2,
+                  fontSize: Font.p1,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
@@ -789,7 +778,7 @@ const CourseDetailScreen = (props) => {
               <List.Accordion
                 title="Calisthenics Trainer Certification?"
                 titleStyle={{
-                  fontSize: Font.p2,
+                  fontSize: Font.p1,
                   fontFamily: "Poppins-Medium",
                   color: "#3E3E3E",
                 }}
@@ -866,7 +855,7 @@ const CourseDetailScreen = (props) => {
               textAlign: "center",
 
               color: "#FFFFFF",
-              fontSize: Font.h6,
+              fontSize: Font.h5,
               fontFamily: "Poppins-SemiBold",
             }}
           >

@@ -1829,9 +1829,11 @@ plurals mtrl_badge_content_description
 raw app
 raw assets_basiccoursevector
 raw assets_chatbox
+raw assets_close_icon
 raw assets_course
 raw assets_dotsvgrepocom
 raw assets_facebook
+raw assets_filter
 raw assets_fpsent
 raw assets_googleplus
 raw assets_hint

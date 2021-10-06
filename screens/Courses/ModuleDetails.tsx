@@ -6,18 +6,17 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  TouchableHighlight,
+
   FlatList,
   StatusBar,
   Platform,
   PixelRatio,
-  LogBox,
+
 } from "react-native";
-import CourseContentScreen from "../../components/CourseContentScreen";
 import { ScrollView } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
 import Font from "../../constants/Font";
-import { Chip, Paragraph, List, Card } from "react-native-paper";
+import { Chip, List, Card } from "react-native-paper";
 
 import Header from "../../components/HeaderwithBack";
 import { WithLocalSvg } from "react-native-svg";
@@ -133,7 +132,7 @@ const ModuleDetails = (props) => {
         backgroundColor: "#F4F4F4",
       }}
       textStyle={{
-        fontSize: normalize(12),
+        fontSize: Font.p1,
         fontFamily: "Poppins-Regular",
         color: "#3E3E3E",
       }}
@@ -156,7 +155,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Regular",
-                fontSize: normalize(12),
+                fontSize:Font.p1,
                 color: "#3E3E3E",
               }}
             >
@@ -203,19 +202,19 @@ const ModuleDetails = (props) => {
           style={{ width: width, height: "100%" }}
         />
       </View>
-      <ScrollView>
-        <View style={{ marginLeft: 15 }}>
+      <ScrollView >
+        <View style={{ marginLeft: 15, marginBottom:10 }}>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
             <WithLocalSvg
               width={12}
               height={12}
               asset={require("../../assets/Icon-ionic-ios-star-(1).svg")}
-              style={{ marginLeft: 2, marginTop: 2 }}
+              style={{  marginTop: 5 }}
             />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginLeft: 10,
               }}
@@ -226,7 +225,7 @@ const ModuleDetails = (props) => {
               style={{
                 textDecorationLine: "underline",
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginLeft: 10,
               }}
@@ -238,7 +237,7 @@ const ModuleDetails = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-SemiBold",
-              fontSize: normalize(21),
+              fontSize: Font.h4,
               color: "#3E3E3E",
               paddingBottom: 10,
             }}
@@ -249,7 +248,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
               }}
             >
@@ -259,7 +258,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#838383",
                 paddingLeft: 5,
               }}
@@ -269,7 +268,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 paddingLeft: 5,
               }}
@@ -280,7 +279,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 paddingLeft: 5,
               }}
@@ -307,7 +306,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Regular",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#838383",
                 marginLeft: 10,
                 marginTop: 5,
@@ -318,7 +317,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 paddingLeft: 5,
                 marginLeft: 5,
@@ -339,7 +338,7 @@ const ModuleDetails = (props) => {
               style={{
                 paddingLeft: 5,
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 color: "#3E3E3E",
                 marginTop: 5,
               }}
@@ -356,7 +355,7 @@ const ModuleDetails = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-Medium",
-                  fontSize: 12,
+                  fontSize: Font.p1,
                   color: "#3E3E3E",
                   paddingLeft: 5,
                   paddingTop: 5,
@@ -376,7 +375,7 @@ const ModuleDetails = (props) => {
           </View>
           <Text
             style={{
-              fontSize: normalize(17.5),
+              fontSize: Font.h5,
               fontFamily: "Poppins-Medium",
               color: "#3E3E3E",
             }}
@@ -401,7 +400,7 @@ const ModuleDetails = (props) => {
                 color: "#3E3E3E",
 
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
               }}
             >
               Module Content :
@@ -411,7 +410,7 @@ const ModuleDetails = (props) => {
                 color: "#838383",
 
                 fontFamily: "Poppins-Regular",
-                fontSize: normalize(14),
+                fontSize: Font.p1,
               }}
             >
               12 Units | 30 hrs of videos / Slides
@@ -424,7 +423,7 @@ const ModuleDetails = (props) => {
                 <List.Accordion
                   title={<Text>To define Health and Fitness</Text>}
                   titleStyle={{
-                    fontSize: normalize(15.75),
+                    fontSize: Font.h6,
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
@@ -440,7 +439,7 @@ const ModuleDetails = (props) => {
                 <List.Accordion
                   title={<Text>To understand BMI and its drawbacks</Text>}
                   titleStyle={{
-                    fontSize: normalize(15.75),
+                    fontSize: Font.h6,
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
@@ -455,7 +454,7 @@ const ModuleDetails = (props) => {
                 <List.Accordion
                   title={<Text>To understand Nutrition Pyramid</Text>}
                   titleStyle={{
-                    fontSize: normalize(15.75),
+                    fontSize: Font.h6,
                     fontFamily: "Poppins-Medium",
                     color: "#3E3E3E",
                   }}
@@ -475,7 +474,7 @@ const ModuleDetails = (props) => {
               style={{
                 color: "#3E3E3E",
 
-                fontSize: normalize(17.5),
+                fontSize: Font.h4,
                 fontFamily: "Poppins-SemiBold",
                 marginTop: 5,
               }}
@@ -484,7 +483,7 @@ const ModuleDetails = (props) => {
             </Text>
             <Text
               style={{
-                fontSize: normalize(14),
+                fontSize: Font.p1,
                 fontFamily: "Poppins-Regular",
                 marginRight: 15,
                 lineHeight: normalize(24),
@@ -500,7 +499,7 @@ const ModuleDetails = (props) => {
                 color: "#3E3E3E",
 
                 marginTop: 5,
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 fontFamily: "Poppins-SemiBold",
               }}
             >
@@ -508,7 +507,7 @@ const ModuleDetails = (props) => {
             </Text>
             <Text
               style={{
-                fontSize: 12,
+                fontSize: Font.p1,
                 fontFamily: "Poppins-Regular",
                 paddingVertical: 10,
 
@@ -523,7 +522,7 @@ const ModuleDetails = (props) => {
               style={{
                 color: "#3E3E3E",
 
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 fontFamily: "Poppins-SemiBold",
               }}
             >
@@ -586,7 +585,7 @@ const ModuleDetails = (props) => {
                           style={{
                             color: "#3E3E3E",
                             marginLeft: 15,
-                            fontSize: normalize(17.5),
+                            fontSize: Font.h5,
                             fontFamily: "Poppins-Medium",
                           }}
                         >
@@ -596,94 +595,7 @@ const ModuleDetails = (props) => {
                           style={{
                             color: "#3E3E3E",
                             marginLeft: 15,
-                            fontSize: normalize(14),
-                            fontFamily: "Poppins-Regular",
-                          }}
-                        >
-                          Foundation Course,
-                        </Text>
-                      </View>
-                      <View
-                        style={{
-                          flexDirection: "row",
-
-                          alignItems: "center",
-                          width: 50,
-                          height: 20,
-                          borderRadius: 10,
-                          backgroundColor: "#37B84C",
-                          marginLeft: 60,
-                          marginTop: 20,
-                          flexGrow: 1,
-                          justifyContent: "center",
-                        }}
-                      >
-                        <Text
-                          style={{
-                            fontSize: Font.p2,
-                            fontFamily: "Poppins-Medium",
-                            color: "#FFFFFF",
-                          }}
-                        >
-                          4.5
-                        </Text>
-
-                        <WithLocalSvg
-                          width={12}
-                          height={12}
-                          asset={require("../../assets/Iconionic-ios-star.svg")}
-                          style={{ marginLeft: 3 }}
-                        />
-                      </View>
-                    </View>
-                    <Text
-                      style={{
-                        fontSize: normalize(14),
-                        fontFamily: "Poppins-Regular",
-                        color: "#838383",
-                      }}
-                    >
-                      There are many variations of passages of Ipsum available,
-                      but the majority have suffered alteration in some form, by
-                      injected humour, or randomised words which don’t look even
-                      slightly believable.
-                    </Text>
-                  </Card.Content>
-                </View>
-                <View>
-                  <Card.Content>
-                    <View style={{ flexDirection: "row" }}>
-                      <Image
-                        source={require("../../assets/abc.jpeg")}
-                        style={{
-                          borderRadius: 30,
-                          width: 70,
-                          height: 70,
-                          backgroundColor: "#FFFFFF",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          marginLeft: 5,
-                          borderWidth: 1,
-                          borderColor: "#FFFFFF",
-                          marginTop: 10,
-                        }}
-                      />
-                      <View style={{ marginTop: 15 }}>
-                        <Text
-                          style={{
-                            color: "#3E3E3E",
-                            marginLeft: 15,
-                            fontSize: normalize(17.5),
-                            fontFamily: "Poppins-Medium",
-                          }}
-                        >
-                          Virendra Tilekar
-                        </Text>
-                        <Text
-                          style={{
-                            color: "#3E3E3E",
-                            marginLeft: 15,
-                            fontSize: normalize(14),
+                            fontSize: Font.p1,
                             fontFamily: "Poppins-Regular",
                           }}
                         >
@@ -725,7 +637,94 @@ const ModuleDetails = (props) => {
                     </View>
                     <Text
                       style={{
-                        fontSize: normalize(14),
+                        fontSize: Font.p1,
+                        fontFamily: "Poppins-Regular",
+                        color: "#838383",
+                      }}
+                    >
+                      There are many variations of passages of Ipsum available,
+                      but the majority have suffered alteration in some form, by
+                      injected humour, or randomised words which don’t look even
+                      slightly believable.
+                    </Text>
+                  </Card.Content>
+                </View>
+                <View>
+                  <Card.Content>
+                    <View style={{ flexDirection: "row" }}>
+                      <Image
+                        source={require("../../assets/abc.jpeg")}
+                        style={{
+                          borderRadius: 30,
+                          width: 70,
+                          height: 70,
+                          backgroundColor: "#FFFFFF",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          marginLeft: 5,
+                          borderWidth: 1,
+                          borderColor: "#FFFFFF",
+                          marginTop: 10,
+                        }}
+                      />
+                      <View style={{ marginTop: 15 }}>
+                        <Text
+                          style={{
+                            color: "#3E3E3E",
+                            marginLeft: 15,
+                            fontSize: Font.h5,
+                            fontFamily: "Poppins-Medium",
+                          }}
+                        >
+                          Virendra Tilekar
+                        </Text>
+                        <Text
+                          style={{
+                            color: "#3E3E3E",
+                            marginLeft: 15,
+                            fontSize: normalize(14),
+                            fontFamily: "Poppins-Regular",
+                          }}
+                        >
+                          Foundation Course,
+                        </Text>
+                      </View>
+                      <View
+                        style={{
+                          flexDirection: "row",
+
+                          alignItems: "center",
+                          width: 50,
+                          height: 20,
+                          borderRadius: 10,
+                          backgroundColor: "#37B84C",
+                          marginLeft: 40,
+                          marginTop: 20,
+                          flexGrow: 1,
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontSize: Font.p2,
+                            fontFamily: "Poppins-Medium",
+                            color: "#FFFFFF",
+                          }}
+                        >
+                          4.5
+                        </Text>
+
+                        <WithLocalSvg
+                          width={12}
+                          height={12}
+                          asset={require("../../assets/Iconionic-ios-star.svg")}
+                          style={{ marginLeft: 3 }}
+                        />
+                      </View>
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: Font.p1,
                         fontFamily: "Poppins-Regular",
                         color: "#838383",
                       }}
@@ -741,7 +740,7 @@ const ModuleDetails = (props) => {
             </Card>
           </View>
         </View>
-        <View style={{ height: 50 }}></View>
+        <View style={{ height: 100 }}></View>
       </ScrollView>
       <View
         style={{
@@ -775,7 +774,7 @@ const ModuleDetails = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#FFFFFF",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -830,7 +829,7 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontFamily: "Poppins-Regular",
-    fontSize: normalize(15.75),
+    fontSize: Font.h6,
     color: "#3E3E3E",
   },
   horizontalline: {

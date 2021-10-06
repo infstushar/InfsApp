@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   imageContainer: {
-    width: wp("95%"),
+    width: wp("94%"),
     height: hp("25%"),
     position: "absolute",
     top: 0,

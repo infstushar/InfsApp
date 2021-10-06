@@ -7,11 +7,12 @@ import {
   ScrollView,
   Alert,
   Dimensions,
+  Modal,
 } from "react-native";
 import Colors from "../../constants/colors";
 import Card from "../../components/Card";
 
-import { TextInput, ActivityIndicator, Modal } from "react-native-paper";
+import { TextInput, ActivityIndicator } from "react-native-paper";
 import { WithLocalSvg } from "react-native-svg";
 import RoundedButton from "../../components/RoundedButton";
 import Font from "../../constants/Font";
@@ -265,7 +266,7 @@ const LoginScreen = (props: {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visible, setVisible] = React.useState(false);
-
+    const [modalVisible, setModalVisible] = useState(false);
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
 
@@ -279,6 +280,50 @@ const LoginScreen = (props: {
     return (
       <View style={{ marginBottom: 30 }}>
         <View style={{ marginHorizontal: 20 }}>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <View
+              style={{
+                margin: 50,
+                backgroundColor: "white",
+                borderRadius: 20,
+                alignItems: "flex-start",
+                justifyContent:"center",
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+               width:250,
+               height:150,
+               
+                marginTop: 22,
+                shadowRadius: 4,
+               
+
+              }}
+            >
+              <View style={{ flexDirection: "row" }}>
+                <Text>Password must meet the following requirements:</Text>
+                <WithLocalSvg
+              width={30}
+              height={30}
+              asset={require("../../assets/Close_icon.svg")}
+              onPress={()=>setModalVisible(!modalVisible)}
+            />
+              </View>
+              <Text>At least one letter</Text>
+              <Text>At least one capital letter</Text>
+              <Text>At least one number</Text>
+              <Text>Be at least 8 characters</Text>
+            </View>
+          </Modal>
           <View
             style={{
               height: hp("5.9%"),
@@ -386,6 +431,7 @@ const LoginScreen = (props: {
               width={21}
               height={21}
               asset={require("../../assets/Iconionic-ios-information-circle.svg")}
+              onPress={() => setModalVisible(true)}
             />
           </View>
         </View>
@@ -426,13 +472,7 @@ const LoginScreen = (props: {
           visible={true}
         />
 
-        <Modal
-          visible={visible}
-          onDismiss={hideModal}
-          contentContainerStyle={{}}
-        >
-          <Text>Example Modal. Click outside this area to dismiss.</Text>
-        </Modal>
+    
 
         {isDone ? <ActivityIndicator style={{ marginTop: 20 }} /> : null}
       </View>

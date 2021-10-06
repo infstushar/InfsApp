@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import Font from "../../constants/Font";
 
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
@@ -41,7 +42,7 @@ const UnitTextScreen = (props) => {
             style={{
               fontFamily: "Poppins-Medium",
               color: "#3E3E3E",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
             }}
           >
             The World Health Organization (WHO) describes health as
@@ -61,7 +62,7 @@ const UnitTextScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 paddingLeft: 5,
                 color: "#3E3E3E",
                 lineHeight: normalize(28),
@@ -74,7 +75,7 @@ const UnitTextScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Medium",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               lineHeight: normalize(24.5),
               color: "#838383",
               paddingLeft: 2,
@@ -105,7 +106,7 @@ const UnitTextScreen = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-SemiBold",
-                  fontSize: normalize(15.75),
+                  fontSize: Font.h6,
                   lineHeight: normalize(24.5),
                   color: "#3E3E3E",
                   paddingLeft: 2,
@@ -117,7 +118,7 @@ const UnitTextScreen = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-Regular",
-                  fontSize: normalize(15.75),
+                  fontSize: Font.h6,
                   color: "#3E3E3E",
                   paddingLeft: 2,
                 }}
@@ -130,7 +131,7 @@ const UnitTextScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Medium",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               lineHeight: normalize(24.5),
               color: "#838383",
             }}
@@ -179,7 +180,7 @@ const UnitTextScreen = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-SemiBold",
-                  fontSize: normalize(15.75),
+                  fontSize: Font.h6,
                   lineHeight: normalize(24.5),
                   color: "#3E3E3E",
                   paddingLeft: 2,
@@ -190,7 +191,7 @@ const UnitTextScreen = (props) => {
               <Text
                 style={{
                   fontFamily: "Poppins-Regular",
-                  fontSize: normalize(15.75),
+                  fontSize: Font.h6,
                   lineHeight: normalize(24.5),
                   color: "#3E3E3E",
                   paddingLeft: 2,
@@ -203,7 +204,7 @@ const UnitTextScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Medium",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               lineHeight: normalize(24.5),
               color: "#838383",
             }}
@@ -243,7 +244,7 @@ const UnitTextScreen = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#FFFFFF",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-SemiBold",
             }}
           >

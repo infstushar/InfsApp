@@ -41,7 +41,7 @@ const FilterScreen = (props) => {
           <TouchableOpacity
             style={{
               width: 40,
-              backgroundColor: "#00B5E0",
+              backgroundColor: "white",
               height: 40,
               borderRadius: 20,
               justifyContent: "center",
@@ -54,9 +54,9 @@ const FilterScreen = (props) => {
             }}
           >
             <WithLocalSvg
-              width={21}
-              height={20}
-              asset={require("../../assets/filter.svg")}
+              width={30}
+              height={30}
+              asset={require("../../assets/Close_icon.svg")}
             />
           </TouchableOpacity>
         </View>

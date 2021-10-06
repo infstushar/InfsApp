@@ -443,18 +443,7 @@ const PreferenceScreen = (props: {
                 onPress={() => {
                   onStepPress(2);
                 }}
-                style={{
-                  height: 50,
-                  justifyContent: "space-between",
-                  width: "80%",
-                  alignItems: "center",
-                  position: "absolute",
-                  bottom: 0,
-                  marginBottom: "10%",
-                  marginTop: 20,
-                  borderRadius: 40,
-                  backgroundColor: Colors.textColor,
-                }}
+                style={styles.buttonContainer}
               >
                 <Text style={styles.continueButton}>Continue</Text>
               </TouchableOpacity>

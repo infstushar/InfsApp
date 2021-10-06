@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
+import Font from "../../constants/Font";
 import { WithLocalSvg } from "react-native-svg";
 import Header from "../../components/HeaderwithBack";
 
@@ -53,7 +53,7 @@ const UnitVideoTextScreen = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: normalize(17.5),
+                fontSize: Font.h5,
                 color: "#3E3E3E",
                 lineHeight: normalize(28),
               }}
@@ -66,7 +66,7 @@ const UnitVideoTextScreen = (props) => {
           <Text
             style={{
               fontFamily: "Poppins-Medium",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               lineHeight: normalize(24.5),
               color: "#838383",
               paddingLeft: 2,
