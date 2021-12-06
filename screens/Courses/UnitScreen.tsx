@@ -170,7 +170,9 @@ const UnitScreen = (props) => {
             </View>
           </TouchableHighlight>
           <TouchableHighlight
-            onPress={() => {}}
+            onPress={() => {
+              props.navigation.navigate("Atkit");
+            }}
             style={{ width: width, height: 75 }}
           >
             <View style={{ marginLeft: 15, marginTop: 15 }}>

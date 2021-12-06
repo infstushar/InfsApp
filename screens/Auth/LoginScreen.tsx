@@ -281,7 +281,7 @@ const LoginScreen = (props: {
       <View style={{ marginBottom: 30 }}>
         <View style={{ marginHorizontal: 20 }}>
           <Modal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
@@ -290,38 +290,89 @@ const LoginScreen = (props: {
           >
             <View
               style={{
-                margin: 50,
-                backgroundColor: "white",
-                borderRadius: 20,
-                alignItems: "flex-start",
-                justifyContent:"center",
-                shadowColor: "#000",
-                shadowOffset: {
-                  width: 0,
-                  height: 2,
-                },
-               width:250,
-               height:150,
-               
-                marginTop: 22,
-                shadowRadius: 4,
-               
-
+                flex: 1,
+                backgroundColor: "rgba(52, 52, 52, 0.8)",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              <View style={{ flexDirection: "row" }}>
-                <Text>Password must meet the following requirements:</Text>
-                <WithLocalSvg
-              width={30}
-              height={30}
-              asset={require("../../assets/Close_icon.svg")}
-              onPress={()=>setModalVisible(!modalVisible)}
-            />
+              <View
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: 20,
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  width: 320,
+                  height: 200,
+
+                  shadowRadius: 4,
+                }}
+              >
+                <View style={{ flexDirection: "row", marginLeft: 20 }}>
+                  <View style={{ width: 220, height: 50 }}>
+                    <Text
+                      style={{
+                        fontFamily: "Poppins-Medium",
+                        fontSize: Font.h6,
+                        color: "#555555",
+                      }}
+                      numberOfLines={2}
+                    >
+                      Password must meet the following requirements:
+                    </Text>
+                  </View>
+                  <WithLocalSvg
+                    width={35}
+                    height={35}
+                    asset={require("../../assets/Close_icon.svg")}
+                    onPress={() => setModalVisible(!modalVisible)}
+                    style={{ marginLeft: 30 }}
+                  />
+                </View>
+                <View style={{ marginTop: 20, marginLeft: 20 }}>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: Font.p1,
+                      color: "#838383",
+                    }}
+                  >
+                    At least one letter
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: Font.p1,
+                      color: "#838383",
+                    }}
+                  >
+                    At least one capital letter
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: Font.p1,
+                      color: "#838383",
+                    }}
+                  >
+                    At least one number
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: Font.p1,
+                      color: "#838383",
+                    }}
+                  >
+                    Be at least 8 characters
+                  </Text>
+                </View>
               </View>
-              <Text>At least one letter</Text>
-              <Text>At least one capital letter</Text>
-              <Text>At least one number</Text>
-              <Text>Be at least 8 characters</Text>
             </View>
           </Modal>
           <View
@@ -449,7 +500,7 @@ const LoginScreen = (props: {
           </Text>
           <Text
             onPress={() => {
-              Alert.alert("INFS Privacy Policy URL Opened Here!!");
+              props.navigation.navigate("TandCScreen");
             }}
             style={{
               color: "#00B5E0",
@@ -471,8 +522,6 @@ const LoginScreen = (props: {
           textVisible={true}
           visible={true}
         />
-
-    
 
         {isDone ? <ActivityIndicator style={{ marginTop: 20 }} /> : null}
       </View>

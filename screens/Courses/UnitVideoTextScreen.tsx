@@ -12,6 +12,9 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Font from "../../constants/Font";
 import { WithLocalSvg } from "react-native-svg";
+import { WebView } from "react-native-webview";
+import { VimeoPlayer } from "@mindtechapps/rn-vimeo-player";
+
 import Header from "../../components/HeaderwithBack";
 
 const { width, height } = Dimensions.get("window");
@@ -35,10 +38,10 @@ const UnitVideoTextScreen = (props) => {
           props.navigation.navigate("UnitScreen");
         }}
       />
-      <Image
-        source={require("../../assets/banner5.jpeg")}
-        style={{ width: width, height: height * 0.3 }}
-      />
+      <View style={{ width, height: 230 }}>
+        <VimeoPlayer videoId="507485468" />
+      </View>
+
       <ScrollView style={{ backgroundColor: "#FFFFFF", flexGrow: 1 }}>
         <View style={{ margin: 15 }}>
           <View
@@ -111,7 +114,7 @@ const UnitVideoTextScreen = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#838383",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-Regular",
             }}
           >
@@ -144,7 +147,7 @@ const UnitVideoTextScreen = (props) => {
               flex: 1,
               textAlign: "center",
               color: "#FFFFFF",
-              fontSize: normalize(15.75),
+              fontSize: Font.h6,
               fontFamily: "Poppins-SemiBold",
             }}
           >
@@ -161,6 +164,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
 });
 

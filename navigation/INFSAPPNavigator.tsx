@@ -27,7 +27,10 @@ import UnitScreen from "../screens/Courses/UnitScreen";
 import UnitTextScreen from "../screens/Courses/UnitTextScreen";
 import UnitVideoTextScreen from "../screens/Courses/UnitVideoTextScreen";
 import UnitTextScreenFirst from "../screens/Courses/UnitTextScreenFirst";
+import TermsAndConditions from "../screens/EntryScreen/TermsAndConditions";
 import QuizForStartUpScreen from "../screens/Quiz/QuizForStartUpScreen";
+import Atkit from "../screens/Courses/Atkit";
+
 const INFSAPPNavigator = () => {
   const Stack = createStackNavigator();
   return (
@@ -56,6 +59,25 @@ const INFSAPPNavigator = () => {
           <Stack.Screen
             name="CardScreen"
             component={CardComponent}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+
+          <Stack.Screen
+            name="TandCScreen"
+            component={TermsAndConditions}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="Atkit"
+            component={Atkit}
             options={{
               headerShown: false,
               headerTitleStyle: { fontFamily: "Poppins-Regular" },

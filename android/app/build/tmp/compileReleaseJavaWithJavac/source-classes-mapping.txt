@@ -1,9 +1,0 @@
-com/infsapp/BuildConfig.java
- com.infsapp.BuildConfig
-com/infsapp/MainApplication.java
- com.infsapp.MainApplication
- com.infsapp.MainApplication$1
-com/infsapp/MainActivity.java
- com.infsapp.MainActivity
-com/facebook/react/PackageList.java
- com.facebook.react.PackageList
