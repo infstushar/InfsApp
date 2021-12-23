@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Alert } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import dummy from "../components/dummy";
@@ -30,6 +30,8 @@ import UnitTextScreenFirst from "../screens/Courses/UnitTextScreenFirst";
 import TermsAndConditions from "../screens/EntryScreen/TermsAndConditions";
 import QuizForStartUpScreen from "../screens/Quiz/QuizForStartUpScreen";
 import Atkit from "../screens/Courses/Atkit";
+import AdfTohtml, { AdftoHtml } from "../screens/Courses/AdfTohtml";
+import Example from "../screens/Courses/Example";
 
 const INFSAPPNavigator = () => {
   const Stack = createStackNavigator();
@@ -42,11 +44,7 @@ const INFSAPPNavigator = () => {
             component={PathGeneration}
             options={{ headerShown: false }}
           />*/}
-          <Stack.Screen
-            name="Intro"
-            component={IntroSliderScreen}
-            options={{ headerShown: false }}
-          />
+
           <Stack.Screen
             name="Login"
             component={LoginScreen}
@@ -56,6 +54,12 @@ const INFSAPPNavigator = () => {
               headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
             }}
           />
+          <Stack.Screen
+            name="Intro"
+            component={IntroSliderScreen}
+            options={{ headerShown: false }}
+          />
+
           <Stack.Screen
             name="CardScreen"
             component={CardComponent}
@@ -87,6 +91,15 @@ const INFSAPPNavigator = () => {
           <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="Example"
+            component={Example}
             options={{
               headerShown: false,
               headerTitleStyle: { fontFamily: "Poppins-Regular" },

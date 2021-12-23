@@ -6,18 +6,17 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-
   FlatList,
   StatusBar,
   Platform,
   PixelRatio,
-
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
 import Font from "../../constants/Font";
 import { Chip, List, Card } from "react-native-paper";
-
+import RenderHtml from "react-native-render-html";
+//import json2html from "json-to-html";
 import Header from "../../components/HeaderwithBack";
 import { WithLocalSvg } from "react-native-svg";
 
@@ -31,6 +30,173 @@ const normalize = (size) => {
   } else {
     return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
   }
+};
+const Document = {
+  type: "doc",
+  content: [
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "INFS Basic Nutrition and Fitness Course is designed specifically for the people who are at the absolute start of their fitness career.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "It is highly recommended for a fitness enthusiast or anyone keen to learn how to get results through scientific principles of nutrition and fitness.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "The concepts have been explained at a practical level through fun activity-based tasks that will help you improve your health and quality of life.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "This course has modules that form part of the professional courses in Nutrition and Exercise Science, so you are already on your way to completing requirements for a professional certification!",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "Your learning is completely online and you can even attend Live Lectures virtually conducted by INFS faculty.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "The faculty will also be available to answer any queries you have in both formats - live in the planned tutorial sessions, as well as through the Discussion Forums.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "If you complete your assessment activities, you will be provided a Certificate towards completion of this course.",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      content: [{ text: "The course is divided into 3 modules", type: "text" }],
+    },
+    {
+      type: "bulletList",
+      content: [
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "Basics of Food and Nutrition (8 Units)",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "Introduction to Exercise Science (6 Units)",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "listItem",
+          content: [
+            {
+              type: "paragraph",
+              content: [
+                {
+                  text: "Introduction to Resistance Training (5 Units)",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    { type: "paragraph", content: [] },
+    {
+      type: "paragraph",
+      content: [
+        { text: "The duration of the course is 4-6 weeks.", type: "text" },
+      ],
+    },
+  ],
+  version: 1,
 };
 
 const DATA = [
@@ -117,10 +283,34 @@ const DATA = [
   },
 ];
 
+const source = {
+  //html: `<h1><a name=""></a></h1><p><b>{</b><br /><b>"version": 1,</b><br /><b>"type": "doc",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "What is Nutrition?"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Here are two statements."</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Statement A - Nutrition is the food we eat.&nbsp;"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Statement B - Nutrition is how food affects us.&nbsp;"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "So, what exactly is Nutrition?"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "While most think Option A is true and don’t consider option B, let it be clear that Nutrition includes BOTH of these. If everyone begins to recognize that what is eaten matters as much as how it affects the body, everyone will live healthier lives.&nbsp;"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "“Small chemical components of food that are needed in adequate amounts by the body to grow, reproduce and lead a normal healthy life are nutrients.”"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Everything that is consumed consists of nutrients. Broadly speaking, there are 3 types of nutrients;"</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "orderedList",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "listItem",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Macronutrients - Proteins, Fats, and Carbohydrates"</b><br /><b>}</b><br /><b>]</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "listItem",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Micronutrients - Vitamins and Minerals"</b><br /><b>}</b><br /><b>]</b><br /><b>}</b><br /><b>]</b><br /><b>},</b><br /><b>{</b><br /><b>"type": "listItem",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "paragraph",</b><br /><b>"content": [</b><br /><b>{</b><br /><b>"type": "text",</b><br /><b>"text": "Inorganic Nutrients - Water and Oxygen"</b><br /><b>}</b><br /><b>]</b><br /><b>}</b><br /><b>]</b><br /><b>}</b><br /><b>]</b><br /><b>}</b><br /><b>]</b><br /><b>}</b></p>`,
+  //html: `<h1><a name="Hello"></a>Hello</h1><p></p><ul class="alternate" type="disc"><li data-parent="ul">1</li><li data-parent="ul">2</li><li data-parent="ul">3</li><li data-parent="ul">4</li></ul><p></p>`,
+};
+
 const ModuleDetails = (props) => {
   const [expanded, setExpanded] = React.useState(true);
-
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const handlePress = () => setExpanded(!expanded);
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/modules/` +
+          props?.route?.params?.slug
+      );
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   const renderItem = ({ item }) => (
     <Chip
       style={{
@@ -155,7 +345,7 @@ const ModuleDetails = (props) => {
             <Text
               style={{
                 fontFamily: "Poppins-Regular",
-                fontSize:Font.p1,
+                fontSize: Font.p1,
                 color: "#3E3E3E",
               }}
             >
@@ -186,7 +376,7 @@ const ModuleDetails = (props) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
       <Header
-        title="Diploma in Nutrition and Fitness"
+        title={data.title}
         onPress={() => {
           props.navigation.goBack(null);
         }}
@@ -202,14 +392,15 @@ const ModuleDetails = (props) => {
           style={{ width: width, height: "100%" }}
         />
       </View>
-      <ScrollView >
-        <View style={{ marginLeft: 15, marginBottom:10 }}>
+      <ScrollView>
+        <RenderHtml contentWidth={width} source={source} />
+        <View style={{ marginLeft: 15, marginBottom: 10 }}>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
             <WithLocalSvg
               width={12}
               height={12}
               asset={require("../../assets/Icon-ionic-ios-star-(1).svg")}
-              style={{  marginTop: 5 }}
+              style={{ marginTop: 5 }}
             />
             <Text
               style={{
@@ -242,7 +433,7 @@ const ModuleDetails = (props) => {
               paddingBottom: 10,
             }}
           >
-            {DATA[0].title}
+            {data.title}
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Text
@@ -324,7 +515,7 @@ const ModuleDetails = (props) => {
                 marginTop: 5,
               }}
             >
-              {DATA[0].instructor}
+              {data.instructor}
             </Text>
           </View>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
@@ -361,7 +552,7 @@ const ModuleDetails = (props) => {
                   paddingTop: 5,
                 }}
               >
-                {DATA[0].hrs} hours
+                {data.study_hours} hours
               </Text>
             </View>
           </View>
@@ -766,7 +957,8 @@ const ModuleDetails = (props) => {
             marginLeft: width * 0.28,
           }}
           onPress={() => {
-            props.navigation.navigate("UnitScreen");
+            props.navigation.navigate("UnitScreen", data);
+            //props.navigation.navigate("Example");
           }}
         >
           <Text

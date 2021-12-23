@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {
   View,
   Text,
@@ -45,26 +45,32 @@ const DATA = [
       { id: "2", tag: "Health" },
     ],
     coursecontent: [
-      { id: "0", tag: "30 hours on-demand video" },
-      { id: "1", tag: "12 lessons" },
-      { id: "2", tag: "3 PDF’s to Download" },
-      { id: "3", tag: "Access on Mobile and Desktop" },
-      { id: "4", tag: "Discussion Forum" },
-      { id: "5", tag: "Full lifetime access" },
+      { id: "0", tag: "Online access of course material" },
+      { id: "1", tag: "Online Discussion Forum" },
+      { id: "2", tag: "Quizzes and End of Course Assessment" },
+      { id: "3", tag: "ACertificate of Participation" },
     ],
     learningcontent: [
-      { id: "0", tag: "Review your current diet and lifestyle." },
+      { id: "0", tag: "Introduction to the Art of meditation" },
       {
         id: "1",
-        tag: "Understand the benefits your new healthier lifestyle will bring.",
+        tag: "Building life-changing habits and tracking them.",
       },
-      { id: "2", tag: "Plan your own customised diet/meal plans." },
+      { id: "2", tag: "PBreakthrough for productivity in your tasks" },
       {
         id: "3",
-        tag: "Create your own activity plan to achieve fitness goals.",
+        tag: "Improving your relationships with family and friends",
+      },
+      {
+        id: "4",
+        tag: "An abundant and loving lifestyle",
+      },
+      {
+        id: "5",
+        tag: "Art of loving yourself",
       },
     ],
-    description: `INFS Basic Nutrition and Fitness Course is designed specifically for the people who are at the absolute start of their fitness career. In this course you shall learn the basic why’s and the how’s of nutrition and exercise sciences along with a number of fun tasks that you are sure to have fun doing!`,
+    description: `7 days to Amazing Lifestyle is a Workshop conducted for seven days, focusing on building life-changing habits and keeping track of your goals by just giving one hour to yourself on daily basis. It is a beginners workshop focusing on mindfulness.`,
     eligiblity: "Applicant should be above 18 years of Age",
     faq: [
       {
@@ -76,6 +82,35 @@ const DATA = [
 ];
 
 const CourseDetailScreen = (props) => {
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/courses/` +
+          props?.route?.params?.slug
+      );
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const checkData = () => {
+    // const lengnth = Object.keys(data.modules).length;
+    // if (lengnth === 0) return 0;
+    // else return 1;
+    if (data.course_type === "workshops") return 1;
+    else return 0;
+  };
+
   const renderItem = ({ item }) => (
     <Chip
       style={{
@@ -157,8 +192,9 @@ const CourseDetailScreen = (props) => {
   );
   return (
     <View style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
+      {console.warn(checkData())}
       <Header
-        title="Basic Nutrition and Fitness Course"
+        title={data.title}
         onPress={() => {
           props.navigation.goBack(null);
         }}
@@ -215,7 +251,7 @@ const CourseDetailScreen = (props) => {
               marginTop: 10,
             }}
           >
-            {DATA[0].title}
+            {data.title}
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Text style={styles.textStyleForheaderMedium}>{DATA[0].level}</Text>
@@ -264,7 +300,7 @@ const CourseDetailScreen = (props) => {
                 marginTop: 5,
               }}
             >
-              {DATA[0].instructor}
+              {data.instructor}
             </Text>
           </View>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
@@ -302,16 +338,16 @@ const CourseDetailScreen = (props) => {
                   paddingTop: 5,
                 }}
               >
-                {DATA[0].hrs} hours
+                {data.study_hours} hours
               </Text>
             </View>
           </View>
-          <FlatList
+          {/*<FlatList
             data={DATA[0].tag}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
             horizontal
-          />
+          />*/}
         </View>
         <View
           style={{
@@ -373,22 +409,27 @@ const CourseDetailScreen = (props) => {
           >
             Course Content :
           </Text>
-          <View style={{ marginLeft: 15, marginVertical: 10 }}>
-            <View style={styles.horizontalline} />
-            <CourseContentScreen
-              onPress={() => {
-                props.navigation.navigate("ModuleDetails");
-              }}
-              bgColor="#F8F8F8"
-            />
-            <View style={styles.horizontalline} />
-            <CourseContentScreen
-              onPress={() => {
-                props.navigation.navigate("ModuleDetails");
-              }}
-              bgColor="#FfFfFf"
-            />
-          </View>
+
+          <FlatList
+            data={checkData() === 1 ? data.units : data.modules}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => (
+              <View style={{ marginLeft: 15, marginVertical: 10 }}>
+                <View style={styles.horizontalline} />
+                <CourseContentScreen
+                  title={item.title}
+                  onPress={() => {
+                    if (checkData() === 1)
+                      return props.navigation.navigate("UnitScreen", data);
+                    else
+                      return props.navigation.navigate("ModuleDetails", data);
+                  }}
+                  bgColor="#F8F8F8"
+                />
+                <View style={styles.horizontalline} />
+              </View>
+            )}
+          />
         </View>
         <TouchableOpacity
           style={{
@@ -593,43 +634,43 @@ const CourseDetailScreen = (props) => {
                     </View>
 
                     <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        width: 50,
+                        height: 20,
+                        borderRadius: 10,
+                        backgroundColor: "#37B84C",
+                        marginLeft: 50,
+                        marginTop: 20,
+                        flexGrow: 1,
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Text
                         style={{
-                          flexDirection: "row",
-                          alignItems: "center",
-                          width: 50,
-                          height: 20,
-                          borderRadius: 10,
-                          backgroundColor: "#37B84C",
-                          marginLeft: 50,
-                          marginTop: 20,
-                          flexGrow: 1,
-                          justifyContent: "center",
+                          fontSize: Font.p2,
+                          fontFamily: "Poppins-Medium",
+                          color: "#FFFFFF",
                         }}
                       >
-                        <Text
-                          style={{
-                            fontSize: Font.p2,
-                            fontFamily: "Poppins-Medium",
-                            color: "#FFFFFF",
-                          }}
-                        >
-                          4.5
-                        </Text>
+                        4.5
+                      </Text>
 
-                        <WithLocalSvg
-                          width={12}
-                          height={12}
-                          asset={require("../../assets/Iconionic-ios-star.svg")}
-                          style={{ marginLeft: 3 }}
-                        />
-                      </View>
+                      <WithLocalSvg
+                        width={12}
+                        height={12}
+                        asset={require("../../assets/Iconionic-ios-star.svg")}
+                        style={{ marginLeft: 3 }}
+                      />
+                    </View>
                   </View>
 
                   <Text
                     style={{
                       fontSize: Font.p1,
-                        fontFamily: "Poppins-Regular",
-                        color: "#838383",
+                      fontFamily: "Poppins-Regular",
+                      color: "#838383",
                     }}
                   >
                     There are many variations of passages of Ipsum available,
@@ -680,37 +721,37 @@ const CourseDetailScreen = (props) => {
                       </Text>
                     </View>
                     <View
-                        style={{
-                          flexDirection: "row",
+                      style={{
+                        flexDirection: "row",
 
-                          alignItems: "center",
-                          width: 50,
-                          height: 20,
-                          borderRadius: 10,
-                          backgroundColor: "#37B84C",
-                          marginLeft: 50,
-                          marginTop: 20,
-                          flexGrow: 1,
-                          justifyContent: "center",
+                        alignItems: "center",
+                        width: 50,
+                        height: 20,
+                        borderRadius: 10,
+                        backgroundColor: "#37B84C",
+                        marginLeft: 50,
+                        marginTop: 20,
+                        flexGrow: 1,
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: Font.p2,
+                          fontFamily: "Poppins-Medium",
+                          color: "#FFFFFF",
                         }}
                       >
-                        <Text
-                          style={{
-                            fontSize: Font.p2,
-                            fontFamily: "Poppins-Medium",
-                            color: "#FFFFFF",
-                          }}
-                        >
-                          4.5
-                        </Text>
+                        4.5
+                      </Text>
 
-                        <WithLocalSvg
-                          width={12}
-                          height={12}
-                          asset={require("../../assets/Iconionic-ios-star.svg")}
-                          style={{ marginLeft: 3 }}
-                        />
-                      </View>
+                      <WithLocalSvg
+                        width={12}
+                        height={12}
+                        asset={require("../../assets/Iconionic-ios-star.svg")}
+                        style={{ marginLeft: 3 }}
+                      />
+                    </View>
                   </View>
                   <Text
                     style={{
@@ -827,7 +868,7 @@ const CourseDetailScreen = (props) => {
                 marginLeft: 3,
               }}
             >
-              {DATA[0].price}
+              {Math.floor(data.price)}
             </Text>
           </View>
         </View>

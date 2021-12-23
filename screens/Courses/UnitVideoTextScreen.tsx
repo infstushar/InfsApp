@@ -9,12 +9,15 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+//import VimeoPlayer from "../Courses/VimeoPlayer";
+import getVideoId from "get-video-id";
 import { ScrollView } from "react-native-gesture-handler";
 import Font from "../../constants/Font";
 import { WithLocalSvg } from "react-native-svg";
 import { WebView } from "react-native-webview";
-import { VimeoPlayer } from "@mindtechapps/rn-vimeo-player";
 
+import { VimeoPlayer } from "@mindtechapps/rn-vimeo-player";
+//import VideoPlayer from "react-native-video-controls";
 import Header from "../../components/HeaderwithBack";
 
 const { width, height } = Dimensions.get("window");
@@ -30,64 +33,28 @@ const normalize = (size) => {
 };
 
 const UnitVideoTextScreen = (props) => {
+  const { id } = getVideoId(props.route.params.content.video);
   return (
     <View style={{ width, height, flex: 1 }}>
       <Header
-        title="What is Fitness"
+        title={props.route.params.title}
         onPress={() => {
           props.navigation.navigate("UnitScreen");
         }}
       />
-      <View style={{ width, height: 230 }}>
-        <VimeoPlayer videoId="507485468" />
+      <View style={{ width, height: 500 }}>
+        <VimeoPlayer videoId={id} />
       </View>
 
-      <ScrollView style={{ backgroundColor: "#FFFFFF", flexGrow: 1 }}>
-        <View style={{ margin: 15 }}>
-          <View
-            style={{
-              backgroundColor: "#FAFAFA",
-              marginTop: 30,
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: 30,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: Font.h5,
-                color: "#3E3E3E",
-                lineHeight: normalize(28),
-              }}
-            >
-              Physical fitness is just a leaf of a tree known as Health and can
-              be defined as thephysical ability to perform and enjoy daily
-              activities with ease.
-            </Text>
-          </View>
-          <Text
-            style={{
-              fontFamily: "Poppins-Medium",
-              fontSize: Font.h6,
-              lineHeight: normalize(24.5),
-              color: "#838383",
-              paddingLeft: 2,
-            }}
-          >
-            Physical fitness can be achieved by regularly engaging in
-            moderate-intensity physical exercise, proper nutrition, and taking
-            sufficient rest (Tremblay et al, 2010). A lot of people use the
-            word, getting ‘fit’ and getting ‘healthy’ interchangeably. A person
-            can be fit, and not very healthy, and vice-versa. The best way to
-            understand this is to balance both, health and fitness, sides.
-            American nutritionist Victor Lindlahr quoted the line “you are what
-            you eat” in 1930, which means nutrition is the string that ties
-            Health and Fitness together.
-          </Text>
-        </View>
-      </ScrollView>
-      <View style={{ backgroundColor: "#FAFAFA", flexDirection: "row" }}>
+      <View
+        style={{
+          backgroundColor: "#FAFAFA",
+          flexDirection: "row",
+          position: "absolute",
+          bottom: 0,
+          width: width,
+        }}
+      >
         <TouchableOpacity
           style={{
             flexDirection: "row",

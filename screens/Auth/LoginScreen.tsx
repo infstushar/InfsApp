@@ -27,18 +27,20 @@ const LoginScreen = (props: {
   route: any;
   navigation: { navigate: (arg0: string) => void };
 }) => {
-  const { login } = props.route.params;
+  //const { login } = props.route.params;
   const [isSignUpClicked, setIsSignUpClicked] = useState(true);
   const [isLoginClicked, setIsLoginlicked] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    if (login != null) {
-      if (login) {
-        setIsLoginlicked(true);
-        setIsSignUpClicked(false);
-      }
-    }
+    //   if (login != null) {
+    //     if (login) {
+    //       setIsLoginlicked(true);
+    //       setIsSignUpClicked(false);
+    //     }
+    //   }
+    setIsLoginlicked(true);
+    setIsSignUpClicked(false);
   }, []);
 
   /**

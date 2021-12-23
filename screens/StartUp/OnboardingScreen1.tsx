@@ -28,7 +28,7 @@ const OnboardingScreen1 = () => {
           <WithLocalSvg
             width={width + 30}
             height={height * 0.4}
-            asset={require("../../assets/texture.svg")}
+            asset={require("../../assets/texturenew.svg")}
           />
         </View>
         <View style={{ marginTop: height * 0.2 }}>

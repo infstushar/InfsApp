@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   PixelRatio,
   TouchableHighlight,
   Alert,
+  FlatList,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { WithLocalSvg } from "react-native-svg";
@@ -26,10 +27,37 @@ const normalize = (size) => {
 };
 
 const UnitScreen = (props) => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        `http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/lessons?unit=` +
+          props?.route?.params?.slug
+      );
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const displayText = () => {
+    return data.map((item, id) => {});
+  };
+
   return (
     <View style={{ backgroundColor: "#FFFFFF" }}>
+      {console.warn(data)}
       <Header
-        title="Basics of Food and Nutrition"
+        title={props.route.params.title}
         onPress={() => {
           props.navigation.goBack(null);
         }}
@@ -53,11 +81,14 @@ const UnitScreen = (props) => {
           Discussion Forum
         </Text>
       </View>
-      <ScrollView>
-        <View style={{ height }}>
+
+      <FlatList
+        data={data}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
           <TouchableHighlight
             onPress={() => {
-              props.navigation.navigate("UnitTextScreen");
+              props.navigation.navigate("UnitVideoTextScreen", item);
             }}
             style={{ width: width, height: 75 }}
           >
@@ -71,7 +102,7 @@ const UnitScreen = (props) => {
                   marginTop: 5,
                 }}
               >
-                What is Health?
+                {item.title}
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <WithLocalSvg
@@ -80,126 +111,12 @@ const UnitScreen = (props) => {
                   asset={require("../../assets/Iconopen-document.svg")}
                   style={{ marginLeft: 20 }}
                 />
-                <Text style={{ marginLeft: 5 }}>Lesson</Text>
+                <Text style={{ marginLeft: 5 }}>Video</Text>
               </View>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => {
-              props.navigation.navigate("UnitVideoTextScreen");
-            }}
-            style={{ width: width, height: 75 }}
-          >
-            <View style={{ marginLeft: 15, marginTop: 15 }}>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(17.5),
-                  color: "#3E3E3E",
-                  marginTop: 5,
-                }}
-              >
-                What is Fitness?
-              </Text>
-              <View style={{ flexDirection: "row" }}>
-                <WithLocalSvg
-                  width={12}
-                  height={14}
-                  asset={require("../../assets/Iconopen-document.svg")}
-                  style={{ marginLeft: 20 }}
-                />
-                <Text style={{ marginLeft: 5 }}>Lesson & Video</Text>
-              </View>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => {
-              props.navigation.navigate("UnitTextScreenFirst");
-            }}
-            style={{ width: width, height: 75 }}
-          >
-            <View style={{ marginLeft: 15, marginTop: 15 }}>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(17.5),
-                  color: "#3E3E3E",
-                  marginTop: 5,
-                }}
-              >
-                What is Nutrition?
-              </Text>
-              <View style={{ flexDirection: "row" }}>
-                <WithLocalSvg
-                  width={12}
-                  height={14}
-                  asset={require("../../assets/Iconopen-document.svg")}
-                  style={{ marginLeft: 20 }}
-                />
-                <Text style={{ marginLeft: 5 }}>Lesson</Text>
-              </View>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => {}}
-            style={{ width: width, height: 75 }}
-          >
-            <View style={{ marginLeft: 15, marginTop: 15 }}>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(17.5),
-                  color: "#3E3E3E",
-                  marginTop: 5,
-                }}
-              >
-                Dietetics
-              </Text>
-              <View style={{ flexDirection: "row" }}>
-                <WithLocalSvg
-                  width={12}
-                  height={14}
-                  asset={require("../../assets/Iconopen-document.svg")}
-                  style={{ marginLeft: 20 }}
-                />
-                <Text style={{ marginLeft: 5 }}>Lesson</Text>
-              </View>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => {
-              props.navigation.navigate("Atkit");
-            }}
-            style={{ width: width, height: 75 }}
-          >
-            <View style={{ marginLeft: 15, marginTop: 15 }}>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontFamily: "Poppins-Medium",
-                  fontSize: normalize(17.5),
-                  color: "#3E3E3E",
-                  marginTop: 5,
-                }}
-              >
-                Therapeutic Nutrition
-              </Text>
-              <View style={{ flexDirection: "row" }}>
-                <WithLocalSvg
-                  width={12}
-                  height={14}
-                  asset={require("../../assets/Iconopen-document.svg")}
-                  style={{ marginLeft: 20 }}
-                />
-                <Text style={{ marginLeft: 5 }}>Lesson</Text>
-              </View>
-            </View>
-          </TouchableHighlight>
-        </View>
-      </ScrollView>
+        )}
+      />
     </View>
   );
 };

@@ -17,7 +17,7 @@ import RoundedButton from "../../components/RoundedButton";
 
 const { width, height } = Dimensions.get("window");
 
-const Login = () => {
+const Login = (props) => {
   const [radioData, setRadioData] = useState(["Remember Me"]);
   const [radioChecked, setRadioChecked] = useState(0);
   const [username, setUserName] = useState("");
@@ -192,4 +192,14 @@ const Login = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  btn: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 20,
+    color: "#838383",
+  },
+});
+
 export default Login;

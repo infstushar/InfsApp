@@ -33,7 +33,7 @@ const CourseContentScreen = (props) => {
             color: "#3E3E3E",
           }}
         >
-          Basics of Food and Nutrition
+          {props.title}
         </Text>
         <View style={{ width: "80%" }}>
           <Text

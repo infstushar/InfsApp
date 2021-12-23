@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Modal,
   Pressable,
+  FlatList,
 } from "react-native";
 import CardComponentScreent from "../../components/CardCoponentScreent";
 import { ScrollView } from "react-native-gesture-handler";
@@ -60,61 +61,104 @@ const CourseScreen = (props: {
   const [modalVisible, setModalVisible] = useState(false);
   const [isAllCoursesClicked, setIsAllCoursesClicked] = useState(true);
   const [isEnrolledClicked, setIsEnrolledClicked] = useState(false);
+  const [data, setData] = useState([]);
+  const [enrolledData, setenrolledData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        "http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/courses"
+      );
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getEnrolledData = async () => {
+    try {
+      const response = await fetch(
+        "http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/courses/7-days-to-amazing-lifestyle"
+      );
+      const json = await response.json();
+      setenrolledData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     setIsAllCoursesClicked(true);
     setIsEnrolledClicked(false);
+    getData();
+    getEnrolledData();
   }, []);
+
   const AllCourses = () => {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
+        <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <View style={styles.screen}>
+              {console.warn(item)}
+              <CardComponentScreent
+                Img={Data[1].Img}
+                title={item.title}
+                description={Data[1].description}
+                author={item.instructor}
+                price={item.price}
+                studentEnroll={Data[1].studentEnroll}
+                hrs={item.study_hours}
+                tag={Data[0].tag[0]}
+                onPress={() => {
+                  props.navigation.navigate("CourseDetails", item);
+                }}
+              />
+            </View>
+          )}
+        />
+
+        {/* <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
           <View style={styles.screen}>
-            <CardComponentScreent
-              Img={Data[0].Img}
-              title={Data[0].title}
-              description={Data[0].description}
-              author={Data[0].author}
-              price={Data[0].price}
-              studentEnroll={Data[0].studentEnroll}
-              hrs={Data[0].hrs}
+            {/* <CardComponentScreent
+              Img={Data[1].Img}
+              title={data.title}
+              description={
+                data?.courseoverview?.short_description?.content[0]?.content[0]
+                  ?.text
+              }
+              author={data.instructor}
+              price={data.price}
+              studentEnroll={Data[1].studentEnroll}
+              hrs={enrolledData.study_hours}
               tag={Data[0].tag[0]}
               onPress={() => {
-                props.navigation.navigate("CourseDetails");
+                props.navigation.navigate("CourseDetails", data);
               }}
-            />
-          </View>
-          <View style={styles.screen}>
+            /> 
             <CardComponentScreent
               Img={Data[1].Img}
-              title={Data[1].title}
+              title={enrolledData.title}
               description={Data[1].description}
-              author={Data[1].author}
-              price={Data[1].price}
+              author={enrolledData.instructor}
+              price={enrolledData.price}
               studentEnroll={Data[1].studentEnroll}
-              hrs={Data[1].hrs}
+              hrs={enrolledData.study_hours}
               tag={Data[0].tag[0]}
               onPress={() => {
-                props.navigation.navigate("CourseDetails");
+                props.navigation.navigate("CourseDetails", enrolledData);
               }}
             />
           </View>
-          <View style={styles.screen}>
-            <CardComponentScreent
-              Img={Data[2].Img}
-              title={Data[2].title}
-              description={Data[2].description}
-              author={Data[2].author}
-              price={Data[2].price}
-              studentEnroll={Data[2].studentEnroll}
-              hrs={Data[2].hrs}
-              tag={Data[0].tag[0]}
-              onPress={() => {
-                props.navigation.navigate("CourseDetails");
-              }}
-            />
-          </View>
-          <View style={{ height: 110 }}></View>
-        </ScrollView>
+        </ScrollView> */}
       </View>
     );
   };
@@ -122,25 +166,24 @@ const CourseScreen = (props: {
   const EnrolledCourses = () => {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
+        {/* <ScrollView style={{ flexGrow: 1, marginTop: 1 }}>
           <View style={styles.screen}>
+            {console.warn(enrolledData.title)}
             <CardComponentScreent
-              Img={Data[0].Img}
-              title={Data[0].title}
-              description={Data[0].description}
-              author={Data[0].author}
-              price={Data[0].price}
-              studentEnroll={Data[0].studentEnroll}
-              hrs={Data[0].hrs}
+              Img={Data[1].Img}
+              title={enrolledData.title}
+              description={Data[1].description}
+              author={enrolledData.instructor}
+              price={enrolledData.price}
+              studentEnroll={Data[1].studentEnroll}
+              hrs={enrolledData.study_hours}
               tag={Data[0].tag[0]}
               onPress={() => {
-                props.navigation.navigate("CourseDetails");
+                props.navigation.navigate("CourseDetails", enrolledData);
               }}
             />
           </View>
-
-          <View style={{ height: 110 }}></View>
-        </ScrollView>
+        </ScrollView> */}
       </View>
     );
   };
@@ -294,7 +337,7 @@ const CourseScreen = (props: {
           <WithLocalSvg
             width={21}
             height={20}
-            asset={require("../../assets/filter.svg")}
+            asset={require("../../assets/filterNew.svg")}
           />
         </TouchableOpacity>
       </View>

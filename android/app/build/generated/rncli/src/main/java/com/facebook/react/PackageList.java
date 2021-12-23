@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-music-control
+import com.tanguyantoine.react.MusicControl;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
@@ -25,6 +27,10 @@ import com.swmansion.rnscreens.RNScreensPackage;
 import com.horcrux.svg.SvgPackage;
 // react-native-vector-icons
 import com.oblador.vectoricons.VectorIconsPackage;
+// react-native-video
+import com.brentvatne.react.ReactVideoPackage;
+// react-native-webview
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 
 public class PackageList {
   private Application application;
@@ -72,11 +78,14 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new RNCMaskedViewPackage(),
       new RNGestureHandlerPackage(),
+      new MusicControl(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
       new SvgPackage(),
-      new VectorIconsPackage()
+      new VectorIconsPackage(),
+      new ReactVideoPackage(),
+      new RNCWebViewPackage()
     ));
   }
 }

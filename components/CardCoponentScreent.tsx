@@ -7,10 +7,13 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
+import getVideoId from "get-video-id";
+import { VimeoPlayer } from "@mindtechapps/rn-vimeo-player";
 
 const { width, height } = Dimensions.get("window");
 
 const CardCoponentScreent = (props) => {
+  // const { id } = getVideoId(props.Img);
   return (
     <Card
       style={styles.card}
@@ -20,6 +23,10 @@ const CardCoponentScreent = (props) => {
     >
       <Card.Content>
         <Image source={props.Img} style={styles.imageContainer}></Image>
+
+        {/* <View style={styles.imageContainer}>
+          <VimeoPlayer videoId={id} />
+    </View>*/}
 
         <View
           style={{
@@ -112,7 +119,9 @@ const CardCoponentScreent = (props) => {
                   asset={require("../assets/Iconawesome-rupee-sign.svg")}
                   style={{ marginTop: 5 }}
                 />
-                <Text style={styles.priceTextStyle}>{props.price}</Text>
+                <Text style={styles.priceTextStyle}>
+                  {Math.floor(props.price)}
+                </Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", marginTop: 2 }}>
