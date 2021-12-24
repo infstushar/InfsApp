@@ -31,6 +31,7 @@ import TermsAndConditions from "../screens/EntryScreen/TermsAndConditions";
 import QuizForStartUpScreen from "../screens/Quiz/QuizForStartUpScreen";
 import Atkit from "../screens/Courses/Atkit";
 import AdfTohtml, { AdftoHtml } from "../screens/Courses/AdfTohtml";
+import UnitScreenForCourses from "../screens/Courses/UnitScreenForCourses";
 import Example from "../screens/Courses/Example";
 
 const INFSAPPNavigator = () => {
@@ -73,6 +74,15 @@ const INFSAPPNavigator = () => {
           <Stack.Screen
             name="TandCScreen"
             component={TermsAndConditions}
+            options={{
+              headerShown: false,
+              headerTitleStyle: { fontFamily: "Poppins-Regular" },
+              headerBackTitleStyle: { fontFamily: "Poppins-Regular" },
+            }}
+          />
+          <Stack.Screen
+            name="UnitScreenForCourses"
+            component={UnitScreenForCourses}
             options={{
               headerShown: false,
               headerTitleStyle: { fontFamily: "Poppins-Regular" },

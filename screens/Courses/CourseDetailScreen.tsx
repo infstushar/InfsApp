@@ -422,7 +422,7 @@ const CourseDetailScreen = (props) => {
                     if (checkData() === 1)
                       return props.navigation.navigate("UnitScreen", data);
                     else
-                      return props.navigation.navigate("ModuleDetails", data);
+                      return props.navigation.navigate("ModuleDetails", item);
                   }}
                   bgColor="#F8F8F8"
                 />
@@ -431,7 +431,7 @@ const CourseDetailScreen = (props) => {
             )}
           />
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{
             flexDirection: "row",
             height: 28,
@@ -455,7 +455,7 @@ const CourseDetailScreen = (props) => {
             asset={require("../../assets/Icon-ionic-ios-arrow-dropdown-circle.svg")}
             style={{ marginTop: 5 }}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <View>
           <Text

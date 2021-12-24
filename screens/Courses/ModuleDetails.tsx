@@ -297,7 +297,7 @@ const ModuleDetails = (props) => {
     try {
       const response = await fetch(
         `http://ec2-15-207-115-51.ap-south-1.compute.amazonaws.com:8000/modules/` +
-          props?.route?.params?.slug
+          props?.route?.params?.id
       );
       const json = await response.json();
       setData(json);
@@ -308,6 +308,7 @@ const ModuleDetails = (props) => {
     }
   };
   useEffect(() => {
+    console.warn(props?.route?.params?.id);
     getData();
   }, []);
 
@@ -375,6 +376,7 @@ const ModuleDetails = (props) => {
   );
   return (
     <View style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
+      {console.warn(props?.route?.params?.id)}
       <Header
         title={data.title}
         onPress={() => {
@@ -393,7 +395,6 @@ const ModuleDetails = (props) => {
         />
       </View>
       <ScrollView>
-        <RenderHtml contentWidth={width} source={source} />
         <View style={{ marginLeft: 15, marginBottom: 10 }}>
           <View style={{ flexDirection: "row", marginTop: 10 }}>
             <WithLocalSvg
@@ -957,7 +958,7 @@ const ModuleDetails = (props) => {
             marginLeft: width * 0.28,
           }}
           onPress={() => {
-            props.navigation.navigate("UnitScreen", data);
+            props.navigation.navigate("UnitScreenForCourses", data);
             //props.navigation.navigate("Example");
           }}
         >
